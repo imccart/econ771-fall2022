@@ -1,1 +1,1 @@
-# econ771-spring2022
+# Econ 771, Spring 2022
