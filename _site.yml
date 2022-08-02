@@ -1,0 +1,22 @@
+name: "econ-771"
+output_dir: docs
+exclude: ["data"]
+navbar:
+  title: "Econ 771, Health Economics II"
+  left:
+    - text: ""
+      icon: fa-home
+      href: index.html
+    - text: "Syllabus"
+      href: syllabus.html
+    - text: "Modules"
+      href: modules.html
+    - text: "Assignments"
+      href: assignments.html
+    - text: "Resources"
+      href: resources.html
+output:
+  html_document:
+    theme: flatly
+    include:
+      after_body: html/footer.html

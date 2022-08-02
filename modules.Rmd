@@ -1,0 +1,5 @@
+---
+title: "Class Modules"
+---
+
+Description of main class sections, content to be covered, etc.
