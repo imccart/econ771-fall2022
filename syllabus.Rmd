@@ -1,5 +1,122 @@
 ---
 title: "Syllabus"
+citeproc: true
+bibliography: syllabus/BibTeX_Library.bib
+csl: syllabus/chicago-syllabus-no-bib.csl
 ---
 
-Our syllabus.
+```{r setup, message=FALSE, warning=FALSE, include=FALSE}
+library(googledrive)
+library(dplyr)
+library(tibble)
+library(pander)
+```
+
+<p><a class="btn btn-primary btn-lg" target="_blank" href="https://imccart.github.io/econ771-fall2022/syllabus/syllabus-771.pdf" role="button"><i class="far fa-file-pdf"></i> Download PDF of Syllabus</a></p>
+
+## Course description
+
+This is a capstone course that combines health economics and human health content with econometrics and "data science." The course is therefore heavily applied in nature. We will work through four "canonical" research designs, in each case using real world data. You will also complete an empirical research project using real world data and employ econometric methods to analyze a research question relevant to contemporary health care issues and/or health policy. 
+
+**Prerequisites:** Econ 320 (Econometrics) and at least one of the following health economics and policy classes: HLTH 370, Econ 371, Econ 372.
+
+
+## Learning outcomes
+
+The content of the course is split into three general areas: **1) data management in the real world**; **2) health policy and health care institutions**; and **3) empirical methods in program evaluation and causal inference**. Each area of the course will be covered by way of an example research question, which you can use to guide your own projects throughout the semester. By the end of this course, you will be able to:
+
+1. Organize project files using Git and GitHub
+2. Clean and manage several datasets using tidy data in RStudio
+3. Summarize and visualize data with RStudio and the ggplot2 package
+4. Implement selected methods for causal inference using real data
+5. Explain research results with a written report and discussion
+
+There are more specific learning outcomes for each module described on the relevant module's section of the [content page](/content/).
+
+
+## Course materials
+
+### Where to go
+If you're here, then you know where to find our class website. Well done! Hopefully it's clear by the existence of the site that this is where I plan to host most of our information such as course materials, notes/slides, and assignments. I'll also use Canvas to distribute any papers or specific readings that aren't available publicly, as well as post information that I don't want public like grades, answer keys, or virtual meeting passwords if necessary.
+
+As per the recent Emory announcement, we'll be meeting virtually for the first few classes (through January 30). All of the details for our online class meetings and office hours can be found on Canvas.
+
+### Readings
+There is no required textbook for this class, but there are several books that I recommend for additional information and examples. The first is not free but is still very good: 
+
+  - @angrist2009
+
+The following are also excellent resources, with the added bonus of having freely available versions of these texts online. Here are links to the free online versions:
+
+  - [R for Data Science](https://r4ds.had.co.nz/)
+  - [Causal Inference: The Mixtape](https://mixtape.scunning.com/)
+  - [The Effect: An Introduction to Research Design and Causality](https://theeffectbook.net/)
+
+  
+### Statistics software
+I'll use `R` for my work and in all my answer keys and examples. I encourage you to use `R` as well, since that will be the language for which I can help you the most with any questions. That said, if you can answer all of the questions correctly with another software, feel free to do so. I am well-versed in `Stata` but less so in `Python`. If you choose to use `Python` (not a bad choice given its popularity), then I can certainly help with general questions and concepts, but I will be less helpful with any syntax issues.
+
+
+### Accessing data
+For all assignments and in-class activities, I will post links to the data on our class website. For transparency, I will also point you to other GitHub repositories where available. We'll spend some time on Git and GitHub at the beginning of the class, so don't get too worried if this is new to you. 
+
+Everyone will also have access to cloud computing through AWS. This will serve as your own virtual computer running `R`, so we will all have the same data capabilities, versions, and packages (sorry `Python` or `Stata` users!). You don’t have to use this, but for those of you with limited computing power, this is perhaps an easier solution. I'll post details of this to our class website shortly.
+
+
+### Turning thing in
+All assignments should be submitted as PDF files on Canvas.
+
+
+## Course policies
+
+**Be nice. Be honest. Don't cheat.**
+
+Various policies for this course are described below. Basically, let's all work to be good citizens and take seriously our various roles as a student, teacher, friend, colleague, human, etc.
+
+### Class meetings
+
+All regular class meetings will take place in the **Rich Memorial Building, Room 211** on Mondays and Wednesdays from 1:00pm to 2:15pm. For the first month of classes, we'll meet virtually, details of which are on Canvas.
+
+### Office hours
+
+My designated office hours will be on Monday and Wednesday from 2:30pm to 3:30pm in PAIS 573. I'm also available outside of those designated times. I just ask that you schedule an appointment in advance. [Make an appointment with me here](https://mccarthy-meetings.youcanbook.me/). My office hours will be held virtually through January 30, with details on our Canvas page.
+
+While we call these "office hours" they really should be "student hours". These are set times dedicated to all of you. This means that I will be in my office waiting for you to come by with whatever questions you have. Take a look at this video for a more interesting presentation of what office hours really are and why you should come!
+
+
+```{r assignments-grades, include=FALSE}
+assignments <- tibble(
+  Assignment = c("Participation", "Homework (30 x 5)", "Final project"),  
+  Points = c(15, 30*5, 110)
+)
+
+assignments <- assignments %>%
+  mutate(Percent = Points / sum(Points),
+         Percent = scales::percent(Percent))
+
+grading <- tibble(
+  Grade = c("A","A-","B+","B","B-","C+"),
+  Range = c("93-100%","90-92%","87-89%","83-86%","80-82%","77-79%"),
+  Grade1=c("C","C-","D+","D","F",""),
+  Range1=c("73-76%","70-72%","67-69%","60-66%","< 60%","")
+)
+```
+
+<center>
+
+```{r assignments-table, echo=FALSE, results="asis"}
+pandoc.table(assignments, justify="lcc")
+```
+
+</center>
+
+Your final percentage grade comes from your total points as a percent of all possible points available in the class (275). That percent then translates to a letter grade as follows:
+
+<center>
+
+```{r grades-table, echo=FALSE, results="asis"}
+pandoc.table(grading, justify="lclc",
+             col.names = c("Grade", "Range", "Grade", "Range"))
+```
+
+</center>
