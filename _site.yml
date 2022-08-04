@@ -7,8 +7,8 @@ navbar:
     - text: ""
       icon: fa-home
       href: index.html
-    - text: "Syllabus"
-      href: syllabus.html
+    - text: "Schedule"
+      href: schedule.html
     - text: "Modules"
       href: modules.html
     - text: "Assignments"

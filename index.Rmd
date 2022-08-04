@@ -23,3 +23,6 @@ Research Associate • National Bureau of Economic Research<br>
 ---
 
 Welcome! This site houses all of the materials for our PhD Health Economics Class at Emory University (Econ 771) for Fall 2022. All raw code files are also available at the GitHub rep [here](https://github.com/imccart/econ771-fall2022).
+
+
+<p><a class="btn btn-primary btn-lg" target="_blank" href="https://econ771f22.classes.ianmccarthyecon/syllabus/syllabus-771.pdf" role="button"><i class="far fa-file-pdf"></i> Download PDF of Syllabus</a></p>

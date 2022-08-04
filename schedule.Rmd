@@ -1,0 +1,433 @@
+---
+title: "Class Schedule"
+citeproc: true
+bibliography: syllabus/BibTeX_Library.bib
+csl: syllabus/chicago-syllabus-no-bib.csl
+---
+
+```{r setup, message=FALSE, warning=FALSE, include=FALSE}
+library(googledrive)
+library(dplyr)
+library(tibble)
+library(pander)
+```
+
+```{r dates_bib, include=FALSE}
+start <- as.Date("2022-08-24")
+advdate <- function(adv) {
+ twed <- start + 7*floor(adv/2)
+ tmon <- twed-2
+ tmon <- format(tmon, format="%m/%d")
+ twed <- format(twed, format="%m/%d")
+ zadv <- sprintf("%02d", adv)
+ tday <- ifelse( (adv %% 2) == 0, tmon,twed)
+ tmp <- paste("Class ",zadv,sep='',", ", tday)
+ return(tmp)
+}
+```
+
+
+Below is a preliminary course outline for this semester. For a more complete reading list each day as well as more detail on course policies, please see the full syllabus [here](syllabus/syllabus-771.pdf).
+
+
+## Module 0: Kicking things off!
+
+### `r advdate(1)`: Introduction to the economics of healthcare**
+
+**General health econ references:**<br>
+
+  - @arrow1963
+  - @dranove2000
+  - @evans2000
+  - @handel2021
+  - @gaynor2015jel
+
+
+### `r advdate(2)`: Introduction to causal inference**
+
+  - Chapters 1-5 of [Causal Inference: The Mixtape](https://mixtape.scunning.com/)
+  - Chapters 1-5, 10, 13, and 14 of [The Effect: An Introduction to Research Design and Causality](https://theeffectbook.net/)
+  
+
+## Module 1: Hospitals
+
+### `r advdate(3)`: Background and institutional details**
+
+**Supplemental reading:**<br>
+
+  - @newhouse1970
+  - @bayindir2012
+  - @sloan2000
+  - @dranove1988
+  - @pauly1978
+  - @duggan2000
+  - @horwitz2009
+  - @frank1991
+  - @gruber1994
+  - @sloan2001
+  - @deneffe2002
+  - @duggan2002
+  - @kessler2002
+  - @gaynor2003
+  - @david2009
+  - @chang2017
+
+### `r advdate(4)` - `r advdate(5)`: Hospitals and financial incentives
+
+**Primary reading:**<br>
+
+  - @dafny2005
+  - @eliason2018
+  - @batty2017
+  - @lee2020
+
+**Supplemental reading:**<br>
+
+  - @dranove1987rand
+  - @cutler1995
+  - @ellis1996
+  - @silverman2004
+  - @carroll2018
+  - @cook2020
+  - @desai2018
+  - @gowrisankaran2019
+  - @gupta2021
+
+
+### `r advdate(6)` - `r advdate(8)`: Application
+
+  - **Question:** How do hospitals respond to pay for performance programs?
+  - **Research design:** Difference-in-differences
+
+**Primary reading:**<br>
+
+  - @gupta2021
+  - @callaway2021
+  - @rambachan2022
+  - @roth2022
+  - @arkhangelsky2021
+  
+**Supplemental reading:**<br>
+
+
+## Module 2: Physicians
+
+### `r advdate(8)`: Background and institutional details**
+
+**Supplemental reading:**<br>
+
+  - @mcguire2000
+  - @grossman1983
+  - @wennberg1973
+  - @wennberg2003
+  - @skinner1997
+  - @finkelstein2016
+  - @molitor2018
+  
+
+### `r advdate(9)`: Physician agency, financial incentives, and referrals
+
+**Primary reading:**<br>
+
+  - @clemens2014
+  - @zeltzer2020
+
+**Supplemental reading::**<br>
+
+  - @baker2016
+  - @gruber1996
+  - @afendulis2007
+  - @iizuka2012
+  - @whaley2021
+  - @young2021
+  - @walden2016
+  - @richards2022
+  - @baker2016
+  - @chernew2021
+  
+  
+## `r advdate(10)`: Physician learning
+
+**Primary reading:**<br>
+  
+  - @crawford2005
+  - @sarsons2018
+
+**Supplemental reading:**<br>
+
+  - @coscelli2004
+  - @ferreyra2011
+  - @chan2013
+  - @dickstein2018
+  - @gong2018
+  - @johnson2011
+  - @ho2002
+
+
+### `r advdate(11)` - `r advdate(13)`: Application
+
+  - **Question:** Physician effort and hospital ownership
+  - **Research design:** Instrumental variables
+
+**Primary reading:**<br>
+  
+  - @dranove2019
+  - @borusyak2021restud
+
+**Supplemental reading:**<br>
+
+
+### `r advdate(14)`: Fall break
+
+## Module 3: Information disclosure
+
+### `r advdate(15)`: Patient decision-making
+
+**Primary reading:**<br>
+
+  - @ketcham2012
+  - @gaynor2016
+
+**Supplemental:**<br>
+
+  - @farrell2007
+  - @abaluck2011
+
+
+### `r advdate(16)`: Inertia in health insurance choice
+
+**Primary reading:**<br>
+
+  - @handel2013
+  - @ericson2014
+
+
+### `r advdate(17)`: Effects of quality disclosure
+
+**Primary reading:**<br>
+
+  - @dranove2003
+  - @dafny2008
+  - @kolstad2013
+
+**Supplemental:**<br>
+
+  - @chernew1998
+  - @scanlon2002
+  - @wedig2002
+  - @jin2006
+  - @dranove2010
+  - @reid2013
+  - @darden2015
+  - @mccarthy2017
+  - @epstein2010  
+
+
+
+### `r advdate(18)`: Effects of price disclosure
+
+**Primary reading:**<br>
+
+  - @chernew2021
+  - @grennan2020
+
+### `r advdate(19)` and `r advdate(20)`: Application
+
+  - **Question:** Consumer inertia and insurer premiums
+  - **Research design:** Regression discontinuity
+
+**Primary reading:**<br>
+  
+  - @ericson2014
+
+**Supplemental reading:**<br>
+
+
+## Module 4: Healthcare competition and industrial organization
+
+### `r advdate(21)`: Competition in price and quality**
+
+**Primary reading:**<br>
+
+  - @dranove1992
+  - @fan2013
+  - @lewis2016
+
+**Supplemental:**<br>
+
+  - @spence1975
+  - @mussa1978
+  - @hausman1994
+  - @dana2011
+
+### `r advdate(22)`: Measuring hospital markets and market power
+
+**Primary reading:**<br>
+
+  - @dranove2016
+  - @everson2019
+
+**Supplemental:**<br>
+
+  - @dranove1990
+  - @capps2003
+
+
+
+### `r advdate(23)`: "Structure-Conduct-Performance"
+
+**Primary reading:**<br>
+
+  - @kessler2000
+  - @cooper2019
+
+**Supplemental:**<br>
+
+  - @dranove1992
+  - @lynk1995
+  - @keeler1999
+
+
+### `r advdate(24)`: Bargaining framework
+
+**Primary reading:**<br>
+
+  - @ho2017
+  - @clemens2017
+
+**Supplemental:**<br>
+
+  - @bresnahan1991
+  - @reiss2007
+  - @abraham2007
+  - @gowrisankaran2015
+  - @lewis2015
+
+
+### `r advdate(25)`: Effects of mergers (or closures)
+
+**Primary reading:**<br>
+
+  - @craig2021
+  - @eliason2020  
+
+**Supplemental:**<br>
+
+  - @vita2001
+  - @gaynor2003
+  - @lindrooth2003
+  - @gaynor2012rwjf
+  - @dafny2009
+  - @gaynor2013
+
+
+### `r advdate(26)`: No meeting today. Class rescheduled for December 2
+
+
+### `r advdate(27)`: Out-of-market mergers (**virtual class**)
+
+**Primary reading:**<br>
+
+  - @dafny2019
+  - @schmitt2018
+
+### `r advdate(28)`: Vertical integration
+
+**Primary reading:**<br>
+
+  - @luco2020
+  - @koch2021
+
+**Supplemental:**<br>
+
+  - @dranove2019
+  - @koch2017
+  - @lin2021
+  - @burns2002
+  - @ciliberto2006
+  - @cuellar2006
+  - @baker2016
+  - @neprash2015
+  - @capps2018
+  - @konetzka2018
+
+
+### 12/02 (rescheduled from 11/21) and `r advdate(30)`: Application
+
+  - **Question:** Sensitivity of demand estimates to market definition
+  - **Research design:** Structural demand estimation
+
+**Primary reading:**<br>
+  
+  - @everson2019
+
+**Supplemental reading:**<br>
+
+
+
+## Module 5: Health insurance markets (we won't get to this)
+
+### Insurance markets and competitiveness
+
+**Primary reading:**<br>
+
+  - @dafny2010
+  - @dafny2012
+  - @bundorf2012
+
+**Supplemental:**<br>
+
+  - @town2003
+  - @einav2010
+  - @einav2010qje
+  - @starc2014
+
+
+### Adverse selection
+
+**Primary reading:**<br>
+
+  - @cutler1998
+  - @decarolis2017
+
+**Supplemental:**<br>
+
+  - @ackerloff1970
+  - @rothschild1976
+  - @frank2000
+  - @einav2011
+
+
+### Moral hazard
+
+**Primary reading:**<br>
+
+  - @einav2013
+
+**Supplemental:**<br>
+
+  - @manning1996
+  - @finkelstein2014
+  - @einav2018
+
+
+### Managed competition
+
+**Primary reading:**<br>
+
+  - @curto2021
+  - @einav2015
+
+**Supplemental:**<br>
+
+  - @song2013
+  - @cabral2018
+  - @stockley2014
+  - @duggan2016
+  - @pelech2018
+
+
+
+
+
+
