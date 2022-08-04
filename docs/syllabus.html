@@ -284,229 +284,1283 @@ $(document).ready(function () {
 
 
 <p>
-<a class="btn btn-primary btn-lg" target="_blank" href="https://imccart.github.io/econ771-fall2022/syllabus/syllabus-771.pdf" role="button"><i class="far fa-file-pdf"></i>
+<a class="btn btn-primary btn-lg" target="_blank" href="https://econ771f22.classes.ianmccarthyecon/syllabus/syllabus-771.pdf" role="button"><i class="far fa-file-pdf"></i>
 Download PDF of Syllabus</a>
 </p>
-<div id="course-description" class="section level2">
-<h2>Course description</h2>
-<p>This is a capstone course that combines health economics and human
-health content with econometrics and “data science.” The course is
-therefore heavily applied in nature. We will work through four
-“canonical” research designs, in each case using real world data. You
-will also complete an empirical research project using real world data
-and employ econometric methods to analyze a research question relevant
-to contemporary health care issues and/or health policy.</p>
-<p><strong>Prerequisites:</strong> Econ 320 (Econometrics) and at least
-one of the following health economics and policy classes: HLTH 370, Econ
-371, Econ 372.</p>
+<div id="course-description" class="section level1">
+<h1>Course Description</h1>
+<p>This course explores the industrial organization of healthcare
+markets in the U.S. We will focus on the following areas: hospital
+ownership and production, physician agency, information disclosure, and
+hospital competition. If we have time, we will briefly cover some issues
+on health insurance markets. The class is effectively designed as a
+combination of empirical IO and causal inference, with applications to
+healthcare. As such, we will also examine several econometric tools and
+causal inference identification strategies. These methods will be
+introduced as needed throughout the course.</p>
+<p>Supply-side health economics is a rapidly growing field with many new
+developments, particularly in the areas of bargaining in two-sided
+markets and physician learning. Some of these recent developments use
+tools from network analysis and machine learning, which we unfortunately
+do not have time to cover in this course. I’ve also chosen specific
+topics that overlap most with my own research — the upside here is that
+I can speak somewhat confidently about the literature and empirical
+studies in this area, but the downside is that some very interesting
+areas of health economics are not studied. For example, we will largely
+ignore issues of the prescription drug market, medical devices, and
+physician labor supply. My hope is that the content that we do cover
+will provide a springboard for those interested in these other important
+areas.</p>
 </div>
-<div id="learning-outcomes" class="section level2">
-<h2>Learning outcomes</h2>
-<p>The content of the course is split into three general areas:
-<strong>1) data management in the real world</strong>; <strong>2) health
-policy and health care institutions</strong>; and <strong>3) empirical
-methods in program evaluation and causal inference</strong>. Each area
-of the course will be covered by way of an example research question,
-which you can use to guide your own projects throughout the semester. By
-the end of this course, you will be able to:</p>
+<div id="learning-outcomes" class="section level1">
+<h1>Learning Outcomes</h1>
+<p>I have five central goals for this course:</p>
 <ol style="list-style-type: decimal">
-<li>Organize project files using Git and GitHub</li>
-<li>Clean and manage several datasets using tidy data in RStudio</li>
-<li>Summarize and visualize data with RStudio and the ggplot2
-package</li>
-<li>Implement selected methods for causal inference using real data</li>
-<li>Explain research results with a written report and discussion</li>
+<li><p>Synthesize the current literature in each of the main areas of
+health economics covered in this class</p></li>
+<li><p>Apply standard causal inference techniques in the area of
+healthcare</p></li>
+<li><p>Provide constructive criticism of academic work in this
+area</p></li>
+<li><p>Organize real-world data with current workflow and versioning
+tools</p></li>
+<li><p>Develop your own preliminary research in some area of health
+economics</p></li>
 </ol>
 <p>There are more specific learning outcomes for each module described
-on the relevant module’s section of the <a href="/content/">content
-page</a>.</p>
+on the relevant module’s page of our class website, accessible <a
+href="https://imccart.github.io/Econ-771/">here</a>.</p>
 </div>
-<div id="course-materials" class="section level2">
-<h2>Course materials</h2>
-<div id="where-to-go" class="section level3">
-<h3>Where to go</h3>
-<p>If you’re here, then you know where to find our class website. Well
-done! Hopefully it’s clear by the existence of the site that this is
-where I plan to host most of our information such as course materials,
-notes/slides, and assignments. I’ll also use Canvas to distribute any
-papers or specific readings that aren’t available publicly, as well as
-post information that I don’t want public like grades, answer keys, or
-virtual meeting passwords if necessary.</p>
-<p>As per the recent Emory announcement, we’ll be meeting virtually for
-the first few classes (through January 30). All of the details for our
-online class meetings and office hours can be found on Canvas.</p>
+<div id="text-software-and-class-materials" class="section level1">
+<h1>Text, Software, and Class Materials</h1>
+<ol style="list-style-type: decimal">
+<li><p><strong>Readings:</strong> As an elective PhD course, we will
+rely on academic papers from the reading list below. I expect everyone
+to read the papers in advance and come to class with questions on the
+study’s contribution, empirical techniques, identification strategies,
+and datasets used. My goal with each paper is to discuss the analysis in
+detail. As such, the primary reading list is perhaps shorter than a
+standard PhD course. I’ve provided supplemental reading in each section
+for those interested in additional readings in a specific area.</p></li>
+<li><p><strong>Software:</strong> For almost everything in this class,
+I’ll use <code>R</code>, but you are free to use whatever software
+you’re most comfortable with. I encourage you to use <code>R</code>,
+<code>Stata</code>, or <code>Python</code> simply because these are the
+most common programs used in practice right now. You’ll also need to
+have a basic working knowledge of Git and GitHub. If you’re new to these
+tools, take a look at <a href="https://grantmcdermott.com/">Grant
+McDermott’s</a> notes on <a
+href="https://github.com/uo-ec607/lectures">Data Science for
+Economists</a> as well as <a href="https://jennybryan.org/">Jenny
+Bryan’s</a> online reference book, <a
+href="https://happygitwithr.com/">Happy Git and GitHub with
+R</a>.</p></li>
+<li><p><strong>Accessing Data:</strong> For any in-class activities, I
+will house all of the code and links to the data on our class website.
+For any real-life datasets, I will also point you to other GitHub
+repositories where available, and I’ll make some data available via
+OneDrive. Details will be posted on Canvas and in class.</p></li>
+<li><p><strong>Logistics:</strong> For day-to-day communication, grades,
+and other private information (such as Zoom meeting links if needed),
+I’ll use <em>Canvas</em>. I’ll post all other materials to our class
+website.</p></li>
+<li><p><strong>Slides and Notes:</strong> Any presentations will be made
+available on our class website prior to any given class.</p></li>
+</ol>
 </div>
-<div id="readings" class="section level3">
-<h3>Readings</h3>
-<p>There is no required textbook for this class, but there are several
-books that I recommend for additional information and examples. The
-first is not free but is still very good:</p>
-<ul>
-<li><span class="citation">J. Angrist and J. Pischke <em>Mostly
-<span>Harmless</span> <span>Econometrics</span></em> (Princeton, NJ:
-Princeton University Press, 2009).</span></li>
-</ul>
-<p>The following are also excellent resources, with the added bonus of
-having freely available versions of these texts online. Here are links
-to the free online versions:</p>
-<ul>
-<li><a href="https://r4ds.had.co.nz/">R for Data Science</a></li>
-<li><a href="https://mixtape.scunning.com/">Causal Inference: The
-Mixtape</a></li>
-<li><a href="https://theeffectbook.net/">The Effect: An Introduction to
-Research Design and Causality</a></li>
-</ul>
-</div>
-<div id="statistics-software" class="section level3">
-<h3>Statistics software</h3>
-<p>I’ll use <code>R</code> for my work and in all my answer keys and
-examples. I encourage you to use <code>R</code> as well, since that will
-be the language for which I can help you the most with any questions.
-That said, if you can answer all of the questions correctly with another
-software, feel free to do so. I am well-versed in <code>Stata</code> but
-less so in <code>Python</code>. If you choose to use <code>Python</code>
-(not a bad choice given its popularity), then I can certainly help with
-general questions and concepts, but I will be less helpful with any
-syntax issues.</p>
-</div>
-<div id="accessing-data" class="section level3">
-<h3>Accessing data</h3>
-<p>For all assignments and in-class activities, I will post links to the
-data on our class website. For transparency, I will also point you to
-other GitHub repositories where available. We’ll spend some time on Git
-and GitHub at the beginning of the class, so don’t get too worried if
-this is new to you.</p>
-<p>Everyone will also have access to cloud computing through AWS. This
-will serve as your own virtual computer running <code>R</code>, so we
-will all have the same data capabilities, versions, and packages (sorry
-<code>Python</code> or <code>Stata</code> users!). You don’t have to use
-this, but for those of you with limited computing power, this is perhaps
-an easier solution. I’ll post details of this to our class website
-shortly.</p>
-</div>
-<div id="turning-thing-in" class="section level3">
-<h3>Turning thing in</h3>
-<p>All assignments should be submitted as PDF files on Canvas.</p>
-</div>
-</div>
-<div id="course-policies" class="section level2">
-<h2>Course policies</h2>
-<p><strong>Be nice. Be honest. Don’t cheat.</strong></p>
+<div id="course-policies" class="section level1">
+<h1>Course Policies</h1>
 <p>Various policies for this course are described below. Basically,
 let’s all work to be good citizens and take seriously our various roles
 as a student, teacher, friend, colleague, human, etc.</p>
-<div id="class-meetings" class="section level3">
-<h3>Class meetings</h3>
-<p>All regular class meetings will take place in the <strong>Rich
-Memorial Building, Room 211</strong> on Mondays and Wednesdays from
-1:00pm to 2:15pm. For the first month of classes, we’ll meet virtually,
-details of which are on Canvas.</p>
+<div id="academic-integrity" class="section level2">
+<h2>Academic integrity</h2>
+<p>The Emory University Honor Code is taken seriously and governs all
+work in this course. Details about the Honor Code are available in the
+Laney Graduate School Handbook and available online <a
+href="https://www.gs.emory.edu/academics/policies-progress/conduct.html">here</a>.
+By taking this course, you affirm that it is a violation of the code to
+plagiarize, to deviate from the instructions about collaboration on work
+that is submitted for grades, to give false information to a faculty
+member, and to undertake any other form of academic misconduct. You also
+affirm that if you witness others violating the code you have a duty to
+report them to the honor council.</p>
 </div>
-<div id="office-hours" class="section level3">
-<h3>Office hours</h3>
-<p>My designated office hours will be on Monday and Wednesday from
-2:30pm to 3:30pm in PAIS 573. I’m also available outside of those
-designated times. I just ask that you schedule an appointment in
-advance. <a href="https://mccarthy-meetings.youcanbook.me/">Make an
-appointment with me here</a>. My office hours will be held virtually
-through January 30, with details on our Canvas page.</p>
-<p>While we call these “office hours” they really should be “student
-hours”. These are set times dedicated to all of you. This means that I
-will be in my office waiting for you to come by with whatever questions
-you have. Take a look at this video for a more interesting presentation
-of what office hours really are and why you should come!</p>
-<center>
-<table style="width:54%;">
-<colgroup>
-<col width="27%" />
-<col width="12%" />
-<col width="13%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Assignment</th>
-<th align="center">Points</th>
-<th align="center">Percent</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Participation</td>
-<td align="center">15</td>
-<td align="center">5%</td>
-</tr>
-<tr class="even">
-<td align="left">Homework (30 x 5)</td>
-<td align="center">150</td>
-<td align="center">55%</td>
-</tr>
-<tr class="odd">
-<td align="left">Final project</td>
-<td align="center">110</td>
-<td align="center">40%</td>
-</tr>
-</tbody>
-</table>
-</center>
-<p>Your final percentage grade comes from your total points as a percent
-of all possible points available in the class (275). That percent then
-translates to a letter grade as follows:</p>
-<center>
-<table style="width:49%;">
-<colgroup>
-<col width="11%" />
-<col width="13%" />
-<col width="11%" />
-<col width="12%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Grade</th>
-<th align="center">Range</th>
-<th align="left">Grade</th>
-<th align="center">Range</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">A</td>
-<td align="center">93-100%</td>
-<td align="left">C</td>
-<td align="center">73-76%</td>
-</tr>
-<tr class="even">
-<td align="left">A-</td>
-<td align="center">90-92%</td>
-<td align="left">C-</td>
-<td align="center">70-72%</td>
-</tr>
-<tr class="odd">
-<td align="left">B+</td>
-<td align="center">87-89%</td>
-<td align="left">D+</td>
-<td align="center">67-69%</td>
-</tr>
-<tr class="even">
-<td align="left">B</td>
-<td align="center">83-86%</td>
-<td align="left">D</td>
-<td align="center">60-66%</td>
-</tr>
-<tr class="odd">
-<td align="left">B-</td>
-<td align="center">80-82%</td>
-<td align="left">F</td>
-<td align="center">&lt; 60%</td>
-</tr>
-<tr class="even">
-<td align="left">C+</td>
-<td align="center">77-79%</td>
-<td align="left"></td>
-<td align="center"></td>
-</tr>
-</tbody>
-</table>
-</center>
+<div id="accessibility-services" class="section level2">
+<h2>Accessibility services</h2>
+<p>If you anticipate issues related to the format or requirements of
+this course, please meet with me. I would like us to discuss ways to
+ensure your full participation in the course. If you determine that
+accommodations are necessary, you may register with Accessibility
+Services at (404)727-9877 or via e-mail at <a
+href="mailto:accessibility@emory.edu"
+class="email">accessibility@emory.edu</a>. To register with OAS,
+students must self identify and initiate contact with the OAS
+office.</p>
+</div>
+<div id="communication" class="section level2">
+<h2>Communication</h2>
+<p>I will post regular announcements to the class on <em>Canvas</em>, so
+please set up your notifications on <em>Canvas</em> accordingly. I will
+also use <em>Canvas</em> to post all grades and any other information
+that needs to stay in the class (like our <em>Zoom</em> meeting link for
+virtual meetings, if needed). All other course materials will be
+available on our class website, <a
+href="https://econ771f22.classes.ianmccarthyecon.com/">econ771f22.classes.ianmccarthyecon.com/</a>.</p>
+<p>Please feel free to reach out to me for any reason. I generally
+respond to all e-mails within 24 hours.</p>
+</div>
+<div id="office-hours" class="section level2">
+<h2>Office Hours</h2>
+<p>My office is in room 573 of the PAIS building. This is where I’ll be
+for official office hours; however, I’m happy to meet outside of normal
+office hours as well. Please feel free to schedule another time to meet
+by following the link to select a time that works for you, <a
+href="https://mccarthy-meetings.youcanbook.me">https://mccarthy-meetings.youcanbook.me</a>.</p>
+</div>
+<div id="attendance" class="section level2">
+<h2>Attendance</h2>
+<p>While there is no official “attendance” credit, everyone is expect to
+attend all class sessions. Given our small class, it is very important
+that we are all present and engaged.</p>
+</div>
+</div>
+<div id="assignments-and-grading" class="section level1">
+<h1>Assignments and Grading</h1>
+<p>There are four main assignments throughout the semester, along with a
+participation component. I describe each assignment below, with more
+detail provided on our <a
+href="https://imccart.github.io/Econ-771/">class website</a>. Note that
+I <strong>do not</strong> expect or want anyone to treat these
+assignments as entirely separate. By that, I mean you should try to
+identify datasets from the exercises that you can use in your
+replication project, and you should try to select papers to present that
+use those data. At a minimum, you should present the paper that you will
+be replicating. With a little bit of up-front planning, you can create a
+lot of overlap across assignments, which will make your life much
+easier.</p>
+<div id="participation" class="section level2">
+<h2>Participation</h2>
+<p>Everyone will benefit much more from the class if we are all actively
+engaged. As a small incentive to stay engaged, I’ll keep track of those
+who participate in our discussion each day. Any amount of participation
+(questions or comments) will be worth one point for that class. I’ll
+tally everyone’s participation points at the end of the semester.</p>
+</div>
+<div id="empirical-exercises" class="section level2">
+<h2>Empirical exercises</h2>
+<p>Each course module will have an applied component where we spend some
+time replicating analyses from selected papers based on real-world data.
+These will require some of your time outside of class to get the data in
+working order and implement the relevant identification strategy and
+econometric estimator. This empirical work should heavily complement
+your draft paper. The due dates for all empirical exercises are
+indicated in the schedule below. In general, we have one empirical
+assignment due at the end of each module.</p>
+<p>For each assignment, your final product should consist of a
+discussion of the data sources, steps taken to clean the data and
+replicate the final analytic sample, a summary of your model and
+estimator, and your results. You must turn in your assignment on
+<em>GitHub</em>, including your code files (Stata, R, Python, SAS,
+etc.), all figures/tables, and of course the final write-up. I expect
+the final product to be similar to an academic paper in terms of the
+quality of figures, tables, and general formatting.</p>
+<p>Please organize your folders in a useful way. The way I organize
+things (though certainly not the only way to do it) is to keep a folder
+for each new project and named accordingly. I typically have the
+following subfolders:</p>
+<ul>
+<li><p><em>Data</em>: This is where I keep the raw data files and any
+additional data files I create as part of my analysis. I also keep a
+“Research Data” folder on my computer that has raw data that I access
+regularly, in which case the “Data” folder in any given project includes
+symbolic links to the original raw data.</p></li>
+<li><p><em>Data Code</em>: This is where I keep the code for data
+management (merging, clean-up, wrangling, etc.). Final analytic datasets
+created by this code go to the “Data” subdirectory.</p></li>
+<li><p><em>Analysis</em>: This is where I keep my analysis code files
+and log files (if relevant).</p></li>
+<li><p><em>Results</em>: Output from the analysis code files. I tend to
+separate this into two subfolders - one for tables and one for
+figures.</p></li>
+<li><p><em>Papers</em>: If I’m writing the paper in
+<code>R Markdown</code>, this is where I keep all of the markdown files.
+With most co-authored work, though, we write in Overleaf. In that case,
+I’ll still download different versions of the paper into this folder
+when necessary (e.g., for different journal submissions)</p></li>
+<li><p><em>Presentation</em>: This is where I keep my slides and
+underlying code files.</p></li>
+</ul>
+<p>It’s good to start developing some organization practices that work
+best for you. It’s extremely easy to forget what you were doing on a
+project once you have several things going at once, especially when you
+wait for 6-8 months after submitting a paper for publication. The last
+thing you want is to not be able to replicate your own work!</p>
+</div>
+<div id="presentations" class="section level2">
+<h2>Presentations</h2>
+<p>You will present three papers throughout the course of the semester.
+Any paper listed as “Primary Reading” in the class schedule can be
+selected for presentation, with the exception of papers indicated by **
+. Please inform me of your selected papers no later than <strong>Friday,
+September 2</strong>. Please also note your papers and class dates on
+the Google Sheet <a
+href="https://docs.google.com/spreadsheets/d/1d6IVg-khbreLKobiczNwEOT9gjPNNykrFEtc2rXdJ4I/edit?usp=sharing">here</a>.</p>
+<p>Each presentation should be no more than 30 minutes, including
+questions and brief discussion. The presentation should follow a
+standard conference setup, with a brief introduction/motivation, a very
+brief discussion of the literature and some context of the paper,
+discussion of the data, empirical analysis, and results.</p>
+<p>Note that a presentation is not just a re-hashing of the paper in
+slide form. A good academic presentation should have as little
+information as possible on each slide, and the content on the slides
+doesn’t necessarily need to follow that of the paper. For example, in a
+real-time environment, it is much easier to move between different
+aspects of the empirical analysis and data.</p>
+<p>In addition to the presentation, please send me your slides in
+advance. For people in the economics department, I expect the slides to
+be completed in Beamer (LaTeX), <code>R Markdown</code>, or Python.
+Others can use PowerPoint or some other presentation tool as they see
+fit. My only recommendation with those other programs is that, for some
+of them like Prezi or Powtoon, it is easy for the presentation to become
+distracting. Slides should complement your presentation and not replace
+your presence!</p>
+<p>Grades for each presentation will be based 50% on the slides and 50%
+on the actual presentation (delivery, clarity/organization, and
+content). Additional details and a grading rubric are available on the
+assignments page of our class website.</p>
+</div>
+<div id="literature-review-2nd-year-students" class="section level2">
+<h2>Literature review (2nd year students)</h2>
+<p>The literature review can be on any health economics topic of your
+choice, subject to my approval. There is no specific page requirement.
+10 double-spaced pages might be a good target, but an
+efficiently-written paper could be shorter, while a student wishing to
+use the paper as a springboard to a dissertation may choose to write
+more. The paper will mostly consist of discussions of prior research,
+but should end with discussions of three open questions in the
+literature plus a proposed strategy for answering at least one of these
+questions. The paper is due by <strong>Friday, November 18</strong>.</p>
+</div>
+<div id="draft-paper-3rd-year-students" class="section level2">
+<h2>Draft paper (3rd year students)</h2>
+<p>The paper requirement is more extensive for 3rd year students. In
+this case, your papers should include not only an extensive literature
+review but also a preliminary empirical analysis, including a discussion
+of the data you’re using, the construction of your sample, your
+identification strategy, econometric model and estimator, and some
+preliminary results. There is again no specific page requirement, but I
+expect at least 20 double-spaced pages to appropriately discuss your
+topic, context, data, and early results. Your draft paper should end
+with an outline of additional analyses you hope to run (i.e.,
+robustness/sensitivity analyses, a discussion of different mechanisms of
+interest, policy-relevant heterogeneities in your estimated effects,
+etc.). The paper is due by <strong>Friday, November 18</strong>.</p>
+</div>
+<div id="due-dates" class="section level2">
+<h2>Due dates</h2>
+<p>This section is just to highlight the most important dates on which
+an assignment is due. These dates are repeated within the description of
+each assignment above. Note that you can always turn assignments in
+prior to the official due date. Late assignments will receive an
+automatic 10% reduction in the grade for each day the assignment is
+turned in after the due date.</p>
+<ul>
+<li><strong>September 2</strong>: Note the papers you plan to present on
+the Google Sheet <a
+href="https://docs.google.com/spreadsheets/d/1d6IVg-khbreLKobiczNwEOT9gjPNNykrFEtc2rXdJ4I/edit?usp=sharing">here</a>.
+Only one student can present each paper, so this is first-come
+first-served.</li>
+<li><strong>Friday, November 18</strong>: Due date for literature review
+or draft paper.</li>
+<li>Empirical exercises due one week after the end of each module</li>
+</ul>
+</div>
+<div id="final-grades" class="section level2">
+<h2>Final grades</h2>
+<ul>
+<li><p><strong>10%</strong> for participation (out of 25 possible
+points)</p></li>
+<li><p><strong>40%</strong> for empirical exercises (10% each)</p></li>
+<li><p><strong>30%</strong> for presentations of selected papers (10%
+each)</p></li>
+<li><p><strong>20%</strong> for literature review (2nd year students) or
+draft paper (3rd year students)</p></li>
+</ul>
+<p>Letter grades will be assigned at the end of the course based on
+total score achieved: (A = 100-93%, A- = 92.99-90%, B+ = 89.99-87%, B =
+86.99-83%, B- = 82.99-80%, C+ = 79.99-77%, C = 76.99-73%, C- =
+72.99-70%, D+ = 69.99-67%, D = 66.99-60%, F = 60% or less)</p>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div id="class-schedule" class="section level1">
+<h1>Class Schedule</h1>
+<p>Below is a preliminary outline of specific topics and readings
+throughout the semester. Based on our collective interests, discussions,
+and timing, individual papers and order may change somewhat, but any
+such changes will be announced in advance. For each class, one of us
+will present the “primary reading” papers, followed by a general
+discussion of the papers and topic among the class. Papers listed as
+“supplemental” represent other relevant papers in that area that we
+won’t have time to cover directly in class. Classes listed with **
+denote “lecture” days. I’ll handle presentations and manage any in-class
+activities on those days.</p>
+<p>Note that we have two scheduled virtual classes, one for Monday,
+9/19, and another for Wednesday, 11/23. We also need to reschedule our
+class for Monday, 11/21. I’ve tentatively rescheduled that for Friday,
+December 2.</p>
+<div id="module-0-kicking-things-off" class="section level2">
+<h2>Module 0: Kicking things off!</h2>
+<div id="class-01-0824-introduction-to-the-economics-of-healthcare"
+class="section level3">
+<h3>Class 01, 08/24: Introduction to the economics of healthcare**</h3>
+<p><strong>General health econ references:</strong><br></p>
+<ul>
+<li><span class="citation">Kenneth J. Arrow <span>“Uncertainty and the
+<span>Welfare</span> <span>Economics</span> of <span>Medical</span>
+<span>Care</span>,”</span> <em>The American Economics Review</em> 53,
+no. 5 (1963).</span></li>
+<li><span class="citation">David Dranove and Mark A Satterthwaite
+<span>“The Industrial Organization of Health Care Markets,”</span>
+<em>Handbook of Health Economics</em> 1 (2000): 1093–1139.</span></li>
+<li><span class="citation">William N Evans, Helen Levy, and Kosali I
+Simon <span>“Data Watch: <span>Research</span> Data in Health
+Economics,”</span> <em>Journal of Economic Perspectives</em> 14, no. 4
+(2000): 203–216.</span></li>
+<li><span class="citation">Ben Handel and Kate Ho <span>“The Industrial
+Organization of Health Care Markets,”</span> in <em>Handbook of
+<span>Industrial</span> <span>Organization</span></em>, ed. Kate Ho, Ali
+Hortaçsu, and Alessandro Lizzeri, vol. 5, Handbook of
+<span>Industrial</span> <span>Organization</span>, <span>Volume</span> 5
+(Elsevier, 2021), 521–614.</span></li>
+<li><span class="citation">M Gaynor, K Ho, and R Town <span>“The
+<span>Industrial</span> <span>Organization</span> of <span>Health</span>
+<span>Care</span> <span>Markets</span>,”</span> <em>Journal of Economic
+Literature</em> 47, no. 2 (2015): 235–284.</span></li>
+</ul>
+</div>
+<div id="class-02-0829-introduction-to-causal-inference"
+class="section level3">
+<h3>Class 02, 08/29: Introduction to causal inference**</h3>
+<ul>
+<li>Chapters 1-5 of <a href="https://mixtape.scunning.com/">Causal
+Inference: The Mixtape</a></li>
+<li>Chapters 1-5, 10, 13, and 14 of <a
+href="https://theeffectbook.net/">The Effect: An Introduction to
+Research Design and Causality</a></li>
+</ul>
+</div>
+</div>
+<div id="module-1-hospitals" class="section level2">
+<h2>Module 1: Hospitals</h2>
+<div id="class-03-0831-background-and-institutional-details"
+class="section level3">
+<h3>Class 03, 08/31: Background and institutional details**</h3>
+<p><strong>Supplemental reading:</strong><br></p>
+<ul>
+<li><span class="citation">Joseph P Newhouse <span>“Toward a Theory of
+Nonprofit Institutions: <span>An</span> Economic Model of a
+Hospital,”</span> <em>American Economic Review</em> (1970):
+64–74.</span></li>
+<li><span class="citation">Esra Eren Bayindir <span>“Hospital Ownership
+Type and Treatment Choices,”</span> <em>Journal of Health Economics</em>
+31, no. 2 (2012): 359–370.</span></li>
+<li><span class="citation">Frank A Sloan <span>“Not-for-Profit Ownership
+and Hospital Behavior,”</span> <em>Handbook of Health Economics</em> 1
+(2000): 1141–1174.</span></li>
+<li><span class="citation">David Dranove <span>“Pricing by Non-Profit
+Institutions: The Case of Hospital Cost-Shifting,”</span> <em>Journal of
+Health Economics</em> 7, no. 1 (1988): 47–57.</span></li>
+<li><span class="citation">Mark V Pauly <span>“Medical Staff
+Characteristics and Hospital Costs,”</span> <em>Journal of Human
+Resources</em> (1978): 77–111.</span></li>
+<li><span class="citation">Mark Duggan <span>“Hospital
+<span>Ownership</span> and <span>Public</span> <span>Medical</span>
+<span>Spending</span>,”</span> <em>Quarterly Journal of Economics</em>
+115, no. 4 (2000): 1343–1373.</span></li>
+<li><span class="citation">Jill R Horwitz and Austin Nichols
+<span>“Hospital Ownership and Medical Services: Market Mix, Spillover
+Effects, and Nonprofit Objectives,”</span> <em>Journal of Health
+Economics</em> 28, no. 5 (2009): 924–937.</span></li>
+<li><span class="citation">Richard G Frank and David S Salkever
+<span>“The Supply of Charity Services by Nonprofit Hospitals: Motives
+and Market Structure,”</span> <em>RAND Journal of Economics</em> (1991):
+430–445.</span></li>
+<li><span class="citation">Jonathan Gruber <span>“The Effect of
+Competitive Pressure on Charity: <span>Hospital</span> Responses to
+Price Shopping in <span>California</span>,”</span> <em>Journal of Health
+Economics</em> 13, no. 2 (1994): 183–211.</span></li>
+<li><span class="citation">Frank A Sloan et al. <span>“Hospital
+Ownership and Cost and Quality of Care: Is There a Dime’s Worth of
+Difference?”</span> <em>Journal of Health Economics</em> 20, no. 1
+(2001): 1–21.</span></li>
+<li><span class="citation">Daniel Deneffe and Robert T Masson
+<span>“What Do Not-for-Profit Hospitals Maximize?”</span>
+<em>International Journal of Industrial Organization</em> 20, no. 4
+(2002): 461–492.</span></li>
+<li><span class="citation">Mark Duggan <span>“Hospital Market Structure
+and the Behavior of Not-for-Profit Hospitals,”</span> <em>RAND Journal
+of Economics</em> (2002): 433–446.</span></li>
+<li><span class="citation">Daniel P Kessler, Mark B McClellan, et al.
+<span>“The <span>Effects</span> of <span>Hospital</span>
+<span>Ownership</span> on <span>Medical</span>
+<span>Productivity</span>,”</span> <em>RAND Journal of Economics</em>
+33, no. 3 (2002): 488–506.</span></li>
+<li><span class="citation">Martin Gaynor and William B Vogt
+<span>“Competition Among <span>Hospitals</span>,”</span> <em>RAND
+Journal of Economics</em> (2003): 764–785.</span></li>
+<li><span class="citation">Guy David <span>“The Convergence Between
+for-Profit and Nonprofit Hospitals in the <span>United</span>
+<span>States</span>,”</span> <em>International Journal of Health Care
+Finance and Economics</em> 9, no. 4 (2009): 403–428.</span></li>
+<li><span class="citation">Tom Chang and Mireille Jacobson <em>What Do
+<span>Nonprofit</span> <span>Hospitals</span> <span>Maximize</span>?
+<span>Evidence</span> from <span>California</span>’s
+<span>Seismic</span> <span>Retrofit</span> <span>Mandate</span></em>,
+Working {Paper} (Case Western Reserve University, 2017).</span></li>
+</ul>
+</div>
+<div
+id="class-04-0905---class-05-0907-hospitals-and-financial-incentives"
+class="section level3">
+<h3>Class 04, 09/05 - Class 05, 09/07: Hospitals and financial
+incentives</h3>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">Leemore S. Dafny <span>“How <span>Do</span>
+<span>Hospitals</span> <span>Respond</span> to <span>Price</span>
+<span>Changes</span>?”</span> <em>American Economic Review</em> 95, no.
+5 (2005): 1525–1547.</span></li>
+<li><span class="citation">Paul J Eliason et al. <span>“Strategic
+Patient Discharge: <span>The</span> Case of Long-Term Care
+Hospitals,”</span> <em>American Economic Review</em> 108, no. 11 (2018):
+3232–65.</span></li>
+<li><span class="citation">Michael Batty and Benedic Ippolito
+<span>“Financial Incentives, Hospital Care, and Health Outcomes:
+<span>Evidence</span> from Fair Pricing Laws,”</span> <em>American
+Economic Journal: Economic Policy</em> 9, no. 2 (2017):
+28–56.</span></li>
+<li><span class="citation">Ajin Lee <span>“How Do Hospitals Respond to
+Managed Care? <span>Evidence</span> from at-Risk Newborns,”</span>
+<em>Journal of Public Economics</em> 184 (2020): 104130.</span></li>
+</ul>
+<p><strong>Supplemental reading:</strong><br></p>
+<ul>
+<li><span class="citation">David Dranove <span>“Rate-Setting by
+Diagnosis Related Groups and Hospital Specialization,”</span> <em>The
+RAND Journal of Economics</em> (1987): 417–427.</span></li>
+<li><span class="citation">David M Cutler <span>“The
+<span>Incidence</span> of <span>Advserse</span> <span>Medical</span>
+<span>Outcomes</span> Under <span>Prospective</span>
+<span>Payment</span>,”</span> <em>Econometrica</em> 63, no. 1 (1995):
+29.</span></li>
+<li><span class="citation">Randall P Ellis and Thomas G McGuire
+<span>“Hospital Response to Prospective Payment: Moral Hazard,
+Selection, and Practice-Style Effects,”</span> <em>Journal of Health
+Economics</em> 15, no. 3 (1996): 257–277.</span></li>
+<li><span class="citation">Elaine Silverman and Jonathan Skinner
+<span>“Medicare Upcoding and Hospital Ownership,”</span> <em>Journal of
+Health Economics</em> 23, no. 2 (2004): 369–389.</span></li>
+<li><span class="citation">Caitlin Carroll et al. <span>“Effects of
+Episode-Based Payment on Health Care Spending and Utilization:
+<span>Evidence</span> from Perinatal Care in
+<span>Arkansas</span>,”</span> <em>Journal of Health Economics</em> 61
+(2018): 47–62.</span></li>
+<li><span class="citation">Amanda Cook and Susan Averett <span>“Do
+<span>Hospitals</span> <span>Respond</span> to <span>Changing</span>
+<span>Incentive</span> <span>Structures</span>? <span>Evidence</span>
+from <span>Medicare</span>’s 2007 <span>DRG</span>
+<span>Restructuring</span>,”</span> <em>Journal of Health Economics</em>
+(2020): 102319.</span></li>
+<li><span class="citation">Sunita Desai and J Michael McWilliams
+<span>“Consequences of the <span>340b</span> Drug Pricing
+Program,”</span> <em>New England Journal of Medicine</em> 378, no. 6
+(2018): 539–548.</span></li>
+<li><span class="citation">Gautam Gowrisankaran, Keith A Joiner, and
+Jianjing Lin <em>How Do <span>Hospitals</span> <span>Respond</span> to
+<span>Payment</span> <span>Incentives</span>?</em> (National Bureau of
+Economic Research, 2019).</span></li>
+<li><span class="citation">Atul Gupta <span>“Impacts of
+<span>Performance</span> <span>Pay</span> for <span>Hospitals</span>:
+<span>The</span> <span>Readmissions</span> <span>Reduction</span>
+<span>Program</span>,”</span> <em>American Economic Review</em> 111, no.
+4 (April 2021): 1241–1283.</span></li>
+</ul>
+</div>
+<div id="class-06-0912---class-08-0919-application"
+class="section level3">
+<h3>Class 06, 09/12 - Class 08, 09/19: Application</h3>
+<ul>
+<li><strong>Question:</strong> How do hospitals respond to pay for
+performance programs?</li>
+<li><strong>Research design:</strong> Difference-in-differences</li>
+</ul>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">Gupta <span>“Impacts of
+<span>Performance</span> <span>Pay</span> for
+<span>Hospitals</span>.”</span></span></li>
+<li><span class="citation">Brantly Callaway and Pedro H. C. Sant’Anna
+<span>“Difference-in-<span>Differences</span> with Multiple Time
+Periods,”</span> <em>Journal of Econometrics</em> 225, no. 2, Themed
+<span>Issue</span>: <span>Treatment</span> <span>Effect</span> 1
+(December 2021): 200–230.</span></li>
+<li><span class="citation">Ashesh Rambachan and Jonathan Roth <span>“A
+<span>More</span> <span>Credible</span> <span>Approach</span> to
+<span>Parallel</span> <span>Trends</span>,”</span> <em>Working
+Paper</em> (2022).</span></li>
+<li><span class="citation">Jonathan Roth et al. <span>“What’s
+<span>Trending</span> in
+<span>Difference</span>-in-<span>Differences</span>? <span>A</span>
+<span>Synthesis</span> of the <span>Recent</span>
+<span>Econometrics</span> <span>Literature</span>,”</span> <em>arXiv
+Preprint arXiv:2201.01194</em> (2022).</span></li>
+<li><span class="citation">Dmitry Arkhangelsky et al. <span>“Synthetic
+<span>Difference</span>-in-<span>Differences</span>,”</span>
+<em>American Economic Review</em> 111, no. 12 (December 2021):
+4088–4118.</span></li>
+</ul>
+<p><strong>Supplemental reading:</strong><br></p>
+</div>
+</div>
+<div id="module-2-physicians" class="section level2">
+<h2>Module 2: Physicians</h2>
+<div id="class-08-0919-background-and-institutional-details"
+class="section level3">
+<h3>Class 08, 09/19: Background and institutional details**</h3>
+<p><strong>Supplemental reading:</strong><br></p>
+<ul>
+<li><span class="citation">Thomas G McGuire <span>“Physician
+Agency,”</span> <em>Handbook of Health Economics</em> 1 (2000):
+461–536.</span></li>
+<li><span class="citation">Sanford J Grossman and Oliver D Hart
+<span>“An Analysis of the Principal-Agent Problem,”</span>
+<em>Econometrica</em> (1983): 7–45.</span></li>
+<li><span class="citation">John Wennberg and Alan Gittelsohn
+<span>“Small Area Variations in Health Care Delivery: A Population-Based
+Health Information System Can Guide Planning and Regulatory
+Decision-Making,”</span> <em>Science</em> 182, no. 4117 (1973):
+1102–1108.</span></li>
+<li><span class="citation">John E. Wennberg, Elliott S. Fisher, and
+Jonathan S. Skinner <span>“Geography <span>And</span> <span>The</span>
+<span>Debate</span> <span>Over</span> <span>Medicare</span>
+<span>Reform</span>,”</span> <em>Health Affairs</em> (2004):
+W96–W114.</span></li>
+<li><span class="citation">Jonathan Skinner and Elliott Fisher
+<span>“Regional Disparities in <span>Medicare</span> Expenditures: An
+Opportunity for Reform,”</span> <em>National Tax Journal</em> 50, no. 3
+(1997): 413–425.</span></li>
+<li><span class="citation">Amy Finkelstein, Matthew Gentzkow, and Heidi
+Williams <span>“Sources of Geographic Variation in Health Care:
+<span>Evidence</span> from Patient Migration,”</span> <em>The Quarterly
+Journal of Economics</em> 131, no. 4 (2016): 1681–1726.</span></li>
+<li><span class="citation">David Molitor <span>“The Evolution of
+Physician Practice Styles: Evidence from Cardiologist Migration,”</span>
+<em>American Economic Journal: Economic Policy</em> 10, no. 1 (2018):
+326–56.</span></li>
+</ul>
+</div>
+<div
+id="class-09-0921-physician-agency-financial-incentives-and-referrals"
+class="section level3">
+<h3>Class 09, 09/21: Physician agency, financial incentives, and
+referrals</h3>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">Jeffrey Clemens and Joshua D Gottlieb
+<span>“Do <span>Physicians</span>’ <span>Financial</span>
+<span>Incentives</span> <span>Affect</span> <span>Medical</span>
+<span>Treatment</span> and <span>Patient</span>
+<span>Health</span>?”</span> <em>American Economic Review</em> 104, no.
+4 (2014): 1320–1349.</span></li>
+<li><span class="citation">Dan Zeltzer <span>“Gender
+<span>Homophily</span> in <span>Referral</span> <span>Networks</span>:
+<span>Consequences</span> for the <span>Medicare</span>
+<span>Physician</span> <span>Earnings</span> <span>Gap</span>,”</span>
+<em>American Economic Journal: Applied Economics</em> 12, no. 2 (April
+2020): 169–97.</span></li>
+</ul>
+<p><strong>Supplemental reading::</strong><br></p>
+<ul>
+<li><span class="citation">Laurence C Baker, M Kate Bundorf, and Daniel
+P Kessler <span>“The <span>Effect</span> of
+<span>Hospital</span>/<span>Physician</span> <span>Integration</span> on
+<span>Hospital</span> <span>Choice</span>,”</span> <em>Journal of Health
+Economics</em> 50 (2016): 1–8.</span></li>
+<li><span class="citation">Jonathan Gruber and Maria Owings
+<span>“Physician Financial Incentives and Cesarean Section
+Delivery,”</span> <em>The RAND Journal of Economics</em> 27, no. 1
+(1996): 99–123.</span></li>
+<li><span class="citation">Christopher C. Afendulis and Daniel P.
+Kessler <span>“Tradeoffs from <span>Integrating</span>
+<span>Diagnosis</span> and <span>Treatment</span> in
+<span>Markets</span> for <span>Health</span> <span>Care</span>,”</span>
+<em>American Economic Review</em> 97, no. 3 (June 2007):
+1013–1020.</span></li>
+<li><span class="citation">Toshiaki Iizuka <span>“Physician Agency and
+Adoption of Generic Pharmaceuticals,”</span> <em>American Economic
+Review</em> 102, no. 6 (2012): 2826–58.</span></li>
+<li><span class="citation">Christopher M Whaley et al. <span>“Higher
+<span>Medicare</span> <span>Spending</span> on <span>Imaging</span> and
+<span>Lab</span> <span>Services</span> After <span>Primary</span>
+<span>Care</span> <span>Physician</span> <span>Group</span>
+<span>Vertical</span> <span>Integration</span>,”</span> <em>Health
+Affairs</em> 40, no. 5 (2021): 702–709.</span></li>
+<li><span class="citation">Gary J Young et al. <span>“Hospital
+<span>Employment</span> of <span>Physicians</span> in
+<span>Massachusetts</span> <span>Is</span> <span>Associated</span> with
+<span>Inappropriate</span> <span>Diagnostic</span>
+<span>Imaging</span>,”</span> <em>Health Affairs</em> 40, no. 5 (2021):
+710–718.</span></li>
+<li><span class="citation">Emily Walden <em>Can <span>Hospitals</span>
+<span>Buy</span> <span>Referrals</span>? <span>The</span>
+<span>Impact</span> of <span>Physician</span> <span>Group</span>
+<span>Acquisitions</span> on <span>Market</span>-<span>Wide</span>
+<span>Referral</span> <span>Patterns</span></em>, Working {Paper}
+(University of Wisconsin, Madison, 2016).</span></li>
+<li><span class="citation">Michael R. Richards, Jonathan A. Seward, and
+Christopher M. Whaley <span>“Treatment Consolidation After Vertical
+Integration: <span>Evidence</span> from Outpatient Procedure
+Markets,”</span> <em>Journal of Health Economics</em> 81 (January 2022):
+102569.</span></li>
+<li><span class="citation">Baker, Bundorf, and Kessler <span>“The
+<span>Effect</span> of <span>Hospital</span>/<span>Physician</span>
+<span>Integration</span> on <span>Hospital</span>
+<span>Choice</span>.”</span></span></li>
+<li><span class="citation">Michael Chernew et al. <span>“Physician
+Agency, Consumerism, and the Consumption of Lower-Limb <span>MRI</span>
+Scans,”</span> <em>Journal of Health Economics</em> 76 (March 2021):
+102427.</span></li>
+</ul>
+</div>
+</div>
+<div id="class-10-0926-physician-learning" class="section level2">
+<h2>Class 10, 09/26: Physician learning</h2>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">Gregory S Crawford and Matthew Shum
+<span>“Uncertainty and Learning in Pharmaceutical Demand,”</span>
+<em>Econometrica</em> 73, no. 4 (2005): 1137–1173.</span></li>
+<li><span class="citation">Heather Sarsons <em>Interpreting
+<span>Signals</span> in the <span>Labor</span> <span>Market</span>:
+<span>Evidence</span> from <span>Medical</span>
+<span>Referrals</span></em>, Working {Paper} (Harvard University,
+2018).</span></li>
+</ul>
+<p><strong>Supplemental reading:</strong><br></p>
+<ul>
+<li><span class="citation">Andrea Coscelli and Matthew Shum <span>“An
+Empirical Model of Learning and Patient Spillovers in New Drug
+Entry,”</span> <em>Journal of Econometrics</em> 122, no. 2 (2004):
+213–246.</span></li>
+<li><span class="citation">Maria Marta Ferreyra and Grigory Kosenok
+<span>“Learning about <span>New</span> <span>Products</span>:
+<span>An</span> <span>Empirical</span> <span>Study</span> of
+<span>Physician</span>’s <span>Behavior</span>,”</span> <em>Economic
+Inquiry</em> 49, no. 3 (2011): 876–898.</span></li>
+<li><span class="citation">Tat Chan, Chakravarthi Narasimhan, and Ying
+Xie <span>“Treatment Effectiveness and Side Effects: <span>A</span>
+Model of Physician Learning,”</span> <em>Management Science</em> 59, no.
+6 (2013): 1309–1325.</span></li>
+<li><span class="citation">Michael Dickstein <em>Efficient Provision of
+Experience Goods: <span>Evidence</span> from Antidepressant Choice</em>,
+Working {Paper} (New York University, Leonard N. Stern School of
+Business, 2018).</span></li>
+<li><span class="citation">Qing Gong <em>Physician <span>Learning</span>
+and <span>Treatment</span> <span>Choices</span> <span>Evidence</span>
+from <span>Brain</span> <span>Aneurysms</span></em>, Working {Paper}
+(University of North Carolina at Chapel Hill, 2018).</span></li>
+<li><span class="citation">Erin M Johnson <em>Ability,
+<span>Learning</span> and the <span>Career</span> <span>Path</span> of
+<span>Cardiac</span> <span>Specialists</span></em>, Working {Paper}
+(MIT, 2011).</span></li>
+<li><span class="citation">Vivian Ho <span>“Learning and the Evolution
+of Medical Technologies: The Diffusion of Coronary Angioplasty,”</span>
+<em>Journal of Health Economics</em> 21, no. 5 (2002):
+873–885.</span></li>
+</ul>
+<div id="class-11-0928---class-13-1005-application"
+class="section level3">
+<h3>Class 11, 09/28 - Class 13, 10/05: Application</h3>
+<ul>
+<li><strong>Question:</strong> Physician effort and hospital
+ownership</li>
+<li><strong>Research design:</strong> Instrumental variables</li>
+</ul>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">David Dranove and Christopher Ody
+<span>“Employed for Higher Pay? <span>How</span> <span>Medicare</span>
+Facility Fees Affect Hospital Employment of Physicians,”</span>
+<em>American Economics Journal: Economic Policy</em> 11, no. 4 (2019):
+249–271.</span></li>
+<li><span class="citation">Kirill Borusyak, Peter Hull, and Xavier
+Jaravel <span>“Quasi-<span>Experimental</span>
+<span>Shift</span>-<span>Share</span> <span>Research</span>
+<span>Designs</span>,”</span> <em>Review of Economic Studies</em>
+(2021).</span></li>
+</ul>
+<p><strong>Supplemental reading:</strong><br></p>
+</div>
+<div id="class-14-1010-fall-break" class="section level3">
+<h3>Class 14, 10/10: Fall break</h3>
+</div>
+</div>
+<div id="module-3-information-disclosure" class="section level2">
+<h2>Module 3: Information disclosure</h2>
+<div id="class-15-1012-patient-decision-making" class="section level3">
+<h3>Class 15, 10/12: Patient decision-making</h3>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">Jonathan D Ketcham et al. <span>“Sinking,
+Swimming, or Learning to Swim in <span>Medicare</span> <span>Part</span>
+<span>D</span>,”</span> <em>American Economic Review</em> 102, no. 6
+(2012): 2639–2673.</span></li>
+<li><span class="citation">Martin Gaynor, Carol Propper, and Stephan
+Seiler <span>“Free to <span>Choose</span>? <span>Reform</span>,
+<span>Choice</span>, and <span>Consideration</span> <span>Sets</span> in
+the <span>English</span> <span>National</span> <span>Health</span>
+<span>Service</span>,”</span> <em>American Economic Review</em> 106, no.
+11 (November 2016): 3521–57.</span></li>
+</ul>
+<p><strong>Supplemental:</strong><br></p>
+<ul>
+<li><span class="citation">Joseph Farrell and Paul Klemperer
+<span>“Coordination and Lock-in: <span>Competition</span> with Switching
+Costs and Network Effects,”</span> <em>Handbook of Industrial
+Organization</em> 3 (2007): 1967–2072.</span></li>
+<li><span class="citation">Jason Abaluck and Jonathan Gruber
+<span>“Choice <span>Inconsistencies</span> Among the
+<span>Elderly</span>: <span>Evidence</span> from <span>Plan</span>
+<span>Choice</span> in the <span>Medicare</span> <span>Part</span>
+<span>D</span> <span>Program</span>,”</span> <em>American Economic
+Review</em> 101, no. 4 (June 2011): 1180–1210.</span></li>
+</ul>
+</div>
+<div id="class-16-1017-inertia-in-health-insurance-choice"
+class="section level3">
+<h3>Class 16, 10/17: Inertia in health insurance choice</h3>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">Benjamin R. Handel <span>“Adverse
+<span>Selection</span> and <span>Inertia</span> in <span>Health</span>
+<span>Insurance</span> <span>Markets</span>: <span>When</span>
+<span>Nudging</span> <span>Hurts</span>,”</span> <em>American Economic
+Review</em> 103, no. 7 (December 2013): 2643–2682.</span></li>
+<li><span class="citation">Keith M Ericson <span>“Consumer Inertia and
+Firm Pricing in the <span>Medicare</span> <span>Part</span>
+<span>D</span> Prescription Drug Insurance Exchange,”</span>
+<em>American Economic Journal: Economic Policy</em> 6, no. 1 (2014):
+38–64.</span></li>
+</ul>
+</div>
+<div id="class-17-1019-effects-of-quality-disclosure"
+class="section level3">
+<h3>Class 17, 10/19: Effects of quality disclosure</h3>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">David Dranove et al. <span>“Is
+<span>More</span> <span>Information</span> <span>Better</span>?
+<span>The</span> <span>Effects</span> of <span>Report</span>
+<span>Cards</span> on <span>Health</span> <span>Care</span>
+<span>Providers</span>,”</span> <em>Journal of Political Economy</em>
+111, no. 3 (2003): 555–588.</span></li>
+<li><span class="citation">L. Dafny and D. Dranove <span>“Do Report
+Cards Tell Consumers Anything They Don’t Already Know? <span>The</span>
+Case of <span>Medicare</span> <span>HMOs</span>,”</span> <em>RAND
+Journal of Economics</em> 39, no. 3 (2008): 790–821.</span></li>
+<li><span class="citation">Jonathan T Kolstad <span>“Information and
+Quality When Motivation Is Intrinsic: <span>Evidence</span> from Surgeon
+Report Cards,”</span> <em>American Economic Review</em> 103, no. 7
+(2013): 2875–2910.</span></li>
+</ul>
+<p><strong>Supplemental:</strong><br></p>
+<ul>
+<li><span class="citation">M. Chernew, D. P. Scanlon, et al.
+<span>“Health Plan Report Cards and Insurance Choice.”</span>
+<em>Inquiry</em> 35, no. 1 (1998): 9.</span></li>
+<li><span class="citation">D. P. Scanlon et al. <span>“The Impact of
+Health Plan Report Cards on Managed Care Enrollment,”</span> <em>Journal
+of Health Economics</em> 21, no. 1 (2002): 19–41.</span></li>
+<li><span class="citation">G. J. Wedig and M. Tai-Seale <span>“The
+Effect of Report Cards on Consumer Choice in the Health Insurance
+Market,”</span> <em>Journal of Health Economics</em> 21, no. 6 (2002):
+1031–1048.</span></li>
+<li><span class="citation">G. Z. Jin and A. T. Sorensen
+<span>“Information and Consumer Choice: The Value of Publicized Health
+Plan Ratings,”</span> <em>Journal of Health Economics</em> 25, no. 2
+(2006): 248–275.</span></li>
+<li><span class="citation">David Dranove and Ginger Zhe Jin
+<span>“Quality <span>Disclosure</span> and <span>Certification</span>:
+<span>Theory</span> and <span>Practice</span>,”</span> <em>Journal of
+Economic Literature</em> 48, no. 4 (2010): 935–963.</span></li>
+<li><span class="citation">Rachel O Reid et al. <span>“Association
+<span>Between</span> <span>Medicare</span> <span>Advantage</span>
+<span>Plan</span> <span>Star</span> <span>Ratings</span> and
+<span>EnrollmentStar</span> <span>Ratings</span> for
+<span>Medicare</span> <span>Advantage</span> <span>Plan</span>,”</span>
+<em>JAMA</em> 309, no. 3 (2013): 267–274.</span></li>
+<li><span class="citation">M. Darden and I. McCarthy <span>“The
+<span>Star</span> <span>Treatment</span>: <span>Estimating</span> the
+<span>Impact</span> of <span>Star</span> <span>Ratings</span> on
+<span>Medicare</span> <span>Advantage</span>
+<span>Enrollments</span>,”</span> <em>Journal of Human Resources</em>
+50, no. 4 (2015): 980–1008.</span></li>
+<li><span class="citation">I. McCarthy and M. Darden <span>“Supply-Side
+<span>Responses</span> to <span>Public</span> <span>Quality</span>
+<span>Ratings</span>: <span>Evidence</span> from <span>Medicare</span>
+<span>Advantage</span>,”</span> <em>American Journal of Health
+Economics</em> 3, no. 2 (2017): 140–164.</span></li>
+<li><span class="citation">Andrew J. Epstein <span>“Effects of Report
+Cards on Referral Patterns to Cardiac Surgeons,”</span> <em>Journal of
+Health Economics</em> 29, no. 5 (September 2010): 718–731.</span></li>
+</ul>
+</div>
+<div id="class-18-1024-effects-of-price-disclosure"
+class="section level3">
+<h3>Class 18, 10/24: Effects of price disclosure</h3>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">Chernew et al. <span>“Physician Agency,
+Consumerism, and the Consumption of Lower-Limb <span>MRI</span>
+Scans.”</span></span></li>
+<li><span class="citation">Matthew Grennan and Ashley Swanson
+<span>“Transparency and Negotiated Prices: <span>The</span> Value of
+Information in Hospital-Supplier Bargaining,”</span> <em>Journal of
+Political Economy</em> 128, no. 4 (2020): 1234–1268.</span></li>
+</ul>
+</div>
+<div id="class-19-1026-and-class-20-1031-application"
+class="section level3">
+<h3>Class 19, 10/26 and Class 20, 10/31: Application</h3>
+<ul>
+<li><strong>Question:</strong> Consumer inertia and insurer
+premiums</li>
+<li><strong>Research design:</strong> Regression discontinuity</li>
+</ul>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">Ericson <span>“Consumer Inertia and Firm
+Pricing in the <span>Medicare</span> <span>Part</span> <span>D</span>
+Prescription Drug Insurance Exchange.”</span></span></li>
+</ul>
+<p><strong>Supplemental reading:</strong><br></p>
+</div>
+</div>
+<div id="module-4-healthcare-competition-and-industrial-organization"
+class="section level2">
+<h2>Module 4: Healthcare competition and industrial organization</h2>
+<div id="class-21-1102-competition-in-price-and-quality"
+class="section level3">
+<h3>Class 21, 11/02: Competition in price and quality**</h3>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">David Dranove, Mark Shanley, and Carol Simon
+<span>“Is Hospital Competition Wasteful?”</span> <em>RAND Journal of
+Economics</em> (1992): 247–262.</span></li>
+<li><span class="citation">Ying Fan <span>“Ownership Consolidation and
+Product Characteristics: <span>A</span> Study of the <span>US</span>
+Daily Newspaper Market,”</span> <em>American Economic Review</em> 103,
+no. 5 (2013): 1598–1628.</span></li>
+<li><span class="citation">Matthew Lewis and Kevin Pflum
+<span>“Competition and <span>Quality</span> <span>Choice</span> in
+<span>Hospital</span> <span>Markets</span>,”</span> <em>Working
+Paper</em> (2016).</span></li>
+</ul>
+<p><strong>Supplemental:</strong><br></p>
+<ul>
+<li><span class="citation">A Spence <span>“Monopoly,
+<span>Quality</span>, and <span>Regulation</span>,”</span> <em>Bell
+Journal of Economics</em> 6, no. 2 (1975): 417–429.</span></li>
+<li><span class="citation">Michael Mussa and Sherwin Rosen
+<span>“Monopoly and Product Quality,”</span> <em>Journal of Economic
+Theory</em> 18, no. 2 (1978): 301–317.</span></li>
+<li><span class="citation">Jerry Hausman, Gregory Leonard, and J Douglas
+Zona <span>“Competitive Analysis with Differentiated Products,”</span>
+<em>Annales d’Economie Et de Statistique</em> (1994):
+159–180.</span></li>
+<li><span class="citation">James D Dana Jr and Yuk-Fai Fong
+<span>“Product Quality, Reputation, and Market Structure,”</span>
+<em>International Economic Review</em> 52, no. 4 (2011):
+1059–1076.</span></li>
+</ul>
+</div>
+<div id="class-22-1107-measuring-hospital-markets-and-market-power"
+class="section level3">
+<h3>Class 22, 11/07: Measuring hospital markets and market power</h3>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">David Dranove and Christopher Ody
+<span>“Evolving <span>Measures</span> of <span>Provider</span>
+<span>Market</span> <span>Power</span>,”</span> <em>American Journal of
+Health Economics</em> 2, no. 2 (2016): 145–160.</span></li>
+<li><span class="citation">Jordan Everson, John M Hollingsworth, and
+Julia Adler-Milstein <span>“Comparing Methods of Grouping
+Hospitals,”</span> <em>Health Services Research</em> 54, no. 5 (2019):
+1090–1098.</span></li>
+</ul>
+<p><strong>Supplemental:</strong><br></p>
+<ul>
+<li><span class="citation">David Dranove and Mark Shanley <span>“A Note
+on the Relational Aspects of Hospital Market Definitions,”</span>
+<em>Journal of Health Economics</em> 8, no. 4 (1990):
+473–478.</span></li>
+<li><span class="citation">Cory Capps, David Dranove, and Mark
+Satterthwaite <span>“Competition and Market Power in Option Demand
+Markets,”</span> <em>RAND Journal of Economics</em> (2003):
+737–763.</span></li>
+</ul>
+</div>
+<div id="class-23-1109-structure-conduct-performance"
+class="section level3">
+<h3>Class 23, 11/09: “Structure-Conduct-Performance”</h3>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">Daniel Kessler and Mark McClellan <span>“Is
+Hospital Competition Socially Wasteful?”</span> <em>Quarterly Journal of
+Economics</em> 2, no. 115 (2000): 577–615.</span></li>
+<li><span class="citation">Zack Cooper et al. <span>“The Price Ain’t
+Right? <span>Hospital</span> Prices and Health Spending on the Privately
+Insured,”</span> <em>Quarterly Journal of Economics</em> 134, no. 1
+(2019): 51–107.</span></li>
+</ul>
+<p><strong>Supplemental:</strong><br></p>
+<ul>
+<li><span class="citation">Dranove, Shanley, and Simon <span>“Is
+Hospital Competition Wasteful?”</span></span></li>
+<li><span class="citation">William J Lynk <span>“Nonprofit Hospital
+Mergers and the Exercise of Market Power,”</span> <em>The Journal of Law
+and Economics</em> 38, no. 2 (1995): 437–461.</span></li>
+<li><span class="citation">Emmett B Keeler, Glenn Melnick, and Jack
+Zwanziger <span>“The Changing Effects of Competition on Non-Profit and
+for-Profit Hospital Pricing Behavior,”</span> <em>Journal of Health
+Economics</em> 18, no. 1 (1999): 69–86.</span></li>
+</ul>
+</div>
+<div id="class-24-1114-bargaining-framework" class="section level3">
+<h3>Class 24, 11/14: Bargaining framework</h3>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">Kate Ho and Robin S Lee <span>“Insurer
+Competition in Health Care Markets,”</span> <em>Econometrica</em> 85,
+no. 2 (2017): 379–417.</span></li>
+<li><span class="citation">Jeffrey Clemens and Joshua D Gottlieb
+<span>“In the Shadow of a Giant: <span>Medicare</span>’s Influence on
+Private Physician Payments,”</span> <em>Journal of Political
+Economy</em> 125, no. 1 (2017): 1–39.</span></li>
+</ul>
+<p><strong>Supplemental:</strong><br></p>
+<ul>
+<li><span class="citation">Timothy F Bresnahan and Peter C Reiss
+<span>“Entry and Competition in Concentrated Markets,”</span>
+<em>Journal of Political Economy</em> (1991): 977–1009.</span></li>
+<li><span class="citation">Peter C. Reiss and F. Wolak <span>“Structural
+Econometric Modeling: <span>Rationales</span> and Examples from
+Industrial Organization. <span>Handbook</span> of
+<span>Econometrics</span>,”</span> <em>Handbook of Econometrics,
+Edition</em> 1 (2007).</span></li>
+<li><span class="citation">Jean Abraham, Martin Gaynor, and William B
+Vogt <span>“Entry and <span>Competition</span> in <span>Local</span>
+<span>Hospital</span> <span>Markets</span>,”</span> <em>Journal of
+Industrial Economics</em> 55, no. 2 (2007): 265–288.</span></li>
+<li><span class="citation">Gautam Gowrisankaran, Aviv Nevo, and Robert
+Town <span>“Mergers <span>When</span> <span>Prices</span>
+<span>Are</span> <span>Negotiated</span>: <span>Evidence</span> from the
+<span>Hospital</span> <span>Industry</span>,”</span> <em>American
+Economic Review</em> 105, no. 1 (2015): 172–203.</span></li>
+<li><span class="citation">Matthew Lewis and Kevin Pflum
+<span>“Diagnosing <span>Hospital</span> <span>System</span>
+<span>Bargaining</span> <span>Power</span> in <span>Managed</span>
+<span>Care</span> <span>Networks</span>,”</span> <em>American Economic
+Journal: Economic Policy</em> 7, no. 1 (2015): 243–274.</span></li>
+</ul>
+</div>
+<div id="class-25-1116-effects-of-mergers-or-closures"
+class="section level3">
+<h3>Class 25, 11/16: Effects of mergers (or closures)</h3>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">Stuart V. Craig, Matthew Grennan, and Ashley
+Swanson <span>“Mergers and Marginal Costs: <span>New</span> Evidence on
+Hospital Buyer Power,”</span> <em>The RAND Journal of Economics</em> 52,
+no. 1 (2021): 151–178.</span></li>
+<li><span class="citation">Paul J Eliason et al. <span>“How
+<span>Acquisitions</span> <span>Affect</span> <span>Firm</span>
+<span>Behavior</span> and <span>Performance</span>:
+<span>Evidence</span> from the <span>Dialysis</span>
+<span>Industry</span>,”</span> <em>Quarterly Journal of Economics</em>
+135, no. 1 (2020): 221–267.</span></li>
+</ul>
+<p><strong>Supplemental:</strong><br></p>
+<ul>
+<li><span class="citation">Michael G Vita and Seth Sacher <span>“The
+Competitive Effects of Not-for-Profit Hospital Mergers: A Case
+Study,”</span> <em>Journal of Industrial Economics</em> 49, no. 1
+(2001): 63–84.</span></li>
+<li><span class="citation">Gaynor and Vogt <span>“Competition Among
+<span>Hospitals</span>.”</span></span></li>
+<li><span class="citation">Richard C Lindrooth, Anthony T Lo Sasso, and
+Gloria J Bazzoli <span>“The Effect of Urban Hospital Closure on
+Markets,”</span> <em>Journal of Health Economics</em> 22, no. 5 (2003):
+691–712.</span></li>
+<li><span class="citation">M Gaynor and R Town <em>The Impact of
+Hospital Consolidation - <span>Update</span></em>, Policy {Brief}
+(Robert Wood Johnson Foundation, 2012).</span></li>
+<li><span class="citation">Leemore Dafny <span>“Estimation and
+<span>Identification</span> of <span>Merger</span> <span>Effects</span>:
+<span>An</span> <span>Application</span> to <span>Hospital</span>
+<span>Mergers</span>,”</span> <em>Journal of Law and Economics</em> 52,
+no. 3 (2009): 523–550.</span></li>
+<li><span class="citation">Martin Gaynor, Rodrigo Moreno-Serra, and
+Carol Propper <span>“Death by Market Power: Reform, Competition, and
+Patient Outcomes in the <span>National</span> <span>Health</span>
+<span>Service</span>,”</span> <em>American Economic Journal: Economic
+Policy</em> 5, no. 4 (2013): 134–66.</span></li>
+</ul>
+</div>
+<div
+id="class-26-1121-no-meeting-today.-class-rescheduled-for-december-2"
+class="section level3">
+<h3>Class 26, 11/21: No meeting today. Class rescheduled for December
+2</h3>
+</div>
+<div id="class-27-1123-out-of-market-mergers-virtual-class"
+class="section level3">
+<h3>Class 27, 11/23: Out-of-market mergers (<strong>virtual
+class</strong>)</h3>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">Leemore Dafny, Kate Ho, and Robin S Lee
+<span>“The Price Effects of Cross-Market Mergers: Theory and Evidence
+from the Hospital Industry,”</span> <em>RAND Journal of Economics</em>
+50, no. 2 (2019): 286–325.</span></li>
+<li><span class="citation">Matt Schmitt <span>“Multimarket
+<span>Contact</span> in the <span>Hospital</span>
+<span>Industry</span>,”</span> <em>American Economic Journal: Economic
+Policy</em> 10, no. 3 (2018): 361–87.</span></li>
+</ul>
+</div>
+<div id="class-28-1128-vertical-integration" class="section level3">
+<h3>Class 28, 11/28: Vertical integration</h3>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">Fernando Luco and Guillermo Marshall
+<span>“The <span>Competitive</span> <span>Impact</span> of
+<span>Vertical</span> <span>Integration</span> by
+<span>Multiproduct</span> <span>Firms</span>,”</span> <em>American
+Economic Review</em> 110, no. 7 (July 2020): 2041–2064.</span></li>
+<li><span class="citation">Thomas G. Koch, Brett W. Wendling, and Nathan
+E. Wilson <span>“The <span>Effects</span> of <span>Physician</span> and
+<span>Hospital</span> <span>Integration</span> on <span>Medicare</span>
+<span>Beneficiaries</span>’ <span>Health</span>
+<span>Outcomes</span>,”</span> <em>The Review of Economics and
+Statistics</em> 103, no. 4 (September 2021): 725–739.</span></li>
+</ul>
+<p><strong>Supplemental:</strong><br></p>
+<ul>
+<li><span class="citation">Dranove and Ody <span>“Employed for Higher
+Pay? <span>How</span> <span>Medicare</span> Facility Fees Affect
+Hospital Employment of Physicians.”</span></span></li>
+<li><span class="citation">Thomas G Koch, Brett W Wendling, and Nathan E
+Wilson <span>“How Vertical Integration Affects the Quantity and Cost of
+Care for <span>Medicare</span> Beneficiaries,”</span> <em>Journal of
+Health Economics</em> 52 (2017): 19–32.</span></li>
+<li><span class="citation">Haizhen Lin, Ian M. McCarthy, and Michael
+Richards <span>“Hospital <span>Pricing</span> <span>Following</span>
+<span>Integration</span> with <span>Physician</span>
+<span>Practices</span>,”</span> <em>Journal of Health Economics</em> 77
+(May 2021): 102444.</span></li>
+<li><span class="citation">Lawton R Burns and Mark V Pauly
+<span>“Integrated Delivery Networks: A Detour on the Road to Integrated
+Health Care?”</span> <em>Health Affairs</em> 21, no. 4 (2002):
+128–143.</span></li>
+<li><span class="citation">Federico Ciliberto and David Dranove
+<span>“The Effect of Physician–Hospital Affiliations on Hospital Prices
+in <span>California</span>,”</span> <em>Journal of Health Economics</em>
+25, no. 1 (2006): 29–38.</span></li>
+<li><span class="citation">Alison Evans Cuellar and Paul J Gertler
+<span>“Strategic Integration of Hospitals and Physicians,”</span>
+<em>Journal of Health Economics</em> 25, no. 1 (2006): 1–28.</span></li>
+<li><span class="citation">Baker, Bundorf, and Kessler <span>“The
+<span>Effect</span> of <span>Hospital</span>/<span>Physician</span>
+<span>Integration</span> on <span>Hospital</span>
+<span>Choice</span>.”</span></span></li>
+<li><span class="citation">Hannah T Neprash et al. <span>“Association of
+Financial Integration Between Physicians and Hospitals with Commercial
+Health Care Prices,”</span> <em>JAMA Internal Medicine</em> 175, no. 12
+(2015): 1932–1939.</span></li>
+<li><span class="citation">Cory Capps, David Dranove, and Christopher
+Ody <span>“The Effect of Hospital Acquisitions of Physician Practices on
+Prices and Spending,”</span> <em>Journal of Health Economics</em> 59
+(2018): 139–152.</span></li>
+<li><span class="citation">R Tamara Konetzka, Elizabeth A Stuart, and
+Rachel M Werner <span>“The Effect of Integration of Hospitals and
+Post-Acute Care Providers on <span>Medicare</span> Payment and Patient
+Outcomes,”</span> <em>Journal of Health Economics</em>
+(2018).</span></li>
+</ul>
+</div>
+<div id="rescheduled-from-1121-and-class-30-1205-application"
+class="section level3">
+<h3>12/02 (rescheduled from 11/21) and Class 30, 12/05: Application</h3>
+<ul>
+<li><strong>Question:</strong> Sensitivity of demand estimates to market
+definition</li>
+<li><strong>Research design:</strong> Structural demand estimation</li>
+</ul>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">Everson, Hollingsworth, and Adler-Milstein
+<span>“Comparing Methods of Grouping Hospitals.”</span></span></li>
+</ul>
+<p><strong>Supplemental reading:</strong><br></p>
+</div>
+</div>
+<div id="module-5-health-insurance-markets-we-wont-get-to-this"
+class="section level2">
+<h2>Module 5: Health insurance markets (we won’t get to this)</h2>
+<div id="insurance-markets-and-competitiveness" class="section level3">
+<h3>Insurance markets and competitiveness</h3>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">Leemore Dafny <span>“Are <span>Health</span>
+<span>Insurance</span> <span>Markets</span>
+<span>Competitive</span>?”</span> <em>American Economic Review</em> 100,
+no. 4 (2010): 1399–1431.</span></li>
+<li><span class="citation">Leemore Dafny, Mark Duggan, and Subramaniam
+Ramanarayanan <span>“Paying a <span>Premium</span> on <span>Your</span>
+<span>Premium</span>? <span>Consolidation</span> in the <span>US</span>
+<span>Health</span> <span>Insurance</span>
+<span>Industry</span>,”</span> <em>American Economic Review</em> 102,
+no. 2 (2012): 1161–1185.</span></li>
+<li><span class="citation">M Kate Bundorf, Jonathan Levin, and Neale
+Mahoney <span>“Pricing and Welfare in Health Plan Choice,”</span>
+<em>American Economic Review</em> 102, no. 7 (2012):
+3214–3248.</span></li>
+</ul>
+<p><strong>Supplemental:</strong><br></p>
+<ul>
+<li><span class="citation">Robert Town and Su Liu <span>“The Welfare
+Impact of <span>Medicare</span> <span>HMOs</span>,”</span> <em>RAND
+Journal of Economics</em> 24, no. 4 (2003): 719–736.</span></li>
+<li><span class="citation">Liran Einav, Amy Finkelstein, and Jonathan
+Levin <span>“Beyond <span>Testing</span>: <span>Empirical</span>
+<span>Models</span> of <span>Insurance</span>
+<span>Markets</span>,”</span> <em>Annual Review of Economics</em> 2, no.
+1 (2010): 311–336.</span></li>
+<li><span class="citation">Liran Einav, Amy Finkelstein, and Mark R
+Cullen <span>“Estimating <span>Welfare</span> in <span>Insurance</span>
+<span>Markets</span> <span>Using</span> <span>Variation</span> in
+<span>Prices</span>,”</span> <em>Quarterly Journal of Economics</em>
+125, no. 3 (2010): 877–921.</span></li>
+<li><span class="citation">Amanda Starc <span>“Insurer Pricing and
+Consumer Welfare: <span>Evidence</span> from Medigap,”</span> <em>RAND
+Journal of Economics</em> 45, no. 1 (2014): 198–220.</span></li>
+</ul>
+</div>
+<div id="adverse-selection" class="section level3">
+<h3>Adverse selection</h3>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">David M Cutler and Sarah J Reber
+<span>“Paying for <span>Health</span> <span>Insurance</span>:
+<span>The</span> <span>Trade</span>-<span>Off</span> Between
+<span>Competition</span> and <span>Adverse</span>
+<span>Selection</span>,”</span> <em>Quarterly Journal of Economics</em>
+113, no. 2 (1998): 433–466.</span></li>
+<li><span class="citation">Francesco Decarolis and Andrea Guglielmo
+<span>“Insurers’ Response to Selection Risk: <span>Evidence</span> from
+<span>Medicare</span> Enrollment Reforms,”</span> <em>Journal of Health
+Economics</em> 56 (2017): 383–396.</span></li>
+</ul>
+<p><strong>Supplemental:</strong><br></p>
+<ul>
+<li><span class="citation">George Ackerloff <span>“The Market for
+Lemons: <span>Quality</span> Uncertainty and the Market
+Mechanism,”</span> <em>Quarterly Journal of Economics</em> 84, no. 3
+(1970): 488–500.</span></li>
+<li><span class="citation">Michael Rothschild and Joseph Stiglitz
+<span>“Equilibrium in Competitive Insurance Markets: <span>An</span>
+Essay on the Economics of Imperfect Information,”</span> <em>Quarterly
+Journal of Economics</em> (1976): 629–649.</span></li>
+<li><span class="citation">Richard G Frank, Jacob Glazer, and Thomas G
+McGuire <span>“Measuring Adverse Selection in Managed Health
+Care,”</span> <em>Journal of Health Economics</em> 19, no. 6 (2000):
+829–854.</span></li>
+<li><span class="citation">Liran Einav and Amy Finkelstein
+<span>“Selection in <span>Insurance</span> <span>Markets</span>:
+<span>Theory</span> and <span>Empirics</span> in
+<span>Pictures</span>,”</span> <em>The Journal of Economic
+Perspectives</em> 25, no. 1 (2011): 115–138.</span></li>
+</ul>
+</div>
+<div id="moral-hazard" class="section level3">
+<h3>Moral hazard</h3>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">Liran Einav et al. <span>“Selection on Moral
+Hazard in Health Insurance,”</span> <em>American Economic Review</em>
+103, no. 1 (2013): 178–219.</span></li>
+</ul>
+<p><strong>Supplemental:</strong><br></p>
+<ul>
+<li><span class="citation">Willard G Manning and M Susan Marquis
+<span>“Health Insurance: The Tradeoff Between Risk Pooling and Moral
+Hazard,”</span> <em>Journal of Health Economics</em> 15, no. 5 (1996):
+609–639.</span></li>
+<li><span class="citation">Amy Finkelstein <em>Moral Hazard in Health
+Insurance</em> (Columbia University Press, 2014).</span></li>
+<li><span class="citation">Liran Einav and Amy Finkelstein <span>“Moral
+<span>Hazard</span> in <span>Health</span> <span>Insurance</span>:
+<span>What</span> <span>We</span> <span>Know</span> and <span>How</span>
+<span>We</span> <span>Know</span> <span>It</span>,”</span> <em>Journal
+of the European Economic Association</em> 16, no. 4 (August 2018):
+957–982.</span></li>
+</ul>
+</div>
+<div id="managed-competition" class="section level3">
+<h3>Managed competition</h3>
+<p><strong>Primary reading:</strong><br></p>
+<ul>
+<li><span class="citation">Vilsa Curto et al. <span>“Can
+<span>Health</span> <span>Insurance</span> <span>Competition</span>
+<span>Work</span>? <span>Evidence</span> from <span>Medicare</span>
+<span>Advantage</span>,”</span> <em>Journal of Political Economy</em>
+129, no. 2 (2021): 570–606.</span></li>
+<li><span class="citation">Liran Einav and Jonathan Levin <span>“Managed
+Competition in Health Insurance,”</span> <em>Journal of the European
+Economic Association</em> 13, no. 6 (2015): 998–1021.</span></li>
+</ul>
+<p><strong>Supplemental:</strong><br></p>
+<ul>
+<li><span class="citation">Zirui Song, Mary Beth Landrum, and Michael E
+Chernew <span>“Competitive Bidding in <span>Medicare</span>
+<span>Advantage</span>: <span>Effect</span> of Benchmark Changes on Plan
+Bids,”</span> <em>Journal of Health Economics</em> 32, no. 6 (2013):
+1301–1312.</span></li>
+<li><span class="citation">Marika Cabral, Michael Geruso, and Neale
+Mahoney <span>“Do Larger Health Insurance Subsidies Benefit Patients or
+Producers? <span>Evidence</span> from <span>Medicare</span>
+<span>Advantage</span>,”</span> <em>American Economic Review</em> 108,
+no. 8 (2018): 2048–87.</span></li>
+<li><span class="citation">Karen Stockley et al. <em>Premium
+<span>Transparency</span> in the <span>Medicare</span>
+<span>Advantage</span> <span>Market</span>: <span>Implications</span>
+for <span>Premiums</span>, <span>Benefits</span>, and
+<span>Efficiency</span></em>, Working {Paper} (National Bureau of
+Economic Research, 2014).</span></li>
+<li><span class="citation">Mark Duggan, Amanda Starc, and Boris Vabson
+<span>“Who Benefits When the Government Pays More?
+<span>Pass</span>-Through in the <span>Medicare</span>
+<span>Advantage</span> Program,”</span> <em>Journal of Public
+Economics</em> 141 (2016): 50–67.</span></li>
+<li><span class="citation">Daria Pelech <span>“Paying More for Less?
+<span>Insurer</span> Competition and Health Plan Generosity in the
+<span>Medicare</span> <span>Advantage</span> Program,”</span>
+<em>Journal of Health Economics</em> 61 (2018): 77–92.</span></li>
+</ul>
+</div>
 </div>
 </div>
 
