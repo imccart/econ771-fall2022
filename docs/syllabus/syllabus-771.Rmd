@@ -288,6 +288,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   
 **Supplemental reading:**<br>
 
+  - Too many to list! If you want to get up to speed on DD, please take a look at this [DiD Project](https://asjadnaqvi.github.io/DiD/docs/reading/04_literature/). It  has code, lit review, and links to other videos and blog posts.
 
 ## Module 2: Physicians
 
@@ -323,6 +324,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @richards2022
   - @baker2016
   - @chernew2021
+  - @mcguire1991
   
   
 ## `r advdate(10)`: Physician learning
@@ -355,6 +357,12 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
 **Supplemental reading:**<br>
 
+  - @imbens2010
+  - @chernozhukov2018
+  - @angrist2021
+  - @heckman2006
+  - @andrews2019
+  - @lee2021
 
 ### `r advdate(14)`: Fall break
 
@@ -402,7 +410,6 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @epstein2010  
 
 
-
 ### `r advdate(18)`: Effects of price disclosure
 
 **Primary reading:**<br>
@@ -421,6 +428,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
 **Supplemental reading:**<br>
 
+  - Best starting place for most up-to-date info on RD is from Matias Cattaneo and team. Their site, [RD Packages](https://rdpackages.github.io/), has a tone of great info with links to the most recent literature.
 
 ## Module 4: Healthcare competition and industrial organization
 
@@ -450,7 +458,6 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
   - @dranove1990
   - @capps2003
-
 
 
 ### `r advdate(23)`: "Structure-Conduct-Performance"
@@ -542,6 +549,8 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
 **Supplemental reading:**<br>
 
+  - @nevo2000
+  - @conlon2020
 
 
 ## Module 5: Health insurance markets (we won't get to this)
