@@ -1,13 +1,5 @@
 ---
-title: "Module 0"
-author: "Econ 771: Health Economics II"
-date: 'Fall 2022'
-output: 
-  bookdown::html_document2:
-    toc: TRUE
-    toc_float: TRUE
-    toc_depth: 3
-    number_sections: FALSE
+title: "Module 0: Introduction"
 ---
 
 ```{r setup, include=FALSE}
