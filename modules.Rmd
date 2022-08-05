@@ -8,8 +8,8 @@ This class is organized so as to (hopefully) weave best practices for implementi
 
 The course consists of four modules (plus an introduction), listed below. I'll start off each module with a brief presentation Follow the link for more detail about each module:
 
-- **Module 0: Introduction**. This 
-- [Module 1: Hospitals](modules/mod1.html)
-- [Module 2: Physicians](modules/mod2.html)
-- [Module 3: Information Disclosure](modules/mod3.html)
-- [Module 4: Healthcare IO](modules/mod4.html)
+- [Module 0: Introduction](modules/module0.html)
+- [Module 1: Hospitals](modules/module1.html)
+- [Module 2: Physicians](modules/module2.html)
+- [Module 3: Information Disclosure](modules/module3.html)
+- [Module 4: Healthcare IO](modules/module4.html)
