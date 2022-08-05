@@ -2,4 +2,14 @@
 title: "Class Modules"
 ---
 
-Description of main class sections, content to be covered, etc.
+This is, first and foremost, a **Health Economics** class, so health economics content takes priority. Still, it's impossible to study this area without a solid understanding of common research designs and econometric estimators. Good applied microeconomics research also increasingly calls for transparent and reproducible code.
+
+This class is organized so as to (hopefully) weave best practices for implementing common research designs into a few core supply-side health economics topics. We do this by introducing a new research design with each core module, and in all cases, we're expected to work in a transparent and reproducible way so that we can begin to establish solid research habits.
+
+The course consists of four modules (plus an introduction), listed below. I'll start off each module with a brief presentation Follow the link for more detail about each module:
+
+- **Module 0: Introduction**. This 
+- [Module 1: Hospitals](modules/mod1.html)
+- [Module 2: Physicians](modules/mod2.html)
+- [Module 3: Information Disclosure](modules/mod3.html)
+- [Module 4: Healthcare IO](modules/mod4.html)
