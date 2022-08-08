@@ -18,24 +18,23 @@ knitr::opts_chunk$set(echo = TRUE, fig.align="center")
 # Overview 
 This is the guide for **Module 0**, which is really just an introduction to the class. To that end, the first thing you should do for the class is read the [syllabus](../syllabus/syllabus-771.pdf).
 
-# Goals
-Hopefully this is evident from the syllabus and the landing page for the class, but my overarching goals for this class are to learn about supply-side health economics, employ some standard econometric estimators and identification strategies specifically in the context of health economics, and get some practice working with real data in a real world environment. 
 
-This last goal (real data in a real world environment) is worth a bit more explanation. Just looking at the assignments, it might be intimidating.
+# Learning objectives
+1. Understand the structure of the class and assignments
+2. List some key areas of the economics of healthcare
+3. Explain causal inference in the context of the potential outcomes framework
+4. Estimate average treatment effects with a selection on observables assumption
 
-<center>
 
-![](https://media.giphy.com/media/l1J9EAbtarE4QYHAY/giphy.gif)
+# Causal inference topics
+1. Introduction to causal inference and potential outcomes
+2. Estimators based on regression, matching, and weighting
+3. Doubly-robust estimation
 
-</center>
 
-But these things are planned very specifically in order to get you some experience working with real data, employing current methods with those data, and examining a relevant question in the area of health care economics. While we are definitely going to use lots of different datasets for this class, I will always provide some code to help work with the data (more or less depending on how challenging the data management is). More importantly, I'm **always** available to you for help or discussion. Ultimately, I want this class to help get you where **you** want to be, not to mold you into some version of a health economist that I have in my mind. But the only way I can help you is if I know where you want to go. So we have to work together!
+# Schedule and slides
 
-<center>
+Below are links to specific content for each class in this module. We'll fill this in as we go through the semester.
 
-![](https://media.giphy.com/media/QWwEdgDbYjFbfOMJ3z/giphy.gif)
-
-</center>
-
-# Slides
-Ok - now we're getting into some economics. For this, I'll move over to our [Introduction Slides](slides-class1.html).
+- **Wednesday, 8/24:** Introduction to the economics of healthcare
+- **Monday, 8/29:** Introduction to causal inference
