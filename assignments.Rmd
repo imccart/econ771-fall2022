@@ -2,5 +2,16 @@
 title: "Assignments"
 ---
 
-Below are details of the assignments for this semester and their respective due dates:
+There are three main types of assignments throughout the semester, along with a participation component. More information on each assignment is listed below. Note that I **do not** expect or want anyone to treat these assignments as entirely separate. By that, I mean you should try to identify datasets from the exercises that you can use in your draft paper (if necessary), and you should try to select presentations of papers that align with your lit review or draft paper. With a little bit of up-front planning, you can create a lot of overlap across assignments, which will make your life much easier. 
 
+1. **Participation**: I'll keep track of those who participate in our discussion each day. Any amount of participation (questions or comments) will be worth one point for that class. I'll tally everyone's participation points at the end of the semester. Your participation grade will be based on your percentage out of 25 possible points.
+
+2. **Empirical exercises**: Each course module will have an applied component where we spend some time with a real-life causal inference question. These will require some of your time outside of class to get the data in working order and implement the relevant identification strategy and econometric estimator. Details of each empirical exercise are in the following links:
+  - [Exercise 1](assignments/exercise1.html): Difference-in-differences
+  - [Exercise 2](assignments/exercise2.html): Instrumental variables
+  - [Exercise 3](assignments/exercise3.html): Regression Discontinuity
+  - [Exercise 4](assignments/exercise4.html): Hospital markets and demand estimation
+
+3. **Presentations**: You will present three papers throughout the course of the semester. A list of potential papers is available on the syllabus, with additional details regarding presentation expectations and grading available [here](assignments/presentation.html). Please inform me of your selected papers no later than **September 2** by indicating your paper and date of presentation on the Google Sheet, available [here]([here](https://docs.google.com/spreadsheets/d/1d6IVg-khbreLKobiczNwEOT9gjPNNykrFEtc2rXdJ4I/edit?usp=sharing).
+
+4. **Literature review** (2nd year) or **draft paper** (3rd year): You will prepare a literature review or a preliminary draft paper depending on how far along you are in the PhD program. Details of these assignments are available on the [literature review](assignments/lit-review.html) and [draft paper](draft-paper.html) pages of our website. This assignment is due by **Friday, November 18**.
