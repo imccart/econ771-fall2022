@@ -21,39 +21,41 @@ Below is a preliminary course outline for this semester. For a more complete rea
 
 ## [Module 0: Kicking things off!](modules/module0.html)
 
-  - `r advdate(1)`: Introduction to the economics of healthcare.
-  - `r advdate(2)`: Introduction to causal inference
+  - `r advdate(1)`: Introduction to the economics of healthcare and causal inference
 
 ## [Module 1: Hospitals](modules/module1.html)
 
-  - `r advdate(3)`: Background and institutional details
-  - `r advdate(4)` - `r advdate(5)`: Hospitals and financial incentives
+  - `r advdate(2)`: Background and institutional details
+  - `r advdate(3)`: Hospitals and financial incentives, part I
+  - `r advdate(4)`: Labor Day, no class
+  - `r advdate(5)`: Hospitals and financial incentives, part II
   - `r advdate(6)` - `r advdate(8)`: Empirical application with DD
 
 ## [Module 2: Physicians](modules/module2.html)
 
-  - `r advdate(8)`: Background and institutional details
-  - `r advdate(9)`: Physician agency, financial incentives, and referrals
-  - `r advdate(10)`: Physician learning
-  - `r advdate(11)` - `r advdate(13)`: Empirical application with IV
+  - `r advdate(9)`: Background and institutional details
+  - `r advdate(10)`: Physician agency, financial incentives, and referrals
+  - `r advdate(11)`: Physician learning
+  - `r advdate(12)` - `r advdate(13)`: Empirical application with IV
   - `r advdate(14)`: Fall break
+  - `r advdate(15)`: Empirical application with IV, cont'd
 
 ## [Module 3: Information disclosure](modules/module3.html)
 
-  - `r advdate(15)`: Patient decision-making
-  - `r advdate(16)`: Inertia in health insurance choice
-  - `r advdate(17)`: Effects of quality disclosure
-  - `r advdate(18)`: Effects of price disclosure
-  - `r advdate(19)` - `r advdate(20)`: Empirical application with RD
+  - `r advdate(16)`: Patient decision-making
+  - `r advdate(17)`: Inertia in health insurance choice
+  - `r advdate(18)`: Effects of quality disclosure
+  - `r advdate(19)`: Effects of price disclosure
+  - `r advdate(20)` - `r advdate(21)`: Empirical application with RD
 
 ## [Module 4: Healthcare competition and industrial organization](modules/module4.html)
 
-  - `r advdate(21)`: Competition in price and quality
-  - `r advdate(22)`: Measuring hospital markets and market power
-  - `r advdate(23)`: "Structure-Conduct-Performance"
-  - `r advdate(24)`: Bargaining framework
-  - `r advdate(25)`: Effects of mergers (or closures)
-  - `r advdate(26)`: No meeting today. Class rescheduled for December 2
-  - `r advdate(27)`: Out-of-market mergers (**virtual class**)
-  - `r advdate(28)`: Vertical integration
+  - `r advdate(22)`: Competition in price and quality
+  - `r advdate(23)`: Measuring hospital markets and market power
+  - `r advdate(24)`: "Structure-Conduct-Performance"
+  - `r advdate(25)`: Bargaining framework
+  - `r advdate(26)`: No meeting today. Class rescheduled for December 2  
+  - `r advdate(27)`: Effects of mergers or closures (**virtual class**)
+  - `r advdate(28)`: Out-of-market mergers
+  - `r advdate(29)`: Vertical integration
   - 12/02 (rescheduled from 11/21) and `r advdate(30)`: Empirical application with demand estimation

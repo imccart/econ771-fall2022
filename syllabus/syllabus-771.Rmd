@@ -211,7 +211,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
 ## Module 0: Kicking things off!
 
-### `r advdate(1)`: Introduction to the economics of healthcare**
+### `r advdate(1)`: Introduction to the economics of healthcare and causal inference**
 
 **General health econ references:**<br>
 
@@ -222,7 +222,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @gaynor2015jel
 
 
-### `r advdate(2)`: Introduction to causal inference**
+**General causal inference references:**<br>
 
   - Chapters 1-5 of [Causal Inference: The Mixtape](https://mixtape.scunning.com/)
   - Chapters 1-5, 10, 13, and 14 of [The Effect: An Introduction to Research Design and Causality](https://theeffectbook.net/)
@@ -230,7 +230,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
 ## Module 1: Hospitals
 
-### `r advdate(3)`: Background and institutional details**
+### `r advdate(2)`: Background and institutional details**
 
 **Supplemental reading:**<br>
 
@@ -251,7 +251,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @david2009
   - @chang2017
 
-### `r advdate(4)` - `r advdate(5)`: Hospitals and financial incentives
+### `r advdate(3)`: Hospitals and financial incentives, part I
 
 **Primary reading:**<br>
 
@@ -272,6 +272,19 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @gowrisankaran2019
   - @gupta2021
 
+### `r advdate(4)`: Labor Day, no class
+
+### `r advdate(5)`: Hospitals and financial incentives, part II
+
+**Primary reading:**<br>
+
+  - @batty2017
+  - @lee2020
+
+**Supplemental reading:**<br>
+
+  - See supplemental reading in hospitals and financial incentives, part I
+  
 
 ### `r advdate(6)` - `r advdate(8)`: Application
 
@@ -292,7 +305,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
 ## Module 2: Physicians
 
-### `r advdate(8)`: Background and institutional details**
+### `r advdate(9)`: Background and institutional details**
 
 **Supplemental reading:**<br>
 
@@ -305,7 +318,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @molitor2018
   
 
-### `r advdate(9)`: Physician agency, financial incentives, and referrals
+### `r advdate(10)`: Physician agency, financial incentives, and referrals
 
 **Primary reading:**<br>
 
@@ -327,7 +340,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @mcguire1991
   
   
-## `r advdate(10)`: Physician learning
+## `r advdate(11)`: Physician learning
 
 **Primary reading:**<br>
   
@@ -345,7 +358,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @ho2002
 
 
-### `r advdate(11)` - `r advdate(13)`: Application
+### `r advdate(12)` - `r advdate(13)`: Application
 
   - **Question:** Physician effort and hospital ownership
   - **Research design:** Instrumental variables
@@ -366,9 +379,11 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
 ### `r advdate(14)`: Fall break
 
+### `r advdate(15)`: Application, cont'd
+
 ## Module 3: Information disclosure
 
-### `r advdate(15)`: Patient decision-making
+### `r advdate(16)`: Patient decision-making
 
 **Primary reading:**<br>
 
@@ -381,7 +396,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @abaluck2011
 
 
-### `r advdate(16)`: Inertia in health insurance choice
+### `r advdate(17)`: Inertia in health insurance choice
 
 **Primary reading:**<br>
 
@@ -389,7 +404,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @ericson2014
 
 
-### `r advdate(17)`: Effects of quality disclosure
+### `r advdate(18)`: Effects of quality disclosure
 
 **Primary reading:**<br>
 
@@ -410,14 +425,14 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @epstein2010  
 
 
-### `r advdate(18)`: Effects of price disclosure
+### `r advdate(19)`: Effects of price disclosure
 
 **Primary reading:**<br>
 
   - @chernew2021
   - @grennan2020
 
-### `r advdate(19)` and `r advdate(20)`: Application
+### `r advdate(20)` and `r advdate(21)`: Application
 
   - **Question:** Consumer inertia and insurer premiums
   - **Research design:** Regression discontinuity
@@ -432,7 +447,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
 ## Module 4: Healthcare competition and industrial organization
 
-### `r advdate(21)`: Competition in price and quality**
+### `r advdate(22)`: Competition in price and quality**
 
 **Primary reading:**<br>
 
@@ -447,7 +462,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @hausman1994
   - @dana2011
 
-### `r advdate(22)`: Measuring hospital markets and market power
+### `r advdate(23)`: Measuring hospital markets and market power
 
 **Primary reading:**<br>
 
@@ -460,7 +475,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @capps2003
 
 
-### `r advdate(23)`: "Structure-Conduct-Performance"
+### `r advdate(24)`: "Structure-Conduct-Performance"
 
 **Primary reading:**<br>
 
@@ -474,7 +489,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @keeler1999
 
 
-### `r advdate(24)`: Bargaining framework
+### `r advdate(25)`: Bargaining framework
 
 **Primary reading:**<br>
 
@@ -489,8 +504,9 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @gowrisankaran2015
   - @lewis2015
 
+### `r advdate(26)`: No meeting today. Class rescheduled for December 2
 
-### `r advdate(25)`: Effects of mergers (or closures)
+### `r advdate(27)`: Effects of mergers/closures (**virtual class**)
 
 **Primary reading:**<br>
 
@@ -507,17 +523,14 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @gaynor2013
 
 
-### `r advdate(26)`: No meeting today. Class rescheduled for December 2
-
-
-### `r advdate(27)`: Out-of-market mergers (**virtual class**)
+### `r advdate(28)`: Out-of-market mergers
 
 **Primary reading:**<br>
 
   - @dafny2019
   - @schmitt2018
 
-### `r advdate(28)`: Vertical integration
+### `r advdate(29)`: Vertical integration
 
 **Primary reading:**<br>
 
