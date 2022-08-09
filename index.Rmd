@@ -24,5 +24,11 @@ Research Associate • National Bureau of Economic Research<br>
 
 Welcome! This site houses all of the materials for our PhD Health Economics Class at Emory University (Econ 771) for Fall 2022. All raw code files are also available at the GitHub rep [here](https://github.com/imccart/econ771-fall2022).
 
+This is, first and foremost, a **Health Economics** class, so health economics content takes priority. Still, it's impossible to study this area without a solid understanding of common research designs and econometric estimators. Good applied microeconomics research also increasingly calls for transparent and reproducible code.
+
+This class is organized so as to (hopefully) weave best practices for implementing common research designs into a few core supply-side health economics topics. We do this by introducing a new research design with each core module, and in all cases, we're expected to work in a transparent and reproducible way so that we can begin to establish solid research habits.
+
+Details of the course schedule and modules, assignments, and other resources are available in the navigation menu. For a PDF of the syllabus, click on the button below.
+
 
 <p><a class="btn btn-primary btn-lg" target="_blank" href="https://econ771f22.classes.ianmccarthyecon.com/syllabus/syllabus-771.pdf" role="button"><i class="far fa-file-pdf"></i> Download PDF of Syllabus</a></p>

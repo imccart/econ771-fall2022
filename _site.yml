@@ -9,8 +9,6 @@ navbar:
       href: index.html
     - text: "Schedule"
       href: schedule.html
-    - text: "Modules"
-      href: modules.html
     - text: "Assignments"
       href: assignments.html
     - text: "Resources"

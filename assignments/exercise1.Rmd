@@ -1,0 +1,54 @@
+---
+title: "Module 1 Empirical Exercise"
+author: "Econ 771: Health Economics II"
+date: "Due: Friday, September 18"
+output: 
+  bookdown::html_document2:
+    toc: TRUE
+    toc_float: TRUE
+    theme: darkly
+    number_sections: FALSE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Overview
+In this assignment, we're going to work through some applied issues related to causal inference in panel data, mainly focusing on difference-in-differences and event studies. These are the workhorses of modern applied empirical microeconomics (although not as much of a panacea as once perceived). 
+
+To begin, please "accept" the assignment on our GitHub classroom page. This will initialize a GitHub repository where you can edit and ultimately craft your answers in your data management/econometrics software of choice.  
+
+You will "turn in" your repository to me with your answers and all supporting documents. Please create a final document with your main answers and analyses in a PDF. Please also be sure to include in your repository all of your supporting code files. Practice writing good code and showing me only what I would need to recreate your results.
+
+
+# Resources and data
+The data for this assignment comes from three sources:
+
+1. **Inpatient Prospective Payment System Final Rule Files**: The Centers for Medicare and Medicaid services publishes these data annually, and they contain some basic information about the types of patients admitted to hospitals in a given year. The data are available on our shared AWS AMI under the "IPPS" folder. They are also available for you to download directly from the [NBER IPPS Data](https://data.nber.org/data/cms-impact-file-hospital-inpatient-prospective-payment-system-ipps.html). You can get the data from CMS as well, but they no longer host the historic data so the NBER link is your best option for these exercises. Use these data to get information on hospital case mix and disproportionate share information.
+
+2. **Provider of Services files**: These data are available from [NBER POS](https://data.nber.org/data/provider-of-services.html) as well as at [Adam Sacarny's GitHub repo](https://github.com/asacarny/provider-of-services). I've also made these data available on our shared AWS AMI in the "POS" folder. Use these data to get information on hospital ownership type.
+
+3. **Medicaid Expansion**: Data on which states expanded Medicaid under the ACA, and when they expanded, is available from the Kaiser Family Foundation website. For more info, see my GitHub repository, [Insurance Access](https://github.com/imccart/Insurance-Access).
+
+
+# Questions
+In your GitHub repository, please be sure to clearly address/answer the following questions.
+
+1. Provide and discuss a table of simple summary statistics showing the mean, standard deviation, min, and max of the case mix index and disproportionate share across years. 
+
+2. Create two figures showing the mean hospital disproportionate share and cmi from 1986 to 2018. Show this trend separately by hospital ownership type (private not for profit and private for profit).
+
+3. Using a simple DD identification strategy, estimate the effect of Medicaid expansion on the hospital disproportionate share percentage. Do these effects differ by profit status (i.e., re-estimate with a DDD using profit status)? Focus your analysis on the years from 2005 through 2018.
+
+4. Estimate an "event study" version of the DD model from part 3. Focus only on states that expanded in 2014 that those that have never expanded.
+
+5. Estimate another event study where you allow for differential treatment timing and incorporate all states.
+
+# Solutions
+Here are my answers. There are lots of different ways to answer these questions. For example, some of the main variables may show up in more than one of the datasets, and you may have chosen a different source. There are also lots of different ways to filter the data. As long as you are transparent (i.e., I can see what you did in the code), then this isn't a problem. The point of this is to get some practice doing standard applied work with **real** data. 
+
+1. Final [solutions](../solutions/exercise1/solutions.pdf) in PDF. My actual `R Markdown` document is [here](../solutions/exercise1/solutions.Rmd), and [here](../solutions/exercise1/solutions.tex) is the `tex` file in case anyone is interested.
+2. Analysis file [here](../solutions/exercise1/analysis.R). This is where I do the actual analysis. Notice that in this file, I remove a bunch of large objects and save the workspace. I then call the workspace in my markdown file.
+3. Code to read in the IPPS data [here](../solutions/exercise1/1_ipps.R).
+4. Code to read in the POS data [here](../solutions/exercise1/2_pos.R).
