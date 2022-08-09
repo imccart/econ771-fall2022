@@ -1,11 +1,8 @@
 ---
 title: "Module 0: Introduction"
-date: 'Fall 2022'
+date: 'Econ 771, Fall 2022'
 output: 
   bookdown::html_document2:
-    toc: TRUE
-    toc_float: TRUE
-    toc_depth: 3
     number_sections: FALSE
 ---
 
@@ -30,11 +27,3 @@ This is the guide for **Module 0**, which is really just an introduction to the 
 1. Introduction to causal inference and potential outcomes
 2. Estimators based on regression, matching, and weighting
 3. Doubly-robust estimation
-
-
-# Schedule and slides
-
-Below are links to specific content for each class in this module. We'll fill this in as we go through the semester.
-
-- **Wednesday, 8/24:** Introduction to the economics of healthcare
-- **Monday, 8/29:** Introduction to causal inference

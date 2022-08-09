@@ -1,11 +1,8 @@
 ---
 title: "Module 4: Healthcare Competition and Industrial Organization"
-date: 'Fall 2022'
+date: 'Econ 771, Fall 2022'
 output: 
   bookdown::html_document2:
-    toc: TRUE
-    toc_float: TRUE
-    toc_depth: 3
     number_sections: FALSE
 ---
 
@@ -35,9 +32,3 @@ This is the guide for **Module 4**, the last module of the class. Over these las
 2. [Provider of Services](https://github.com/asacarny/provider-of-services)
 3. [Measuring Hospital Markets](https://github.com/graveja0/health-care-markets)
 4. [Hospital Service Area Files](https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Hospital-Service-Area-File/index)
-
-
-
-# Schedule and slides
-
-Below are links to specific content for each class in this module. We'll fill this in as we go through the semester.
