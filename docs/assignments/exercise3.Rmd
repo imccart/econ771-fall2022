@@ -1,12 +1,9 @@
 ---
 title: "Module 3 Empirical Exercise"
 author: "Econ 771: Health Economics II"
-date: "Due: Friday, October 30"
+date: "Due: Friday, November 4"
 output: 
   bookdown::html_document2:
-    toc: TRUE
-    toc_float: TRUE
-    theme: darkly
     number_sections: FALSE
 ---
 
@@ -17,9 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # Overview
 In this assignment, we're going to work through some applied issues related to regression discontinuity designs. We'll cover the basics of strict and fuzzy RD, and we'll work through standard specification tests. We'll also introduce some more technical aspects of bin and bandwidth selection.
 
-To begin, please "accept" the assignment on our GitHub classroom page. This will initialize a GitHub repository where you can edit and ultimately craft your answers in your data management/econometrics software of choice.  
-
-You will "turn in" your repository to me with your answers and all supporting documents. Please create a final document with your main answers and analyses in a PDF. Please also be sure to include in your repository all of your supporting code files. Practice writing good code and showing me only what I would need to recreate your results.
+Please "submit" your answers as a GitHub repository link. In this repo, please include a final document with your main answers and analyses in a PDF. Be sure to include in your repository all of your supporting code files. Practice writing good code and showing me only what I would need to recreate your results.
 
 
 # Resources and data
@@ -37,12 +32,4 @@ In your GitHub repository, please be sure to clearly address/answer the followin
 4. Summarize the relationship between market shares in 2006 on changes in premiums from 2006 to 2007.
 
 5. Use the Part D low-income subsidy as an IV for market share to examine the effect of market share in 2006 on premium changes.
-
-
-# Solutions
-Here are my answers. Since we're working with clean data already for this assignment, there's less preliminary data work.
-
-1. Final [solutions](../solutions/exercise3/solutions.pdf) in PDF. My actual `R Markdown` document is [here](../solutions/exercise3/solutions.Rmd), and [here](../solutions/exercise3/solutions.tex) is the `tex` file in case anyone is interested.
-
-2. Analysis file [here](../solutions/exercise3/analysis.R). This is where I do the actual analysis. As usual, notice that I remove a bunch of large objects and save the workspace. I then call the workspace in my markdown file.
 

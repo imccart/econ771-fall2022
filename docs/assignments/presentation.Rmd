@@ -1,23 +1,14 @@
 ---
 title: "Presentations"
 author: "Econ 771: Health Economics II"
-date: "Due: See class schedule"
+date: "Due: See class schedule and syllabus"
 output: 
   bookdown::html_document2:
-    toc: TRUE
-    toc_float: TRUE
-    toc_depth: 2
-    theme: darkly
     number_sections: FALSE
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(RefManageR)
-source('paths.R')
-bib <- ReadBib(paste0(bib.path,'/BibTeX_Library.bib'))
-myopts <- BibOptions(bib.style = "authoryear", style="html", first.inits=FALSE, max.names = 20, check.entries=FALSE)
-
 ```
 
 
@@ -34,165 +25,13 @@ advdate <- function(adv) {
  tmp <- paste("Class ",zadv,sep='',", ", tday)
  return(tmp)
 }
-library(RefManageR)
-bib <- ReadBib('D:/CloudStation/Professional/Bibliography/BibTeX_Library.bib')
-myopts <- BibOptions(bib.style = "authoryear", style="html", first.inits=FALSE, max.names = 20, check.entries=FALSE)
 ```
 
 
 # Overview
-This describes the logistics and expectations for the presentations. Below is a list of the days and papers that you can select to present to the class. You must select two papers to present. Please send me your selections no later than **August 21, 2020**.
+This describes the logistics and expectations for the presentations. You can choose to present any paper listed as a "primary reading" in the [syllabus](syllabus/syllabus-771.pdf). Please inform me of your selected papers no later than **Friday, September 2**. Please also note your papers and class dates on the Google Sheet [here](https://docs.google.com/spreadsheets/d/1d6IVg-khbreLKobiczNwEOT9gjPNNykrFEtc2rXdJ4I/edit?usp=sharing).
 
-Once your papers have been approved, please "accept" each presentation as an assignment on our GitHub classroom page. This will initialize a GitHub repository where you can edit and ultimately craft your answers in your data management/econometrics software of choice.  
-
-You will "turn in" your repository to me with your presentations all supporting documents. Please create a final document with your main presentation in a PDF. Please also be sure to include in your repository all of your supporting code files. Practice writing good code and showing me only what I would need to recreate your results.
-
-
-
-# Potential papers
-Below is a list of papers and dates that you can select to present.
-
-
-### `r advdate(3)`
-
-```{r, echo = FALSE, results="asis"} 
-bib[c("duggan2000", "horwitz2009", "bayindir2012")]
-``` 
-
-Note that Horwitz and Nichols (2009) and Bayindir (2012) are combined in the class presentations. So those two just count as one paper/presentation. Both of those papers are closely related and so it makes sense to present those papers together. The papers are also relatively short.
-
-
-### `r advdate(4)`
-
-```{r, echo = FALSE, results="asis"} 
-bib[c("dafny2005", "dranove2019")]
-``` 
-
-
-### `r advdate(5)`
-
-
-```{r, echo = FALSE, results="asis"} 
-bib["dranove2017"]
-``` 
-
-I will begin this class with a brief discussion of Dranove (1988) and some theoretical issues related to hospital cost-shifting. Then one of you will present Dranove (2017).
-
-
-### `r advdate(6)`
-
-```{r, echo = FALSE, results="asis"} 
-bib[c("batty2017", "eliason2018", "geruso2020")]
-``` 
-
-
-### `r advdate(9)`
-
-```{r, echo = FALSE, results="asis"} 
-bib[c("finkelstein2016","molitor2018")]
-``` 
-
-
-### `r advdate(10)`
-
-```{r, echo = FALSE, results="asis"} 
-bib[c("gruber1996","clemens2014")]
-``` 
-
-
-### `r advdate(11)`
-
-```{r, echo = FALSE, results="asis"} 
-bib[c("baicker2013", "clemens2017")]
-``` 
-
-
-### `r advdate(13)`
-
-```{r, echo = FALSE, results="asis"} 
-bib[c("cooper2018","ketcham2012")]
-``` 
-
-
-### `r advdate(14)`
-
-```{r, echo = FALSE, results="asis"} 
-bib[c("handel2013","ericson2014")]
-``` 
-
-
-### `r advdate(15)`
-
-```{r, echo = FALSE, results="asis"} 
-bib[c("dranove2003more","dafny2008")]
-``` 
-
-
-### `r advdate(16)`
-
-```{r, echo = FALSE, results="asis"} 
-bib["grennan2020"]
-``` 
-
-I will have a brief presentation to start the class focusing on the theory of price disclosure. Then one of you will present Grennan (2020)
-
-
-### `r advdate(19)`
-
-```{r, echo = FALSE, results="asis"} 
-bib["dranove2016"]
-``` 
-
-In addition to the student-led presentation of Dranove (2016), I will spend some time today discussing how define hospital markets.
-
-
-### `r advdate(20)`
-
-```{r, echo = FALSE, results="asis"} 
-bib[c("kessler2000","cooper2017")]
-``` 
-
-
-### `r advdate(21)`
-
-```{r, echo = FALSE, results="asis"} 
-bib["ho2017"]
-``` 
-
-This is a tough paper, so it's the only one on the schedule for today.
-
-
-### `r advdate(22)`
-
-```{r, echo = FALSE, results="asis"} 
-bib[c("dafny2009","craig2008")]
-``` 
-
-
-### `r advdate(23)`
-
-
-```{r, echo = FALSE, results="asis"} 
-bib[c("dafny2019","schmitt2018")]
-``` 
-
-
-### `r advdate(24)`
-
-```{r, echo = FALSE, results="asis"} 
-bib["eliason2020"]
-``` 
-
-Whoever presents today should spend a little more time talking about the dialysis industry, as this is our first (and only) exposure to that industry in this class.
-
-
-### `r advdate(25)`
-
-```{r, echo = FALSE, results="asis"} 
-bib[c("luco2020","koch2017","lin2020")]
-``` 
-
-I'll briefly discuss some theoretical issues from Luco (2020), and then we'll move to the student-led presentations for Koch (2017) and Lin (2020).
+Please "submit" your presentations as a GitHub repository link or, if doing everything within Overleaf, as a link to your Overleaf project. The repo or Overleaf project must include a final document with your slides easily available. Be sure to include in your repository or project folder all of your supporting code files. Feel free to draft your slides in any language you want (LaTeX, PowerPoint, R Markdown, Quarto)
 
 
 # Expectations

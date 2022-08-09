@@ -1,12 +1,9 @@
 ---
 title: "Module 4 Empirical Exercise"
 author: "Econ 771: Health Economics II"
-date: "Due: Tuesday, November 24"
+date: "Due: Wednesday, December 14"
 output: 
   bookdown::html_document2:
-    toc: TRUE
-    toc_float: TRUE
-    theme: darkly
     number_sections: FALSE
 ---
 
@@ -17,9 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # Overview
 In this assignment, we're going to work through some applied issues related to measuring hospital markets and estimating demand with market-level data.
 
-To begin, please "accept" the assignment on our GitHub classroom page. This will initialize a GitHub repository where you can edit and ultimately craft your answers in your data management/econometrics software of choice.  
-
-You will "turn in" your repository to me with your answers and all supporting documents. Please create a final document with your main answers and analyses in a PDF. Please also be sure to include in your repository all of your supporting code files. Practice writing good code and showing me only what I would need to recreate your results.
+Please "submit" your answers as a GitHub repository link. In this repo, please include a final document with your main answers and analyses in a PDF. Be sure to include in your repository all of your supporting code files. Practice writing good code and showing me only what I would need to recreate your results.
 
 
 # Resources and data
@@ -30,7 +25,7 @@ The data for this assignment comes from three sources:
 2. **Hospital Market GitHub Repo**: John Graves has an excellent GitHub repository detailing the issues in measuring hospital markets. You can access that repo [here](https://github.com/graveja0/health-care-markets). To replicate some of his work using the community detection algorithm, you'll need to use the [Hospital Service Area Files](https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Hospital-Service-Area-File/index). The link takes you to the CMS website where you can download the data directly. I've also put these data in the "HSAF" folder on our AWS AMI. Note that much of John's code deals with presenting the markets on a map, rather than physically constructing the markets empirically. For a condensed version of the code focusing more on the market formation rather than mapping, see my GitHub repo [here](https://github.com/imccart/hospital-markets).
 
 
-Note: Given the time crunch of the semester and the complexity of some of the raw data work for this assignment, I'm going to try to give you all a break here by skipping some steps for you. On our Canvas site, you'll find the 'hospital_markets.rds' data, which is the output from the hospital market github repo. I've also uploaded a couple of other geographic data files to give you info on HRR, zip, and fips. Once you've organized the HCRIS data following the repo listed in (1) above, ese the following code chunk to combine all of the data for this assignment:
+Note: Given the time crunch of the semester and the complexity of some of the raw data work for this assignment, I'm going to try to give you all a break here by skipping some steps for you. On our Canvas site, you'll find the 'hospital_markets.rds' data, which is the output from the hospital market github repo. I've also uploaded a couple of other geographic data files to give you info on HRR, zip, and fips. Once you've organized the HCRIS data following the repo listed in (1) above, use the following code chunk to combine all of the data for this assignment:
 
 ```{r, eval=FALSE}
 hcris.data <- readRDS(paste0(hcris.path,'/HCRIS_Data.rds'))
