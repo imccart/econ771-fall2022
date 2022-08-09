@@ -2,4 +2,75 @@
 title: "Supplemental Resources"
 ---
 
-Stay tuned for links supplemental resources...
+
+## Data
+We'll come across the following datasets throughout the course. Some of these link to GitHub repositories that I and others have put together to help with some of the larger, more cumbersome data endeavors. Others are just direct links to the downloadable data on the CMS or NBER websites. This is a long list...the goal is not for you to all use each of these datasets in detail in this class. Rather, the goal is that you have some understanding of the available public use datasets for studying supply-side issues in U.S. healthcare. We'll use a subset of these datasets in our exercises for each module.
+
+1. [Medicare Advantage](https://github.com/imccart/Medicare-Advantage)
+
+2. [HCRIS](https://github.com/imccart/HCRIS)
+
+3. [Provider of Services](https://github.com/asacarny/provider-of-services)
+
+4. [Hospital Compare](https://github.com/asacarny/hospital-compare)
+
+5. [Physician Fee Schedule](https://github.com/imccart/PFS_Update_2010). See also the replication files for [Dranove and Ody (2019)](https://www.aeaweb.org/articles?id=10.1257/pol.20170020).
+
+6. [National Inpatient Sample, HCUP](https://www.hcup-us.ahrq.gov/db/nation/nis/nisdbdocumentation.jsp)
+
+7. [Inpatient Prospective Payment System Final Rule Files](https://data.nber.org/data/cms-impact-file-hospital-inpatient-prospective-payment-system-ipps.html)
+
+8. [Physician Compare](https://data.medicare.gov/data/physician-compare)
+
+9. [Provider Utilization and Payment Data](https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Physician-and-Other-Supplier)
+
+10. [Area Health Resources Files](https://data.hrsa.gov/topics/health-workforce/ahrf)
+
+11. [NPPES](https://www.cms.gov/Regulations-and-Guidance/Administrative-Simplification/NationalProvIdentStand/DataDissemination)
+
+12. [Medicare Part D](https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/MCRAdvPartDEnrolData)
+
+13. [Hospital Mergers](https://healthcarepricingproject.org/)
+
+14. [Measuring Hospital Markets](https://github.com/graveja0/health-care-markets)
+
+15. [Hospital Service Area Files](https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Hospital-Service-Area-File/index)
+
+
+## Econometrics
+Here's a nice list of **free** econometrics resources that will be relevant for this class:
+
+- [Causal Inference: The Mixtape](http://scunning.com/mixtape.html) by Scott Cunningham
+- [Causal Inference Book](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) by Jamie Robin and Miguel Hernan
+- [Econometrics](https://www.ssc.wisc.edu/~bhansen/econometrics/) by Bruce Hansen
+- [Introductory Econometrics](https://github.com/NickCH-K/econometrics) class notes from Nick Huntington-Klein
+- [Causal Inference for the Brave and True](https://matheusfacure.github.io/python-causality-handbook/landing-page.html)
+- [Causal Inference: What If](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/)
+
+- Resources for specific estimators and research designs:
+  - [The DiD Project](https://asjadnaqvi.github.io/DiD/). An up-to-date compilation of code, literature, and accessible blog/video posts from [Asjad Naqvi](https://asjadnaqvi.github.io/)
+  - [RD Designs and Packages](https://rdpackages.github.io/). Comprehensive set of RD tools and links to the most recent literature from [Matias Cattaneo](https://cattaneo.princeton.edu/) and team.
+  - [Nonparametric and Semiparametric Methods](https://nppackages.github.io/). Another great set of tools for implementing nonparametric and semiparametric methods in program evaluation from [Matias Cattaneo](https://cattaneo.princeton.edu/) and team.
+
+
+## Coding and Data Management
+For those of you still somewhat new to programming, here are a few nice resources.
+
+- [R for Data Science](https://r4ds.had.co.nz/)
+- [Coding for Economists](https://aeturrell.github.io/coding-for-economists/intro.html)
+- For a great resource on `R` and lots of important data science topics, see Grant McDermott's [Data science for economists](https://github.com/uo-ec607/lectures) GitHub repository
+- Ever wish you had a central resource for lots of little commands and how to do things in different stats packages? Nick Huntington-Klein thought the same thing in his [Library of Statistical Techniques (LOST)](https://lost-stats.github.io/).
+
+
+
+## Writing and Presenting
+
+Academics aren't known for their patience, and economists are probably worse than most. Learning how to write concisely and present effectively for your audience is critical. Here are some helpful links (hat tip to [Christoph Kronenberg](https://sites.google.com/view/christoph-kronenberg/home/resources) and [Amanda Agan](https://sites.google.com/site/amandayagan/Home) for gathering many these on their websites first)
+
+- Formulae for an [Introduction](https://www.albany.edu/spatial/training/5-The%20Introduction%20Formula.pdf) by Keith Head, [Body](https://marcfbellemare.com/wordpress/12797) by Marc Bellemare, and [Conclusion](https://marcfbellemare.com/wordpress/12060) by Marc Bellemare
+- [Ten Most Important Rules of Writing Your Job Market Paper](http://home.bi.no/charlotte.ostergaard/students/tenruleswriting.pdf) by Claudia Goldin and Lawrence Katz
+- [Paper writing gone Hollywood](https://science.sciencemag.org/content/355/6320/102)
+- [Four steps to an applied micro paper](https://www.brown.edu/Research/Shapiro/pdfs/foursteps.pdf)
+- [How to give an applied micro talk](https://www.brown.edu/Research/Shapiro/pdfs/applied_micro_slides.pdf)
+- [Public speaking for academic economists](https://www.dropbox.com/s/vvzwjnjfa0yjqro/public_speaking_for_academic_economists.pdf?dl=0) by Rachel Meager
+- [Beamer tips for presentations](https://github.com/paulgp/beamer-tips/blob/master/slides.pdf) by Paul Goldsmith-Pinkham
