@@ -23,8 +23,8 @@ This is the guide for **Module 2**, which covers issues related to physician age
 
 # Causal inference topics
 1. Instrumental variables and required assumptions
-2. Treatment effects with IV
-3. Using predictions as instruments
+2. IV and local average treatment effects
+3. Bartik and shift-share instruments
 
 
 # Main datasets
