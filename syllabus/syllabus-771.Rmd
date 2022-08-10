@@ -338,6 +338,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @baker2016
   - @chernew2021
   - @mcguire1991
+  - @ho2014  
   
   
 ## `r advdate(11)`: Physician learning
@@ -429,8 +430,13 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
 **Primary reading:**<br>
 
-  - @chernew2021
+  - @brown2019
   - @grennan2020
+
+**Supplemental reading:**<br>
+
+  - @chernew2021
+  - @brot-goldberg2017
 
 ### `r advdate(20)` and `r advdate(21)`: Application
 
@@ -480,13 +486,14 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 **Primary reading:**<br>
 
   - @kessler2000
-  - @cooper2019
+  - @miller2022
 
 **Supplemental:**<br>
 
   - @dranove1992
   - @lynk1995
   - @keeler1999
+  - @cooper2019  
 
 
 ### `r advdate(25)`: Bargaining framework
