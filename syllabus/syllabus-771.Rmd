@@ -295,6 +295,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
   - @gupta2021
   - @callaway2021
+  - @sun2022
   - @rambachan2022
   - @roth2022
   - @arkhangelsky2021
