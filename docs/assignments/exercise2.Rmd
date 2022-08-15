@@ -18,23 +18,19 @@ Please "submit" your answers as a GitHub repository link. In this repo, please i
 
 
 # Resources and data
-The data for this assignment comes from two sources:
-
-1. **Medicare Advantage Data**: The Centers for Medicare and Medicaid services provides a ton of Medicare Advantage data. My [Medicare Advantage GitHub Repo](https://github.com/imccart/Medicare-Advantage) should help for those interested in building a comprehensive MA dataset. For this exercise, we'll just use the data on MA penetration and benchmark rates. The raw data are available on our AWS AMI in the "Medicare Advantage" folder, and my GitHub repo has designated code files for each of these two data sources. To make things simpler, you can just use the December penetration data from each year rather than reading in all months of data and averaging. But you're welcome to do it either way.
-
-2. **Area Health Resources Files**: We'll use the [AHRF](https://data.hrsa.gov/topics/health-workforce/ahrf) to form county-level measures of healthcare expenditures. We could also use the HCRIS from exercise 1 to create something on our own, but we'll stick with the AHRF so that we get exposure to another common dataset. These data are available for direct download in the link above. I've also placed all of the data in an "AHRF" folder on our AWS AMI. Please use the "standardized, risk-adjusted per capita Medicare cost" as our county-level measure of expenditure. *hint: you should look into the `SAScii` package to help read the ascii data into `R` using the `SAS` input file.*
+The data for this assignment comes from three sources:
 
 
 # Questions
 In your GitHub repository, please be sure to clearly address/answer the following questions.
 
-1. Provide and discuss a table of simple summary statistics showing the mean, standard deviation, min, and max of the Medicare Advantage penetration rate, benchmark payments, and utilization measures. 
+1. Provide and discuss a table of simple summary statistics showing the mean, standard deviation, min, and max of total physician-level Medicare spending, claims, and patients.
 
-2. Plot the mean county-level utilization against the mean MA penetration rate for each year (just one scatter plot with the mean of each variable by year). 
+2. Plot the mean physician effort for integrated versus non-integrated physicians over time.
 
-3. Using the MA benchmark as an IV for MA penetration rates, estimate the effects of MA penetration on utilization. This is analogous to the specification in Baicker, Chernew, and Robbins (2013).
+3. Using the medicare payment policy shock, estimate the effects of integration on physician effort. Present the first stage and reduced form results.
 
-4. Present the "first stage" and "reduced form" results of your IV estimates in Part 3.
+4. Specification and robustness checks
 
-5. Present selected specification/robustness checks of your IV and discuss two weaknesses of this identification strategy.
+5. Recentering and shift-share
 

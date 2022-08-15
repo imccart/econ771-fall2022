@@ -297,11 +297,11 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @sun2021
   - @rambachan2022
   - @roth2022
-  - @arkhangelsky2021
   
 **Supplemental reading:**<br>
 
   - Too many to list! If you want to get up to speed on DD, please take a look at this [DiD Project](https://asjadnaqvi.github.io/DiD/docs/reading/04_literature/). It  has code, lit review, and links to other videos and blog posts.
+  - @arkhangelsky2021
 
 ## Module 2: Physicians
 
