@@ -288,14 +288,13 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
 ### `r advdate(6)` - `r advdate(8)`: Application
 
-  - **Question:** How do hospitals respond to pay for performance programs?
+  - **Question:** How does insurance expansion affect hospital uncompensated care?
   - **Research design:** Difference-in-differences
 
 **Primary reading:**<br>
 
-  - @gupta2021
   - @callaway2021
-  - @sun2022
+  - @sun2021
   - @rambachan2022
   - @roth2022
   - @arkhangelsky2021

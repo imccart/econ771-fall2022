@@ -358,15 +358,15 @@ pre code {
 
 <div id="overview" class="section level1">
 <h1>Overview</h1>
-<p>In this assignment, we’re going to work through some applied issues related to causal inference in panel data, mainly focusing on difference-in-differences and event studies. These are the workhorses of modern applied empirical microeconomics (although not as much of a panacea as once perceived).</p>
-<p>Please “submit” your answers as a GitHub repository link. In this repo, please include a final document with your main answers and analyses in a PDF. Be sure to include in your repository all of your supporting code files. Practice writing good code and showing me only what I would need to recreate your results.</p>
+<p>In this assignment, we’re going to focus on causal inference in panel data, specifically on difference-in-differences and event studies. These are the workhorses of modern applied empirical microeconomics (although not as much of a panacea as once perceived). We’ll employ these research designs in the context of hospital “uncompensated care.” The simple question we want to consider is, “Does insurance expansion reduce hospital uncompensated care?”</p>
+<p>Please “submit” your answers as a GitHub repository link. In your repo, please include a final document with your main answers and analyses in a PDF, along with all of your supporting code files. Practice writing good code and showing me (and others) what we would need to recreate your results. Be sure to have some set of instructions (e.g., as part of your ReadMe file) that introduce the reader to your data and the sequence in which your code should be run.</p>
 </div>
 <div id="resources-and-data" class="section level1">
 <h1>Resources and data</h1>
-<p>The data for this assignment comes from three sources:</p>
+<p>The data for this assignment comes from three sources. These data will be made available on our class OneDrive folder.</p>
 <ol style="list-style-type: decimal">
-<li><p><strong>Inpatient Prospective Payment System Final Rule Files</strong>: The Centers for Medicare and Medicaid services publishes these data annually, and they contain some basic information about the types of patients admitted to hospitals in a given year. The data are available on our shared AWS AMI under the “IPPS” folder. They are also available for you to download directly from the <a href="https://data.nber.org/data/cms-impact-file-hospital-inpatient-prospective-payment-system-ipps.html">NBER IPPS Data</a>. You can get the data from CMS as well, but they no longer host the historic data so the NBER link is your best option for these exercises. Use these data to get information on hospital case mix and disproportionate share information.</p></li>
-<li><p><strong>Provider of Services files</strong>: These data are available from <a href="https://data.nber.org/data/provider-of-services.html">NBER POS</a> as well as at <a href="https://github.com/asacarny/provider-of-services">Adam Sacarny’s GitHub repo</a>. I’ve also made these data available on our shared AWS AMI in the “POS” folder. Use these data to get information on hospital ownership type.</p></li>
+<li><p><strong>Hospital Cost Report Information System</strong>: Hospitals submit cost reports to CMS with a wealth of (very messy) data on the hospital, including information on the extent of uncompensated care provided by the hospital in that fiscal year. You can get started with these data using my GitHub repository, <a href="https://github.com/imccart/HCRIS">HCRIS</a>.</p></li>
+<li><p><strong>Provider of Services files</strong>: These data are available from <a href="https://data.nber.org/data/provider-of-services.html">NBER POS</a> as well as at <a href="https://github.com/asacarny/provider-of-services">Adam Sacarny’s GitHub repo</a>. They provide information on characteristics of healthcare providers, including information on hospital ownership type. We’ll use these files to collect some basic hospital-level covariates.</p></li>
 <li><p><strong>Medicaid Expansion</strong>: Data on which states expanded Medicaid under the ACA, and when they expanded, is available from the Kaiser Family Foundation website. For more info, see my GitHub repository, <a href="https://github.com/imccart/Insurance-Access">Insurance Access</a>.</p></li>
 </ol>
 </div>
@@ -374,11 +374,25 @@ pre code {
 <h1>Questions</h1>
 <p>In your GitHub repository, please be sure to clearly address/answer the following questions.</p>
 <ol style="list-style-type: decimal">
-<li><p>Provide and discuss a table of simple summary statistics showing the mean, standard deviation, min, and max of the case mix index and disproportionate share across years.</p></li>
-<li><p>Create two figures showing the mean hospital disproportionate share and cmi from 1986 to 2018. Show this trend separately by hospital ownership type (private not for profit and private for profit).</p></li>
-<li><p>Using a simple DD identification strategy, estimate the effect of Medicaid expansion on the hospital disproportionate share percentage. Do these effects differ by profit status (i.e., re-estimate with a DDD using profit status)? Focus your analysis on the years from 2005 through 2018.</p></li>
-<li><p>Estimate an “event study” version of the DD model from part 3. Focus only on states that expanded in 2014 that those that have never expanded.</p></li>
-<li><p>Estimate another event study where you allow for differential treatment timing and incorporate all states.</p></li>
+<li><p>Provide and discuss a table of simple summary statistics showing the mean, standard deviation, min, and max of hospital total revenues and uncompensated care over time.</p></li>
+<li><p>Create a figure showing the mean hospital uncompensated care from 2000 to 2018. Show this trend separately by hospital ownership type (private not for profit and private for profit).</p></li>
+<li><p>Using a simple DD identification strategy, estimate the effect of Medicaid expansion on hospital uncompensated care using a traditional two-way fixed effects (TWFE) estimation:</p></li>
+</ol>
+<p><span class="math display" id="eq:dd">\[\begin{equation}
+y_{it} = \alpha_{i} + \gamma_{t} + \delta D_{it} + \varepsilon_{it},
+\tag{1}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(D_{it}=1(E_{i}\leq t)\)</span> in Equation <a href="#eq:dd">(1)</a> is an indicator set to 1 when a hospital is in a state that expanded as of year <span class="math inline">\(t\)</span> or earlier, <span class="math inline">\(\gamma_{t}\)</span> denotes time fixed effects, <span class="math inline">\(\alpha_{i}\)</span> denotes hospital fixed effects, and <span class="math inline">\(y_{it}\)</span> denotes the hospital’s amount of uncompensated care in year <span class="math inline">\(t\)</span>. Present four estimates from this estimation in a table: one based on the full sample (regardless of treatment timing); one when limiting to the 2014 treatment group (with never treated as the control group); one when limiting to the 2015 treatment group (with never treated as the control group); and one when limiting to the 2016 treatment group (with never treated as the control group). Briefly explain any differences.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Estimate an “event study” version of the DD model from part 3:</li>
+</ol>
+<p><span class="math display" id="eq:event">\[\begin{equation}
+y_{it} = \alpha_{i} + \gamma_{t} +\sum_{\tau &lt; -1} D_{it}^{\tau} \delta_{\tau} + \sum_{\tau&gt;=0} D_{it}^{\tau} \delta_{\tau} + \varepsilon_{it},
+\tag{2}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(D_{it}^{\tau} = 1(t-E_{i}=\tau)\)</span> in Equation <a href="#eq:event">(2)</a> is essentially an interaction between the treatment dummy and a relative time dummy. In this notation and context, <span class="math inline">\(\tau\)</span> denotes years relative to Medicaid expansion, so that <span class="math inline">\(\tau=-1\)</span> denotes the year before a state expanded Medicaid, <span class="math inline">\(\tau=0\)</span> denotes the year of expansion, etc. Estimate with two different samples: one based on the full sample and one based only on those that expanded in 2014 (with never treated as the control group).</p>
+<ol start="5" style="list-style-type: decimal">
+<li>Estimate another event study where you allow for differential treatment timing and incorporate all states.</li>
 </ol>
 </div>
 

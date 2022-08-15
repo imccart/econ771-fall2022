@@ -12,17 +12,17 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Overview
-In this assignment, we're going to work through some applied issues related to causal inference in panel data, mainly focusing on difference-in-differences and event studies. These are the workhorses of modern applied empirical microeconomics (although not as much of a panacea as once perceived). 
+In this assignment, we're going to focus on causal inference in panel data, specifically on difference-in-differences and event studies. These are the workhorses of modern applied empirical microeconomics (although not as much of a panacea as once perceived). We'll employ these research designs in the context of hospital "uncompensated care." The simple question we want to consider is, "Does insurance expansion reduce hospital uncompensated care?"
 
-Please "submit" your answers as a GitHub repository link. In this repo, please include a final document with your main answers and analyses in a PDF. Be sure to include in your repository all of your supporting code files. Practice writing good code and showing me only what I would need to recreate your results.
+Please "submit" your answers as a GitHub repository link. In your repo, please include a final document with your main answers and analyses in a PDF, along with all of your supporting code files. Practice writing good code and showing me (and others) what we would need to recreate your results. Be sure to have some set of instructions (e.g., as part of your ReadMe file) that introduce the reader to your data and the sequence in which your code should be run.
 
 
 # Resources and data
-The data for this assignment comes from three sources:
+The data for this assignment comes from three sources. These data will be made available on our class OneDrive folder.
 
-1. **Inpatient Prospective Payment System Final Rule Files**: The Centers for Medicare and Medicaid services publishes these data annually, and they contain some basic information about the types of patients admitted to hospitals in a given year. The data are available on our shared AWS AMI under the "IPPS" folder. They are also available for you to download directly from the [NBER IPPS Data](https://data.nber.org/data/cms-impact-file-hospital-inpatient-prospective-payment-system-ipps.html). You can get the data from CMS as well, but they no longer host the historic data so the NBER link is your best option for these exercises. Use these data to get information on hospital case mix and disproportionate share information.
+1. **Hospital Cost Report Information System**: Hospitals submit cost reports to CMS with a wealth of (very messy) data on the hospital, including information on the extent of uncompensated care provided by the hospital in that fiscal year. You can get started with these data using my GitHub repository, [HCRIS](https://github.com/imccart/HCRIS).
 
-2. **Provider of Services files**: These data are available from [NBER POS](https://data.nber.org/data/provider-of-services.html) as well as at [Adam Sacarny's GitHub repo](https://github.com/asacarny/provider-of-services). I've also made these data available on our shared AWS AMI in the "POS" folder. Use these data to get information on hospital ownership type.
+2. **Provider of Services files**: These data are available from [NBER POS](https://data.nber.org/data/provider-of-services.html) as well as at [Adam Sacarny's GitHub repo](https://github.com/asacarny/provider-of-services). They provide information on characteristics of healthcare providers, including information on hospital ownership type. We'll use these files to collect some basic hospital-level covariates.
 
 3. **Medicaid Expansion**: Data on which states expanded Medicaid under the ACA, and when they expanded, is available from the Kaiser Family Foundation website. For more info, see my GitHub repository, [Insurance Access](https://github.com/imccart/Insurance-Access).
 
@@ -30,12 +30,43 @@ The data for this assignment comes from three sources:
 # Questions
 In your GitHub repository, please be sure to clearly address/answer the following questions.
 
-1. Provide and discuss a table of simple summary statistics showing the mean, standard deviation, min, and max of the case mix index and disproportionate share across years. 
+1. Provide and discuss a table of simple summary statistics showing the mean, standard deviation, min, and max of hospital total revenues and uncompensated care over time.
 
-2. Create two figures showing the mean hospital disproportionate share and cmi from 1986 to 2018. Show this trend separately by hospital ownership type (private not for profit and private for profit).
+2. Create a figure showing the mean hospital uncompensated care from 2000 to 2018. Show this trend separately by hospital ownership type (private not for profit and private for profit).
 
-3. Using a simple DD identification strategy, estimate the effect of Medicaid expansion on the hospital disproportionate share percentage. Do these effects differ by profit status (i.e., re-estimate with a DDD using profit status)? Focus your analysis on the years from 2005 through 2018.
+3. Using a simple DD identification strategy, estimate the effect of Medicaid expansion on hospital uncompensated care using a traditional two-way fixed effects (TWFE) estimation:
 
-4. Estimate an "event study" version of the DD model from part 3. Focus only on states that expanded in 2014 that those that have never expanded.
+\begin{equation}
+y_{it} = \alpha_{i} + \gamma_{t} + \delta D_{it} + \varepsilon_{it},
+(\#eq:dd)
+\end{equation}
 
-5. Estimate another event study where you allow for differential treatment timing and incorporate all states.
+where $D_{it}=1(E_{i}\leq t)$ in Equation \@ref(eq:dd) is an indicator set to 1 when a hospital is in a state that expanded as of year $t$ or earlier, $\gamma_{t}$ denotes time fixed effects, $\alpha_{i}$ denotes hospital fixed effects, and $y_{it}$ denotes the hospital's amount of uncompensated care in year $t$. Present four estimates from this estimation in a table: one based on the full sample (regardless of treatment timing); one when limiting to the 2014 treatment group (with never treated as the control group); one when limiting to the 2015 treatment group (with never treated as the control group); and one when limiting to the 2016 treatment group (with never treated as the control group). Briefly explain any differences.
+
+4. Estimate an "event study" version of the specification in part 3:
+
+\begin{equation}
+y_{it} = \alpha_{i} + \gamma_{t} +\sum_{\tau < -1} D_{it}^{\tau} \delta_{\tau} + \sum_{\tau>=0} D_{it}^{\tau} \delta_{\tau} + \varepsilon_{it},
+(\#eq:event)
+\end{equation}
+
+where $D_{it}^{\tau} = 1(t-E_{i}=\tau)$ in Equation \@ref(eq:event) is essentially an interaction between the treatment dummy and a relative time dummy. In this notation and context, $\tau$ denotes years relative to Medicaid expansion, so that $\tau=-1$ denotes the year before a state expanded Medicaid, $\tau=0$ denotes the year of expansion, etc. Estimate with two different samples: one based on the full sample and one based only on those that expanded in 2014 (with never treated as the control group).
+
+5. Sun and Abraham show that the $\delta_{\tau}$ coefficients in Equation \@ref(eq:event) can be written as a non-conxvex average of all other group-time specific average treatment effects. They propose an interaction weighted specification:
+
+\begin{equation}
+y_{it} = \alpha_{i} + \gamma_{t} +\sum_{e} \sum_{\tau \neq -1} \left(D_{it}^{\tau} \times 1(E_{i}=e)\right) \delta_{e, \tau} + \varepsilon_{it},
+(\#eq:iwevent)
+\end{equation}
+
+Re-estimate your event study using the specification in Equation \@ref(eq:iwevent). Show your results for $\hat{\delta}_{e, \tau}$ in a Table, focusing on states with $E_{i}=2014$, $E_{i}=2015$, and $E_{i}=2016$.
+
+6. Present an event study graph based on the results in part 5. Hint: you can do this automatically in `R` with the `fixest` package (using the `sunab` syntax for interactions), or with `eventstudyinteract` in `Stata`. These packages help to avoid mistakes compared to doing the tables/figures manually and also help to get the standard errors correct.
+
+7. Callaway and Sant'Anna
+
+8. Rambachan and Roth
+
+9. Arkhangelsky et al
+
+10. Discuss and reflect

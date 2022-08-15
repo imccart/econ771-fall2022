@@ -52,4 +52,21 @@ y_{it} = \alpha_{i} + \gamma_{t} +\sum_{\tau < -1} D_{it}^{\tau} \delta_{\tau} +
 
 where $D_{it}^{\tau} = 1(t-E_{i}=\tau)$ in Equation \@ref(eq:event) is essentially an interaction between the treatment dummy and a relative time dummy. In this notation and context, $\tau$ denotes years relative to Medicaid expansion, so that $\tau=-1$ denotes the year before a state expanded Medicaid, $\tau=0$ denotes the year of expansion, etc. Estimate with two different samples: one based on the full sample and one based only on those that expanded in 2014 (with never treated as the control group).
 
-5. Sun and Abraham show that 
+5. Sun and Abraham show that the $\delta_{\tau}$ coefficients in Equation \@ref(eq:event) can be written as a non-conxvex average of all other group-time specific average treatment effects. They propose an interaction weighted specification:
+
+\begin{equation}
+y_{it} = \alpha_{i} + \gamma_{t} +\sum_{e} \sum_{\tau \neq -1} \left(D_{it}^{\tau} \times 1(E_{i}=e)\right) \delta_{e, \tau} + \varepsilon_{it},
+(\#eq:iwevent)
+\end{equation}
+
+Re-estimate your event study using the specification in Equation \@ref(eq:iwevent). Show your results for $\hat{\delta}_{e, \tau}$ in a Table, focusing on states with $E_{i}=2014$, $E_{i}=2015$, and $E_{i}=2016$.
+
+6. Present an event study graph based on the results in part 5. Hint: you can do this automatically in `R` with the `fixest` package (using the `sunab` syntax for interactions), or with `eventstudyinteract` in `Stata`. These packages help to avoid mistakes compared to doing the tables/figures manually and also help to get the standard errors correct.
+
+7. Callaway and Sant'Anna
+
+8. Rambachan and Roth
+
+9. Arkhangelsky et al
+
+10. Discuss and reflect
