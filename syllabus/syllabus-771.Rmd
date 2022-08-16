@@ -361,13 +361,14 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
 ### `r advdate(12)` - `r advdate(13)`: Application
 
-  - **Question:** Physician effort and hospital ownership
+  - **Question:** Physician effort and integration with hospitals
   - **Research design:** Instrumental variables
 
 **Primary reading:**<br>
   
   - @dranove2019
-  - @borusyak2021restud
+  - @borusyak2021
+  - @oster2019
 
 **Supplemental reading:**<br>
 
@@ -377,6 +378,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @heckman2006
   - @andrews2019
   - @lee2021
+  - @borusyak2021restud
 
 ### `r advdate(14)`: Fall break
 

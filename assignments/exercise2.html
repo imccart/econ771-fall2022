@@ -239,6 +239,28 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 
 
@@ -358,27 +380,68 @@ pre code {
 
 <div id="overview" class="section level1">
 <h1>Overview</h1>
-<p>In this assignment, we’re going to work through some applied issues related to instrumental variables. For a long time, IV (or 2SLS) was the primary identification strategy for applied empirical micro, but it fell out of favor as people became more aware of the assumptions underlying the estimator and better understand what IV actually estimates (not the ATE in most cases). People also started to find other strategies that were more compelling in some applications (and of course with some other assumptions).</p>
+<p>In this assignment, we’re going to work through some applied issues related to instrumental variables. For a long time, IV (or 2SLS) was a very common identification strategy for applied empirical micro, but it fell out of favor as people became more aware of the assumptions underlying the estimator and better understood what IV actually estimates (not the ATE in most cases). People also started to find other strategies that were more compelling in some applications (and of course with some other assumptions). In this assignment, we’re going to study the effects of a physician’s affiliation with a hospital on physician practice patterns, and we’ll instrument for physician affiliation using some specific Medicare payment shocks.</p>
 <p>Please “submit” your answers as a GitHub repository link. In this repo, please include a final document with your main answers and analyses in a PDF. Be sure to include in your repository all of your supporting code files. Practice writing good code and showing me only what I would need to recreate your results.</p>
 </div>
 <div id="resources-and-data" class="section level1">
 <h1>Resources and data</h1>
-<p>The data for this assignment comes from two sources:</p>
+<p>The data for this assignment comes from three sources:</p>
 <ol style="list-style-type: decimal">
-<li><p><strong>Medicare Advantage Data</strong>: The Centers for Medicare and Medicaid services provides a ton of Medicare Advantage data. My <a href="https://github.com/imccart/Medicare-Advantage">Medicare Advantage GitHub Repo</a> should help for those interested in building a comprehensive MA dataset. For this exercise, we’ll just use the data on MA penetration and benchmark rates. The raw data are available on our AWS AMI in the “Medicare Advantage” folder, and my GitHub repo has designated code files for each of these two data sources. To make things simpler, you can just use the December penetration data from each year rather than reading in all months of data and averaging. But you’re welcome to do it either way.</p></li>
-<li><p><strong>Area Health Resources Files</strong>: We’ll use the <a href="https://data.hrsa.gov/topics/health-workforce/ahrf">AHRF</a> to form county-level measures of healthcare expenditures. We could also use the HCRIS from exercise 1 to create something on our own, but we’ll stick with the AHRF so that we get exposure to another common dataset. These data are available for direct download in the link above. I’ve also placed all of the data in an “AHRF” folder on our AWS AMI. Please use the “standardized, risk-adjusted per capita Medicare cost” as our county-level measure of expenditure. <em>hint: you should look into the <code>SAScii</code> package to help read the ascii data into <code>R</code> using the <code>SAS</code> input file.</em></p></li>
+<li><p><a href="https://resdac.org/cms-data/files/md-ppas">MD-PPAS</a>; The Medicare Data on Provider Practice and Specialty includes data on physician specialties, practice IDs, demographics, and place of service. Be sure to follow the link and read the data documentation. We’ll use these data to construct a measure of physician integration</p></li>
+<li><p><a href="https://data.cms.gov/provider-summary-by-type-of-service/medicare-physician-other-practitioners/medicare-physician-other-practitioners-by-provider-and-service">Medicare Utilization and Payment Data</a>: These files provide data on the quantities and Medicare spending of each physician and service. We’ll use these data to construct an instrument for our integration measure and to capture total physician-level billing activity.</p></li>
+<li><p><a href="https://github.com/imccart/PFS_Update_2010">Physician Fee Schedule 2010 Update</a>: Our instrument mainly consists of a shock to physician payments introduced in 2010. The shock further increased payments for services in an outpatient facility compared to services billed in a physician’s office. The GitHub repo (linked above) provides code to recreate a dataset with service-specific price shocks introduced by the 2010 fee schedule update.</p></li>
 </ol>
 </div>
 <div id="questions" class="section level1">
 <h1>Questions</h1>
 <p>In your GitHub repository, please be sure to clearly address/answer the following questions.</p>
 <ol style="list-style-type: decimal">
-<li><p>Provide and discuss a table of simple summary statistics showing the mean, standard deviation, min, and max of the Medicare Advantage penetration rate, benchmark payments, and utilization measures.</p></li>
-<li><p>Plot the mean county-level utilization against the mean MA penetration rate for each year (just one scatter plot with the mean of each variable by year).</p></li>
-<li><p>Using the MA benchmark as an IV for MA penetration rates, estimate the effects of MA penetration on utilization. This is analogous to the specification in Baicker, Chernew, and Robbins (2013).</p></li>
-<li><p>Present the “first stage” and “reduced form” results of your IV estimates in Part 3.</p></li>
-<li><p>Present selected specification/robustness checks of your IV and discuss two weaknesses of this identification strategy.</p></li>
+<li><p>Provide and discuss a table of simple summary statistics showing the mean, standard deviation, min, and max of total physician-level Medicare spending, claims, and patients.</p></li>
+<li><p>Form a proxy for integration using the ratio:
+<span class="math display" id="eq:int">\[\begin{equation}
+INT_{it} = \frac{HOPD_{it}}{HOPD_{it} + OFFICE_{it} + ASC_{it}},
+\tag{1}
+\end{equation}\]</span>
+where <span class="math inline">\(HOPD_{it}\)</span> reflects the total number of claims in which physician <span class="math inline">\(i\)</span> bills in a hospital outpatient setting, <span class="math inline">\(OFFICE_{it}\)</span> is the total number of claims billed to an office setting, and <span class="math inline">\(ASC_{it}\)</span> is the total number of claims billed to an ambulatory surgery center. Plot the mean of total physician-level claims for integrated versus non-integrated physicians over time (just pick a few thresholds for defining “integration”).</p></li>
+<li><p>Estimate the relationship between integration on total physician claims using OLS, with the following specification:
+<span class="math display" id="eq:ols">\[\begin{equation}
+y_{it} = \delta INT_{it} + \beta x_{it} + \gamma_{i} + \gamma_{t} + \varepsilon_{it},
+\tag{2}
+\end{equation}\]</span>
+where <span class="math inline">\(INT_{it}\)</span> is defined in Equation <a href="#eq:int">(1)</a>, <span class="math inline">\(x_{it}\)</span> captures time-varying physician characteristics, and <span class="math inline">\(\gamma_{i}\)</span> and <span class="math inline">\(\gamma_{t}\)</span> denote physician and time fixed effects.</p></li>
+<li><p>How much should we be “worried” about endogeneity here? Extending the work of <span class="citation">Altonji, Elder, and Taber (2005)</span>, <span class="citation">Oster (2019)</span> derives the expression
+<span class="math display" id="eq:oster">\[\begin{equation}
+\delta^{*} \approx \hat{\delta}_{D,x_{1}} - \rho \times \left[\hat{\delta}_{D} - \hat{\delta}_{D,x_{1}}\right] \times \frac{R_{max}^{2} - R_{D,x_{1}}^{2}}{R_{D,x_{1}}^{2} - R_{D}^{2}} \xrightarrow{p} \delta,
+\tag{3}
+\end{equation}\]</span>
+where <span class="math inline">\(x_{1}\)</span> captures our observable covariates; <span class="math inline">\(\delta\)</span> denotes the treatment effect of interest; <span class="math inline">\(\hat{\delta}_{D,x_{1}}\)</span> denotes the coefficient on <span class="math inline">\(D\)</span> from a regression of <span class="math inline">\(y\)</span> on <span class="math inline">\(D\)</span> and <span class="math inline">\(x_{1}\)</span>; <span class="math inline">\(R_{D,x_{1}}^{2}\)</span> denotes the <span class="math inline">\(R^{2}\)</span> from that regression; <span class="math inline">\(\hat{\delta}_{D}\)</span> denotes the coefficient on <span class="math inline">\(D\)</span> from a regression of <span class="math inline">\(y\)</span> on <span class="math inline">\(D\)</span> only; <span class="math inline">\(R_{D}^{2}\)</span> reflects the <span class="math inline">\(R^{2}\)</span> from that regression; <span class="math inline">\(R_{max}^{2}\)</span> denotes an unobserved “maximum” <span class="math inline">\(R^{2}\)</span> from a regression of <span class="math inline">\(y\)</span> on <span class="math inline">\(D\)</span>, observed covariates <span class="math inline">\(x_{1}\)</span>, and some unobserved covariates <span class="math inline">\(x_{2}\)</span>; and <span class="math inline">\(\rho\)</span> denotes the degree of selection on observed variables relative to unobserved variables <span class="math display">\[\delta \times \frac{Cov(W_{1},X)}{Var(W_{1})} = \frac{Cov(W_{2},X)}{Var(W_{2})}.\]</span> Construct the value in Equation <a href="#eq:oster">(3)</a> based on all combinations of <span class="math inline">\(\rho \in (0, .5, 1, 1.5, 2)\)</span> and <span class="math inline">\(R_{max}^{2} \in (0.5, 0.6, 0.7, 0.8, 0.9, 1)\)</span> and present your results in a table. What do your results say about the extent to which selection on observables could be problematic here? Hint: you can also look into <code>psacalc</code> in <code>Stata</code> or <code>robomit</code> in <code>R</code> for implementation of <span class="citation">Oster (2019)</span> in <code>Stata</code> or <code>R</code>, respectively.</p></li>
+<li><p>Construct the total change in Medicare payments achievable for an integrated versus non-integrated physician due to the 2010 update to the physician fee schedule, <span class="math inline">\(\Delta P_{it}\)</span>. Use this as an instrument for <span class="math inline">\(INT_{it}\)</span> in a 2SLS estimator following the same specification as in Equation <a href="#eq:ols">(2)</a>. Present your results along with those of your “first stage” and “reduced form”.</p></li>
+<li><p>Assess the “need” for IV by implementing a Durbin-Wu-Hausman test with an augmented regression. Do this by first estimating the regression, <span class="math inline">\(INT_{it} = \lambda \Delta P_{it} + \beta x_{it} + \gamma_{i} + \gamma_{t} + \varepsilon_{it}\)</span>, take the residual <span class="math inline">\(\hat{\nu} = INT_{it} - \hat{INT}_{it}\)</span>, and run the regression <span class="math display">\[y_{it} = \delta INT_{it} + \beta x_{it} + \gamma_{i} + \gamma_{t} + \kappa \hat{\nu} + \varepsilon_{it}.\]</span> Discuss your results for <span class="math inline">\(\hat{\kappa}\)</span>.</p></li>
+<li><p>Now let’s pay attention to potential issues of weak instruments. As we discussed in class, one issue with weak instruments is that our typical critical values (say, 1.96 for a 95% confidence interval) from the equation of interest (sometimes called the structural equation) are too low in the presence of a weak first-stage. These issues are presented very clearly and more formally in the Andrews, Stock, and Sun (2019) survey article. For this question, you will consider two forms of inference in the presence of weak instruments:</p>
+<ul>
+<li>Present the results of a test of the null, <span class="math inline">\(H_{0}: \delta=0\)</span>, using the Anderson-Rubin Wald statistic. Do your conclusions from this test differ from a traditional t-test following 2SLS estimation of Equation <a href="#eq:ols">(2)</a>?</li>
+<li>Going back to your 2SLS results…inflate your 2SLS standard errors to form the <span class="math inline">\(tF\)</span> adjusted standard error, following Table 3 in Lee et al. (2021). Repeat the test of the null, <span class="math inline">\(H_{0}: \delta=0\)</span>, using standard critical values and the <span class="math inline">\(tF\)</span> adjusted standard error.</li>
+</ul></li>
+<li><p>Following the Borusyak and Hull (2021) working paper (BH), we can consider our instrument as a function of some exogenous policy shocks and some possibly endogenous physician characteristics, <span class="math inline">\(\Delta P_{it}=f\left(g_{pt}; z_{ipt}\right)\)</span>, where <span class="math inline">\(g_{pt}\)</span> captures overall payment shocks for procedure <span class="math inline">\(p\)</span> at time <span class="math inline">\(t\)</span>, and <span class="math inline">\(z_{ip}\)</span> denotes a physician’s quantity of different procedures at baseline. We can implement the BH re-centering approach as follows:</p>
+<ul>
+<li>Consider hypothetical price changes over a set of possible counterfactuals by assuming that the counterfactuals consist of different allocations of the observed relative price changes. For example, take the vector of all relative price changes, reallocate this vector randomly, and assign new hypothetical relative price changes. Do this 100 times. This isn’t “all” possible counterfactuals by any means, but it will be fine for our purposes.</li>
+<li>Construct the expected revenue change over all possible realizations from previously, <span class="math inline">\(\mu_{it} = E [\Delta P_{it}]= \sum_{s=1}^{100} \sum_{p} g_{pt}^{s} z_{ip}\)</span>.</li>
+<li>Re-estimate Equation <a href="#eq:ols">(2)</a> by 2SLS when instrumenting for <span class="math inline">\(INT_{it}\)</span> with <span class="math inline">\(\tilde{\Delta} P_{it} = \Delta P_{it} - \mu_{it}\)</span>. Intuitively, this re-centering should isolate variation in the instrument that is only due to the policy and remove variation in our instrument that is due to physician practice styles (the latter of which is not a great instrument).</li>
+</ul></li>
+<li><p>Discuss your findings and compare estimates from different estimators.</p></li>
+<li><p>Reflect on this assignment. What did you find most challenging? What did you find most surprising?</p></li>
 </ol>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-altonji2005" class="csl-entry">
+Altonji, Joseph G, Todd E Elder, and Christopher R Taber. 2005. <span>“An Evaluation of Instrumental Variable Strategies for Estimating the Effects of Catholic Schooling.”</span> <em>Journal of Human Resources</em> 40 (4): 791–821.
+</div>
+<div id="ref-oster2019" class="csl-entry">
+Oster, Emily. 2019. <span>“Unobservable <span>Selection</span> and <span>Coefficient</span> <span>Stability</span>: <span>Theory</span> and <span>Evidence</span>.”</span> <em>Journal of Business &amp; Economic Statistics</em> 37 (2): 187–204. <a href="https://doi.org/10.1080/07350015.2016.1227711">https://doi.org/10.1080/07350015.2016.1227711</a>.
+</div>
+</div>
 </div>
 
 
