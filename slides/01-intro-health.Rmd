@@ -1,0 +1,278 @@
+---
+title: "Introduction to the Economics of Healthcare"
+subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=0px></html>"
+author: Ian McCarthy | Emory University
+date: Econ 771, Fall 2022
+header-includes: 
+  - \usepackage{graphicx}
+  - \usepackage{amsmath}
+output:
+#  html_document: default (toggle on for "simplified" view)
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts, custom.css] 
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      beforeInit: "macros.js"
+---
+
+<!-- Adjust some CSS code for font size and maintain R code font size -->
+<style type="text/css">
+.remark-slide-content {
+    font-size: 30px;
+    padding: 1em 2em 1em 2em;    
+}
+.remark-code, .remark-inline-code { 
+    font-size: 20px;
+}
+</style>
+
+
+<!-- Set R options for how code chunks are displayed and load packages -->
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(knitr)
+opts_chunk$set(
+  fig.align="center",  
+  fig.height=3, #fig.width=6,
+  # out.width="748px", #out.length="520.75px",
+  dpi=300, #fig.path='Figs/',
+  cache=T#, echo=F, warning=F, message=F
+  )
+
+knitr::opts_hooks$set(fig.callout = function(options) {
+  if(options$fig.callout) {
+    options$echo = FALSE
+  }
+  options
+})
+
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, ggplot2, dplyr, lubridate, readr, readxl, hrbrthemes,
+               scales, gganimate, gapminder, gifski, png, tufte, plotly, OECD,
+               ggrepel, here)
+```
+
+```{r xaringan-scribble, echo=FALSE}
+xaringanExtra::use_scribble(rgb(0.9, 0.5, 0.5))
+```
+
+
+# Outline
+
+1. [Motivation](#welcome)
+
+2. [Class Details](#syllabus)
+
+
+
+<!-- New Section -->
+---
+class: inverse, center, middle
+name: welcome
+
+# Motivation
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
+
+
+---
+# Health improvements
+
+```{r life-exp, echo=FALSE}
+library(gapminder)
+gapminder %>%
+  group_by(year) %>%
+  summarize(lifeExp = median(lifeExp),
+            gdpMed = median(gdpPercap)) %>%
+  ggplot(aes(year,lifeExp)) + geom_line(alpha = 1/3) + theme_bw() +
+    labs(x = "Year",
+         y = "Life Expectancy (years)",
+         title = "Median life expectancy across the world")
+
+```
+
+
+---
+# Some health gains from economic growth
+
+```{r lifexp-gdp, echo=FALSE}
+library(gapminder)
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) + 
+  geom_point(size = 1) + theme_bw() + scale_x_continuous(label = comma) +
+  labs(x = "GDP Per Capita ($US)",
+       y = "Life Expectancy (years)",
+       title = "Life expectancy and GDP")
+```
+
+---
+# But the US is unique
+
+```{r us-gap, message=FALSE, warning=FALSE, include=FALSE}
+mycolors <- c("US" = "red", "other" = "grey50")
+anim1 <- gapminder %>% filter(country %in% c("Canada", "France", "Germany", "Italy", "Japan", "United Kingdom", "United States")) %>%
+  mutate(highlight = ifelse(country=="United States", "US", "other")) %>%
+  ggplot(aes(gdpPercap, lifeExp, size = pop)) +
+  geom_point(alpha = 0.5, show.legend = FALSE, aes(color=highlight)) +
+  scale_color_manual("U.S.", values = mycolors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_comma(limits=c(0,55000)) + 
+  labs(title = 'Year: {frame_time}', x = 'GDP Per Capita ($US)', y = 'Life Expectancy (years)') +
+  transition_time(year) +
+  ease_aes('linear')
+
+anim_save("anim1.gif",anim1,
+          path="pics")
+```
+
+.center[
+  ![](pics/anim1.gif)
+]
+
+---
+# Spending and infant mortality
+
+.center[
+  ![](pics/anim4.gif)
+]
+
+
+---
+# Spending and maternal mortality
+
+.center[
+  ![](pics/anim5.gif)
+]
+
+
+
+---
+# Why study healthcare
+
+1. Health and healthcare are constantly changing
+
+2. <span>&#36;</span>3.5 trillion, 17.9% of GDP, <span>&#36;</span>10,739 per person
+
+3. Coronavirus shows interconnected web of economics, health policy, public policy, public health
+
+4. U.S. healthcare is uniquely inefficient in many ways
+
+
+---
+# Economic issues in healthcare
+
+Lots of interesting economic issues in healthcare (not all unique to the U.S.):
+
+1. Extremely heterogeneous products
+
+2. Asymmetric information between patients and physicians
+
+3. Unobservable quality (experience good)
+
+4. Unpredictable need (inability to shop in many cases)
+
+5. Distortion of incentives due to insurance
+
+6. Adverse selection (asymmetric information between patients and insurers)
+
+
+---
+# What about this class specifically?
+
+1. Overlap with industrial organization and healthcare
+
+2. Data challenges and opportunities
+
+3. Good blend of microeconomic theory and applied empirical micro
+
+
+<!-- New Section -->
+---
+class: inverse, center, middle
+name: syllabus
+
+# Syllabus highlights
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
+
+(Read the full document [here](https://imccart.github.io/Econ-771/syllabus/syllabus-771.pdf))
+
+
+---
+# Structure
+
+- *Substantive* areas
+
+  - Hospital ownership and production
+  
+  - Physician agency
+  
+  - Information disclosure and choice
+  
+  - Competition and industrial organization
+
+
+---
+# Structure
+
+- *Applying* canonical methods for causal inference
+  
+  - Difference-in-differences  
+  
+  - Instrumental variables
+  
+  - Regression discontinuity
+  
+
+
+---
+# Structure
+
+- *Datasets* from the real world
+
+  - Hospital Cost Report Information System (HCRIS)
+  
+  - Inpatient Prospective Payment System (IPPS) Final Rule Files
+  
+  - Provider of Services (POS) files
+  
+  - Provider Utilization and Payment Public Use Files (PUF)
+  
+  - Medicare Advantage Insurance Data
+  
+---
+# Structure
+
+- Best practices for *workflow*
+
+  - Version control with Git and GitHub
+  
+  - Extracting and managing raw data
+  
+  - Replicable and organized workflow
+  
+  
+---
+# Assignments
+
+- Empirical exercises (x4)
+
+- Presentation (x3)
+
+- Lit review or draft paper
+
+- Discussion/participation
+
+---
+# Grading
+
+| Component                           | Weight |
+|:-|-:|
+| Discussion/participation            | 10% |
+| 4 × empirical exercises (10% each)  | 40% |
+| 3 x presentations (10% each)        | 30% |
+| Lit review/draft paper              | 20% |
+

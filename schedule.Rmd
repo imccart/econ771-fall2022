@@ -21,7 +21,7 @@ Below is a preliminary course outline for this semester. For a more complete rea
 
 ## [Module 0: Kicking things off!](modules/module0.html)
 
-  - `r advdate(1)`: Introduction to the economics of healthcare and causal inference
+  - `r advdate(1)`: Introduction to the economics of healthcare and causal inference. Slides [part 1](slides/01-intro-health.html) and [part 2](slides/01-intro-causal-inference.html)
 
 ## [Module 1: Hospitals](modules/module1.html)
 
