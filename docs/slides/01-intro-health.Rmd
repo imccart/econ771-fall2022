@@ -133,6 +133,14 @@ anim_save("anim1.gif",anim1,
 ]
 
 ---
+# Very high spending
+
+.center[
+  ![](pics/us-spend-compare.png)
+]
+
+
+---
 # Spending and infant mortality
 
 .center[
@@ -180,13 +188,140 @@ Lots of interesting economic issues in healthcare (not all unique to the U.S.):
 
 
 ---
-# What about this class specifically?
+class: clear, middle
 
-1. Overlap with industrial organization and healthcare
+**What does all this complexity mean?**
 
-2. Data challenges and opportunities
+---
+# 1. Too many uninsured
 
-3. Good blend of microeconomic theory and applied empirical micro
+```{r echo=FALSE, out.width="700px"}
+knitr::include_graphics("pics/kff-uninsured.png")
+```
+
+---
+# 2. Really high prices
+
+```{r echo=FALSE, out.width="700px"}
+knitr::include_graphics("pics/price-comparison.png")
+```
+
+---
+# 2. Really high prices
+
+```{r echo=FALSE, out.width="700px"}
+knitr::include_graphics("pics/price-compare2.png")
+```
+
+---
+# 2. Really high prices
+
+```{r echo=FALSE, out.width="700px"}
+knitr::include_graphics("pics/price-compare3.png")
+```
+
+
+---
+# 2. Really high prices
+
+```{r echo=FALSE, out.width="700px"}
+knitr::include_graphics("pics/price-compare4.png")
+```
+
+
+---
+# 2. Really high prices
+
+```{r echo=FALSE, out.width="700px"}
+knitr::include_graphics("pics/price-compare6.png")
+```
+
+
+---
+# 3. Variation in quantity
+
+
+.pull-left[
+```{r echo=FALSE, out.width="400px"}
+knitr::include_graphics("pics/dartmouth_map.png")
+```
+]
+
+
+.pull-right[
+```{r echo=FALSE, out.width="400px"}
+knitr::include_graphics("pics/dartmouth_dist.png")
+```
+]
+
+
+---
+# 4. Variation in prices
+
+Some variation due to different "prices" for different people
+
+- Negotiation with private insurers (bargaining problem)
+- Set payment from Medicare and Medicaid
+  - Medicaid managed care (80%)
+  - Medicare Advantage (45%)
+- Uninsured patients (charge amounts)
+
+--
+
+.center[
+Price $\neq$ charge $\neq$ cost $\neq$ patient out-of-pocket spending
+]
+
+
+---
+# 4. Variation in prices
+
+```{r echo=FALSE, out.width="650px"}
+knitr::include_graphics("pics/DifferentPrices.jpg")
+```
+
+
+<div class="smalltext">Source: <a href="https://healthcarepricingproject.org/">Health Care Pricing Project</a></div>
+
+
+
+---
+# 4. Variation in prices
+
+
+
+.pull-left[
+```{r echo=FALSE, out.width="400px"}
+knitr::include_graphics("pics/HC_var_withinmkt_hip_ga_atlanta.png")
+```
+]
+
+.pull-right[
+```{r echo=FALSE, out.width="400px"}
+knitr::include_graphics("pics/HC_var_withinmkt_kmri_ga_atlanta.png")
+```
+]
+
+<div class="smalltext">Source: <a href="https://healthcarepricingproject.org/">Health Care Pricing Project</a></div>
+
+
+
+---
+# 5. Crazy billing practices
+
+```{r echo=FALSE, out.width="700px"}
+knitr::include_graphics("pics/surprise-ed.png")
+```
+
+
+---
+# 5. Crazy billing practices
+
+```{r echo=FALSE, out.width="700px"}
+knitr::include_graphics("pics/surprise-ip.png")
+```
+
+
 
 
 <!-- New Section -->
@@ -198,7 +333,17 @@ name: syllabus
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
 
-(Read the full document [here](https://imccart.github.io/Econ-771/syllabus/syllabus-771.pdf))
+(Read the full document [here](https://econ771f22.classes.ianmccarthyecon.com/syllabus/syllabus-771.pdf))
+
+
+---
+# What about this class specifically?
+
+1. Overlap with industrial organization and healthcare
+
+2. Data challenges and opportunities
+
+3. Good blend of microeconomic theory and applied empirical micro
 
 
 ---
