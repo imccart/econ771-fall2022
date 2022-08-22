@@ -127,13 +127,20 @@ Another example: **What price should we charge for a night in a hotel?**
 class: inverse, center, middle
 name: notation
 
-# Notation and Introduction to Potential Outcomes
+# Introduction to Potential Outcomes
 
 &lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#EB811B' size=1px width=1055px&gt;&lt;/html&gt;
 
+---
+# Potential outcomes
+
+- Framework for causal inference
+- Introduced by Neyman (1923), pushed by Rubin in 1970s and 1980s
+- Requires counterfactual reasoning. These counterfactuals are thought experiments. They are not observed.
+
 
 ---
-# Some notation
+# Treatment
 
 **Treatment** `\(D_{i}\)`
 
@@ -144,17 +151,19 @@ name: notation
 
 
 ---
-# Some notation
-
-**Potential outcomes**
+# Potential outcomes
 
 - `\(Y_{1i}\)` is the potential outcome for unit `\(i\)` with treatment
 - `\(Y_{0i}\)` is the potential outcome for unit `\(i\)` without treatment
 
----
-# Some notation
+--
+&lt;br&gt;
+- Potential outcomes are **NOT** realized. They are purely hypothetical.
 
-**Observed outcome**
+
+---
+# Potential vs observed (switching equation)
+
 
 `$$Y_{i}=Y_{1i} \times D_{i} + Y_{0i} \times (1-D_{i})$$`
 or
@@ -183,8 +192,10 @@ Without a time machine...not possible to get *individual* effects.
 # Fundamental Problem of Causal Inference
 
 - We don't observe the counterfactual outcome...what would have happened if a treated unit was actually untreated.
-
 - *ALL* attempts at causal inference represent some attempt at estimating the counterfactual outcome. We need an estimate for `\(Y_{0}\)` among those that were treated, and vice versa for `\(Y_{1}\)`.
+    - Explicit estimation as in nearest neighbor matching or synthetic control
+    - Implicit as in RD or IV
+
 
 
 ---
@@ -199,7 +210,7 @@ name: ate
 ---
 # Different treatment effects
 
-Tend to focus on **averages**&lt;sup&gt;1&lt;/sup&gt;:
+Since `\(Y_{1i}\)` and `\(Y_{0i}\)` are not observed for the same unity, we tend to focus on **averages**&lt;sup&gt;1&lt;/sup&gt;:
 
 - **ATE**: `\(\delta_{ATE} = E[ Y_{1} - Y_{0}]\)`
 
@@ -321,7 +332,7 @@ name: designs
 
 - The field of causal inference is all about different strategies to remove selection bias
 
-- On strategy: Impose **selection on observables** or **conditional indpendence**
+- One strategy: Impose **selection on observables** or **conditional independence**
 
 --
 
@@ -353,6 +364,53 @@ Y_{i} &amp;= Y_{1i} \times D_{i} + Y_{0i} \times (1-D_{i}) \\
 &amp;= \delta D_{i} + \alpha + \eta_{i} \\
 &amp;= \delta D_{i} + \alpha + \beta x_{i} + u_{i}
 \end{align}$$`
+
+
+---
+# Selection on observables in practice
+
+- Matching or reweighting
+- Regression
+- Both! (doubly-robust)
+
+---
+# 2. Instrumental variables
+
+- Easy!
+    - Exogenous variation from "outside" variable `\(z\)`, related to endogenous variable `\(x\)` but not otherwise directly related to outcome `\(y\)`
+    - Incorporate `\(z\)` as instrument in IV, 2SLS, LIML, etc.
+    
+- Hard!
+    - Finding an instrument
+    - Weak instruments
+    - Many vs single instrument
+    - Many endogenous variables
+    - Nonlinear models
+
+---
+# 3. Regression discontinuity
+
+- Easy!
+    - Exploit discontinuity in rule assigning people to one group or another based on relatively arbitrary threshold
+    - Jump in linear regression below and above threshold
+    
+- Hard!
+    - Manipulation of running variable
+    - Selecting bandwidth and bin width
+    - Sparsity of data around threshold
+    
+
+---
+# 4. Difference in differences
+
+- Easy!
+    - Compare difference in trends before and after treatment among treated and control group
+    - 2x2 difference in means
+    
+- Hard!
+    - Assumption of parallel trends (i.e., treatment group would have followed the same trend as control group in the absence of treatment), tests for "parallel trends", and appropriateness of the control group
+    - Staggered treatment timing
+    - Heterogenous treatment effects
 
 
 &lt;!-- New Section --&gt;
