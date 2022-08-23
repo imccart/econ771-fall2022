@@ -23,7 +23,7 @@ The literature review can be on any health economics topic of your choice, subje
 
 
 # Grading
-Your grade will be based on 5 items, each worth 20 points toward the final assignment grade. For each component, you'll receive a 0 (not present), 10 (the element is there but poorly executed), or 20 (element is there and sufficiently executed). The 5 elements are listed below:
+Your grade will be based on 5 items, each worth 4 points toward the final assignment grade. For each component, you'll receive a 0 (not present), 2 (the element is there but poorly executed), or 4 (element is there and sufficiently executed). The 5 elements are listed below:
 
 1. Details of at least 5 specific papers
 2. General summary of other relevant research

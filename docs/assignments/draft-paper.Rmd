@@ -39,7 +39,7 @@ Ultimately, there is no single correct way to write an empirical paper. All pape
 
 
 # Grading
-Your grade will be based on 10 items, each worth 10 points toward the final assignment grade. For each component, you'll receive a 0 (not present), 5 (the element is there but poorly executed), or 10 (element is there and sufficiently executed). The 10 elements are listed below:
+Your grade will be based on 10 items, each worth 2 points toward the final assignment grade. For each component, you'll receive a 0 (not present), 1 (the element is there but poorly executed), or 2 (element is there and sufficiently executed). The 10 elements are listed below:
 
 1. Introduction
 2. Policy background or some discussion of the empirical context
@@ -47,7 +47,7 @@ Your grade will be based on 10 items, each worth 10 points toward the final assi
 4. Data
 5. Estimation strategy (identification strategy, estimating equation/model, and estimator being used)
 6. Results
-7. Discussion of robustness and sensivity (not expected to be completed, just listed out)
+7. Discussion of robustness and sensitivity (not expected to be completed, just listed out)
 8. Discussion/conclusion
 9. Clarity of exposition
 10. Accuracy of empirical analysis

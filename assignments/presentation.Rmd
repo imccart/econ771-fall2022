@@ -31,8 +31,7 @@ advdate <- function(adv) {
 # Overview
 This describes the logistics and expectations for the presentations. You can choose to present any paper listed as a **primary reading** in the [syllabus](syllabus/syllabus-771.pdf), with the exception of days or papers noted with ** . Please inform me of your selected papers no later than **Friday, September 2**. Please also note your papers and class dates on the Google Sheet [here](https://docs.google.com/spreadsheets/d/1d6IVg-khbreLKobiczNwEOT9gjPNNykrFEtc2rXdJ4I/edit?usp=sharing).
 
-Please "submit" your presentations as a GitHub repository link or, if doing everything within Overleaf, as a link to your Overleaf project. The repo or Overleaf project must include a final document with your slides easily available. Be sure to include in your repository or project folder all of your supporting code files. Feel free to draft your slides in any language you want (LaTeX, PowerPoint, R Markdown, Quarto).
-
+Please "submit" your presentations as a GitHub repository link or, if doing everything within Overleaf, as a link to your Overleaf project. The repo or Overleaf project must include a final document with your slides easily available. Be sure to include in your repository or project folder all of your supporting code files. For people in the economics department, I expect the slides to be completed in Beamer (LaTeX), `R Markdown`, `Quarto`, or `Python`. Others can use PowerPoint or some other presentation tool as they see fit.
 
 # Expectations
 Your presentation should be around 30 minutes long and follow a standard academic seminar format. For some tips on how to give an applied micro talk, look at Jesse Shapiro's notes [here](https://www.brown.edu/Research/Shapiro/pdfs/applied_micro_slides.pdf). Since this isn't **your** paper, you won't need to emphasize its contribution as much as a normal presentation, but still, your presentation should have the following components:
