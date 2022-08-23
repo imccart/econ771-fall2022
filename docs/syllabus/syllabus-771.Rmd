@@ -87,7 +87,7 @@ There are more specific learning outcomes for each module described on the relev
 
 3. **Accessing Data:** For any in-class activities, I will house all of the code and links to the data on our class website. For any real-life datasets, I will also point you to other GitHub repositories where available, and I'll make some data available via OneDrive. Details will be posted on Canvas and in class. 
 
-4. **Logistics:** For day-to-day communication, grades, and other private information (such as Zoom meeting links if needed), I'll use *Canvas*. I'll post all other materials to our class website.
+4. **Logistics:** For day-to-day communication, grades, and other private information (such as Zoom meeting links if needed), I'll use *Canvas*. I'll post all other materials to our class website. Please be sure to set up you Canvas alerts so that you receive class announcements in a timely manner.
 
 5. **Slides and Notes:** Any presentations will be made available on our class website prior to any given class.
 
@@ -157,7 +157,7 @@ It's good to start developing some organization practices that work best for you
 
 ## Presentations
 
-You will present three papers throughout the course of the semester. Any paper listed as "Primary Reading" in the class schedule can be selected for presentation, with the exception of papers indicated by ** . Please inform me of your selected papers no later than **Friday, September 2**. Please also note your papers and class dates on the Google Sheet [here](https://docs.google.com/spreadsheets/d/1d6IVg-khbreLKobiczNwEOT9gjPNNykrFEtc2rXdJ4I/edit?usp=sharing).
+You will present three papers throughout the course of the semester. Any paper listed as "Primary Reading" in the class schedule can be selected for presentation, with the exception of papers or class days indicated by ** . Please inform me of your selected papers no later than **Friday, September 2**. Please also note your papers and class dates on the Google Sheet [here](https://docs.google.com/spreadsheets/d/1d6IVg-khbreLKobiczNwEOT9gjPNNykrFEtc2rXdJ4I/edit?usp=sharing).
 
 Each presentation should be no more than 30 minutes, including questions and brief discussion. The presentation should follow a standard conference setup, with a brief introduction/motivation, a very brief discussion of the literature and some context of the paper, discussion of the data, empirical analysis, and results.
 
@@ -165,7 +165,7 @@ Note that a presentation is not just a re-hashing of the paper in slide form. A 
 
 In addition to the presentation, please send me your slides in advance. For people in the economics department, I expect the slides to be completed in Beamer (LaTeX), `R Markdown`, or Python. Others can use PowerPoint or some other presentation tool as they see fit. My only recommendation with those other programs is that, for some of them like Prezi or Powtoon, it is easy for the presentation to become distracting. Slides should complement your presentation and not replace your presence!
 
-Grades for each presentation will be based 50% on the slides and 50% on the actual presentation (delivery, clarity/organization, and content). Additional details and a grading rubric are available on the assignments page of our class website.
+Grades for each presentation will be based 50% on the slides and 50% on the actual presentation (delivery, clarity/organization, and content). Additional details and a grading rubric will be available on the assignments page of our class website.
 
 
 ## Literature review (2nd year students)
@@ -284,7 +284,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - See supplemental reading in hospitals and financial incentives, part I
   
 
-### `r advdate(6)` - `r advdate(8)`: Application
+### `r advdate(6)` - `r advdate(8)`: Application**
 
   - **Question:** How does insurance expansion affect hospital uncompensated care?
   - **Research design:** Difference-in-differences
@@ -357,7 +357,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @ho2002
 
 
-### `r advdate(12)` - `r advdate(13)`: Application
+### `r advdate(12)` - `r advdate(13)`: Application**
 
   - **Question:** Physician effort and integration with hospitals
   - **Research design:** Instrumental variables
@@ -438,7 +438,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @chernew2021
   - @brot-goldberg2017
 
-### `r advdate(20)` and `r advdate(21)`: Application
+### `r advdate(20)` and `r advdate(21)`: Application**
 
   - **Question:** Consumer inertia and insurer premiums
   - **Research design:** Regression discontinuity
@@ -558,7 +558,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @konetzka2018
 
 
-### 12/02 (rescheduled from 11/21) and `r advdate(30)`: Application
+### 12/02 (rescheduled from 11/21) and `r advdate(30)`: Application**
 
   - **Question:** Sensitivity of demand estimates to market definition
   - **Research design:** Structural demand estimation
