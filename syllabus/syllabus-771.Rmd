@@ -157,7 +157,7 @@ It's good to start developing some organization practices that work best for you
 
 ## Presentations
 
-You will present three papers throughout the course of the semester. Any paper listed as "Primary Reading" in the class schedule can be selected for presentation, with the exception of papers or class days indicated by ** . Please inform me of your selected papers no later than **Friday, September 2**. Please also note your papers and class dates on the Google Sheet [here](https://docs.google.com/spreadsheets/d/1d6IVg-khbreLKobiczNwEOT9gjPNNykrFEtc2rXdJ4I/edit?usp=sharing).
+You will present three papers throughout the course of the semester. Any paper listed as **Primary Reading** in the class schedule can be selected for presentation, with the exception of papers or class days indicated by ** . Please inform me of your selected papers no later than **Friday, September 2**. Please also note your papers and class dates on the Google Sheet [here](https://docs.google.com/spreadsheets/d/1d6IVg-khbreLKobiczNwEOT9gjPNNykrFEtc2rXdJ4I/edit?usp=sharing).
 
 Each presentation should be no more than 30 minutes, including questions and brief discussion. The presentation should follow a standard conference setup, with a brief introduction/motivation, a very brief discussion of the literature and some context of the paper, discussion of the data, empirical analysis, and results.
 
