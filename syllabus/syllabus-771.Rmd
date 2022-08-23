@@ -257,8 +257,6 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
   - @dafny2005
   - @eliason2018
-  - @batty2017
-  - @lee2020
 
 **Supplemental reading:**<br>
 
