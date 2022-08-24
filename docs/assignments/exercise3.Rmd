@@ -14,18 +14,22 @@ knitr::opts_chunk$set(echo = TRUE)
 # Overview
 In this assignment, we're going to work through some applied issues related to regression discontinuity designs. We'll cover the basics of strict and fuzzy RD, and we'll work through standard specification tests. We'll also introduce some more technical aspects of bin and bandwidth selection.
 
-Please "submit" your answers as a GitHub repository link. In this repo, please include a final document with your main answers and analyses in a PDF. Be sure to include in your repository all of your supporting code files. Practice writing good code and showing me only what I would need to recreate your results.
+Please "submit" your answers as a GitHub repository link on Canvas. In this repo, please include a final document with your main answers and analyses in a PDF. Be sure to include in your repository all of your supporting code files. Practice writing good code and showing me only what I would need to recreate your results.
 
 
 # Resources and data
-The data for this assignment comes from the AEJ: Policy website, where Keith Ericson's complete dataset is available. The data are available [here](https://www.aeaweb.org/articles?id=10.1257/pol.6.1.38). I've also uploaded the replication files to our AWS AMI under the folder "Ericson 2014 Replication Data".
+The data for this assignment comes from the AEJ: Policy website, where Keith Ericson's complete dataset is available. The data are available [here](https://www.aeaweb.org/articles?id=10.1257/pol.6.1.38). I will also upload the replication files to our class OneDrive folder.
 
 # Questions
 In your GitHub repository, please be sure to clearly address/answer the following questions.
 
-1. Recreate Figure 3 from Ericson (2014).
+1. Recreate the table of descriptive statistics (Table 1) from Ericson (2014).
 
-2. Repeat Figure 3 using different bin widths.
+2. Recreate Figure 3 from Ericson (2014). 
+
+3. @cattaneo2015 discuss the appropriate partition size for binned scatterplots such as that in Figure 3 of Ericson (2014). More formally, denote by $\mathcal{P}_{-,n} = \{ P_{-,j} : j=1, 2, ... J_{-, n} \}$ and $\mathcal{P}_{+,n} = \{ P_{+,j} : j=1, 2, ... J_{+, n} \}$ the partitions of the support of the running variable $x_{i}$ on the left and right (respectively) of the cutoff, $\bar{x}$. $P_{-, j}$ and $P_{+, n}$ denotes the actual supports for each $j$ partition of size $J_{-,n}$ and $J_{+,n}$, such that $[x_{l}, \bar{x}) = \bigcup_{j=1}^{J_{-,n}} P_{-, j}$ and $(\bar{x}, x_{u}] = \bigcup_{j=1}^{J_{+,n}} P_{+, j}$. Individual bins are denoted by $p_{-,j}$ and $p_{+,j}$. With this notation in hand, we can write the partitions $J_{-,n}$ and $J_{+,n}$ equally-spaced bins as $$p_{-,j}=x_{l} + j \times \frac{\bar{x} - x_{l}}{J_{-,n}},$$ and $$p_{+,j} = \bar{x} + j \times \frac{x_{u} - \bar{x}}{J_{+,n}}.$$ Recreate Figure 3 from Ericson (2014) using $J_{-,n}=J_{+,n}=10$ and $J_{-,n}=J_{+,n}=30$. Discuss your results and compare them to your figure in Part 2.
+
+4. With the notation above, @cattaneo2015 derive the optimal number of partitions for an evenly-spaced (ES) RD plot. They show that $$J_{ES,-,n} = \left\lceil \frac{V_{-}}{\mathcal{V}_{ES,-}} \frac{n}{\text{log}(n)^{2}} \right\rceil$$ and $$J_{ES,+,n} = \left\lceil \frac{V_{+}}{\mathcal{V}_{ES,+}} \frac{n}{\text{log}(n)^{2}} \right\rceil,$$ where $V_{-}$ and $V_{+}$ denote the sample variance of the subsamples to the left and right of the cutoff and $\mathcal{V}_{ES,.}$ is an integrated variance term derived in the paper. Use the `rdrobust` package in `R` (or `Stata` or `Python`) to find the optimal number of bins with an evenly-spaced binning strategy. Report this bin count and recreate your binned scatterplots from parts 2 and 3 based on the optimal bin number.
 
 3. Provide the results from the manipulation tests described in Cattaneo et al. (2018).
 
