@@ -239,6 +239,28 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 
 
@@ -369,14 +391,34 @@ pre code {
 <h1>Questions</h1>
 <p>In your GitHub repository, please be sure to clearly address/answer the following questions.</p>
 <ol style="list-style-type: decimal">
-<li><p>Recreate the table of descriptive statistics (Table 1) from Ericson (2014).</p></li>
-<li><p>Recreate Figure 3 from Ericson (2014).</p></li>
-<li><p><span class="citation">@cattaneo2015</span> discuss the appropriate partition size for binned scatterplots such as that in Figure 3 of Ericson (2014). More formally, denote by <span class="math inline">\(\mathcal{P}_{-,n} = \{ P_{-,j} : j=1, 2, ... J_{-, n} \}\)</span> and <span class="math inline">\(\mathcal{P}_{+,n} = \{ P_{+,j} : j=1, 2, ... J_{+, n} \}\)</span> the partitions of the support of the running variable <span class="math inline">\(x_{i}\)</span> on the left and right (respectively) of the cutoff, <span class="math inline">\(\bar{x}\)</span>. <span class="math inline">\(P_{-, j}\)</span> and <span class="math inline">\(P_{+, n}\)</span> denotes the actual supports for each <span class="math inline">\(j\)</span> partition of size <span class="math inline">\(J_{-,n}\)</span> and <span class="math inline">\(J_{+,n}\)</span>, such that <span class="math inline">\([x_{l}, \bar{x}) = \bigcup_{j=1}^{J_{-,n}} P_{-, j}\)</span> and <span class="math inline">\((\bar{x}, x_{u}] = \bigcup_{j=1}^{J_{+,n}} P_{+, j}\)</span>. Individual bins are denoted by <span class="math inline">\(p_{-,j}\)</span> and <span class="math inline">\(p_{+,j}\)</span>. With this notation in hand, we can write the partitions <span class="math inline">\(J_{-,n}\)</span> and <span class="math inline">\(J_{+,n}\)</span> equally-spaced bins as <span class="math display">\[p_{-,j}=x_{l} + j \times \frac{\bar{x} - x_{l}}{J_{-,n}},\]</span> and <span class="math display">\[p_{+,j} = \bar{x} + j \times \frac{x_{u} - \bar{x}}{J_{+,n}}.\]</span> Recreate Figure 3 from Ericson (2014) using <span class="math inline">\(J_{-,n}=J_{+,n}=10\)</span> and <span class="math inline">\(J_{-,n}=J_{+,n}=30\)</span>. Discuss your results and compare them to your figure in Part 2.</p></li>
-<li><p>With the notation above, <span class="citation">@cattaneo2015</span> derive the optimal number of partitions for an evenly-spaced (ES) RD plot. They show that <span class="math display">\[J_{ES,-,n} = \left\lceil \frac{V_{-}}{\mathcal{V}_{ES,-}} \frac{n}{\text{log}(n)^{2}} \right\rceil\]</span> and <span class="math display">\[J_{ES,+,n} = \left\lceil \frac{V_{+}}{\mathcal{V}_{ES,+}} \frac{n}{\text{log}(n)^{2}} \right\rceil,\]</span> where <span class="math inline">\(V_{-}\)</span> and <span class="math inline">\(V_{+}\)</span> denote the sample variance of the subsamples to the left and right of the cutoff and <span class="math inline">\(\mathcal{V}_{ES,.}\)</span> is an integrated variance term derived in the paper. Use the <code>rdrobust</code> package in <code>R</code> (or <code>Stata</code> or <code>Python</code>) to find the optimal number of bins with an evenly-spaced binning strategy. Report this bin count and recreate your binned scatterplots from parts 2 and 3 based on the optimal bin number.</p></li>
-<li><p>Provide the results from the manipulation tests described in Cattaneo et al. (2018).</p></li>
-<li><p>Summarize the relationship between market shares in 2006 on changes in premiums from 2006 to 2007.</p></li>
-<li><p>Use the Part D low-income subsidy as an IV for market share to examine the effect of market share in 2006 on premium changes.</p></li>
+<li><p>Recreate the table of descriptive statistics (Table 1) from <span class="citation">Ericson (2014)</span>.</p></li>
+<li><p>Recreate Figure 3 from <span class="citation">Ericson (2014)</span>.</p></li>
+<li><p><span class="citation">Calonico, Cattaneo, and Titiunik (2015)</span> discuss the appropriate partition size for binned scatterplots such as that in Figure 3 of Ericson (2014). More formally, denote by <span class="math inline">\(\mathcal{P}_{-,n} = \{ P_{-,j} : j=1, 2, ... J_{-, n} \}\)</span> and <span class="math inline">\(\mathcal{P}_{+,n} = \{ P_{+,j} : j=1, 2, ... J_{+, n} \}\)</span> the partitions of the support of the running variable <span class="math inline">\(x_{i}\)</span> on the left and right (respectively) of the cutoff, <span class="math inline">\(\bar{x}\)</span>. <span class="math inline">\(P_{-, j}\)</span> and <span class="math inline">\(P_{+, n}\)</span> denotes the actual supports for each <span class="math inline">\(j\)</span> partition of size <span class="math inline">\(J_{-,n}\)</span> and <span class="math inline">\(J_{+,n}\)</span>, such that <span class="math inline">\([x_{l}, \bar{x}) = \bigcup_{j=1}^{J_{-,n}} P_{-, j}\)</span> and <span class="math inline">\((\bar{x}, x_{u}] = \bigcup_{j=1}^{J_{+,n}} P_{+, j}\)</span>. Individual bins are denoted by <span class="math inline">\(p_{-,j}\)</span> and <span class="math inline">\(p_{+,j}\)</span>. With this notation in hand, we can write the partitions <span class="math inline">\(J_{-,n}\)</span> and <span class="math inline">\(J_{+,n}\)</span> with equally-spaced bins as <span class="math display">\[p_{-,j}=x_{l} + j \times \frac{\bar{x} - x_{l}}{J_{-,n}},\]</span> and <span class="math display">\[p_{+,j} = \bar{x} + j \times \frac{x_{u} - \bar{x}}{J_{+,n}}.\]</span> Recreate Figure 3 from Ericson (2014) using <span class="math inline">\(J_{-,n}=J_{+,n}=10\)</span> and <span class="math inline">\(J_{-,n}=J_{+,n}=30\)</span>. Discuss your results and compare them to your figure in Part 2.</p></li>
+<li><p>With the notation above, <span class="citation">Calonico, Cattaneo, and Titiunik (2015)</span> derive the optimal number of partitions for an evenly-spaced (ES) RD plot. They show that <span class="math display">\[J_{ES,-,n} = \left\lceil \frac{V_{-}}{\mathcal{V}_{ES,-}} \frac{n}{\text{log}(n)^{2}} \right\rceil\]</span> and <span class="math display">\[J_{ES,+,n} = \left\lceil \frac{V_{+}}{\mathcal{V}_{ES,+}} \frac{n}{\text{log}(n)^{2}} \right\rceil,\]</span> where <span class="math inline">\(V_{-}\)</span> and <span class="math inline">\(V_{+}\)</span> denote the sample variance of the subsamples to the left and right of the cutoff and <span class="math inline">\(\mathcal{V}_{ES,.}\)</span> is an integrated variance term derived in the paper. Use the <code>rdrobust</code> package in <code>R</code> (or <code>Stata</code> or <code>Python</code>) to find the optimal number of bins with an evenly-spaced binning strategy. Report this bin count and recreate your binned scatterplots from parts 2 and 3 based on the optimal bin number.</p></li>
+<li><p>One key underlying assumption for RD design is that agents cannot precisely manipulate the running variable. While “precisely” is not very scientific, we can at least test for whether there appears to be a discrete jump in the running variable around the threshold. Evidence of such a jump may suggest that manipulation is present. Provide the results from the manipulation tests described in <span class="citation">Cattaneo, Jansson, and Ma (2018)</span>. This test can be implemented with the <code>rddensity</code> package in <code>R</code>, <code>Stata</code>, or <code>Python</code>.</p></li>
+<li><p>Recreate Table 3 of <span class="citation">Ericson (2014)</span> using the same bandwidth of $4.00.</p></li>
+<li><p><span class="citation">Calonico, Cattaneo, and Farrell (2020)</span> show that pre-existing optimal bandwidth calculations (such as those used in <span class="citation">Ericson (2014)</span>) are invalid for appropriate inference. They propose an alternative method to derive minimal coverage error (CE)-optimal bandwidths. Re-estimate your RD results using the CE-optimal bandwidth (<code>rdrobust</code> will do this for you) and compare the bandwidth and RD estimates to that in Table 3 of <span class="citation">Ericson (2014)</span>.</p></li>
+<li><p>Now let’s extend the analysis in Section V of <span class="citation">Ericson (2014)</span> using IV. Use the presence of Part D low-income subsidy as an IV for market share to examine the effect of market share in 2006 on future premium changes.</p></li>
+<li><p>Discuss your findings and compare results from different binwidths and bandwidths. Compare your results in part 8 to the invest-then-harvest estimates from Table 4 in <span class="citation">Ericson (2014)</span>.</p></li>
+<li><p>Reflect on this assignment. What did you find most challenging? What did you find most surprising?</p></li>
 </ol>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-calonico2020" class="csl-entry">
+Calonico, Sebastian, Matias D Cattaneo, and Max H Farrell. 2020. <span>“Optimal Bandwidth Choice for Robust Bias-Corrected Inference in Regression Discontinuity Designs.”</span> <em>The Econometrics Journal</em> 23 (2): 192–210. <a href="https://doi.org/10.1093/ectj/utz022">https://doi.org/10.1093/ectj/utz022</a>.
+</div>
+<div id="ref-calonico2015" class="csl-entry">
+Calonico, Sebastian, Matias D. Cattaneo, and Rocío Titiunik. 2015. <span>“Optimal <span>Data</span>-<span>Driven</span> <span>Regression</span> <span>Discontinuity</span> <span>Plots</span>.”</span> <em>Journal of the American Statistical Association</em> 110 (512): 1753–69. <a href="https://doi.org/10.1080/01621459.2015.1017578">https://doi.org/10.1080/01621459.2015.1017578</a>.
+</div>
+<div id="ref-cattaneo2018" class="csl-entry">
+Cattaneo, Matias D, Michael Jansson, and Xinwei Ma. 2018. <span>“Manipulation Testing Based on Density Discontinuity.”</span> <em>The Stata Journal</em> 18 (1): 234–61.
+</div>
+<div id="ref-ericson2014" class="csl-entry">
+Ericson, Keith M. 2014. <span>“Consumer Inertia and Firm Pricing in the <span>Medicare</span> <span>Part</span> <span>D</span> Prescription Drug Insurance Exchange.”</span> <em>American Economic Journal: Economic Policy</em> 6 (1): 38–64.
+</div>
+</div>
 </div>
 
 
