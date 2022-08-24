@@ -230,12 +230,16 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
 ## Module 1: Hospitals
 
-### `r advdate(2)`: Background and institutional details**
+### `r advdate(2)`: Background and institutional details
+
+**Primary reading:**<br>
+
+  - @chang2017
+  - @bayindir2012
 
 **Supplemental reading:**<br>
 
   - @newhouse1970
-  - @bayindir2012
   - @sloan2000
   - @dranove1988
   - @pauly1978
@@ -249,7 +253,6 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @kessler2002
   - @gaynor2003
   - @david2009
-  - @chang2017
 
 ### `r advdate(3)`: Hospitals and financial incentives, part I
 
@@ -257,6 +260,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
   - @dafny2005
   - @eliason2018
+  - @gupta2021  
 
 **Supplemental reading:**<br>
 
@@ -267,8 +271,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @carroll2018
   - @cook2020
   - @desai2018
-  - @gowrisankaran2019
-  - @gupta2021
+  - @gowrisankaran2019  
 
 ### `r advdate(4)`: Labor Day, no class
 
@@ -303,7 +306,12 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
 ## Module 2: Physicians
 
-### `r advdate(9)`: Background and institutional details**
+### `r advdate(9)`: Background and institutional details
+
+**Primary reading:**<br>
+
+  - @finkelstein2016
+  - @molitor2018
 
 **Supplemental reading:**<br>
 
@@ -312,8 +320,6 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @wennberg1973
   - @wennberg2003
   - @skinner1997
-  - @finkelstein2016
-  - @molitor2018
   
 
 ### `r advdate(10)`: Physician agency, financial incentives, and referrals
@@ -322,6 +328,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
   - @clemens2014
   - @zeltzer2020
+  - @chernew2021  
 
 **Supplemental reading::**<br>
 
@@ -333,8 +340,6 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @young2021
   - @walden2016
   - @richards2022
-  - @baker2016
-  - @chernew2021
   - @mcguire1991
   - @ho2014  
   
@@ -345,6 +350,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   
   - @crawford2005
   - @sarsons2018
+  - @johnson2011
 
 **Supplemental reading:**<br>
 
@@ -353,7 +359,6 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @chan2013
   - @dickstein2018
   - @gong2018
-  - @johnson2011
   - @ho2002
 
 
@@ -453,7 +458,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
 ## Module 4: Healthcare competition and industrial organization
 
-### `r advdate(22)`: Competition in price and quality**
+### `r advdate(22)`: Competition in price and quality
 
 **Primary reading:**<br>
 
@@ -502,6 +507,7 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 
   - @ho2017
   - @clemens2017
+  - @lewis2015  
 
 **Supplemental:**<br>
 
@@ -509,7 +515,6 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @reiss2007
   - @abraham2007
   - @gowrisankaran2015
-  - @lewis2015
 
 ### `r advdate(26)`: No meeting today. Class rescheduled for December 2
 
@@ -518,7 +523,8 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
 **Primary reading:**<br>
 
   - @craig2021
-  - @eliason2020  
+  - @eliason2020
+  - @gaynor2013
 
 **Supplemental:**<br>
 
@@ -527,7 +533,6 @@ Note that we have two scheduled virtual classes, one for Monday, 9/19, and anoth
   - @lindrooth2003
   - @gaynor2012rwjf
   - @dafny2009
-  - @gaynor2013
 
 
 ### `r advdate(28)`: Out-of-market mergers
