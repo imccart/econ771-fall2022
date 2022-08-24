@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 # Overview
-This describes the expectations for the literature review. This is only required for 2nd year students. For 3rd year students, you'll need to go a bit further and submit a draft paper. Details of the draft paper assignment are [here](assignments/draft-paper.html). Your literature review is due no later than **Friday, November 18**.
+This describes the expectations for the literature review. This is only required for 2nd year students. For 3rd year students, you'll need to go a bit further and submit a draft paper. Details of the draft paper assignment are [here](draft-paper.html). Your literature review is due no later than **Friday, November 18**.
 
 Please "submit" your paper as a GitHub repository link or, if doing everything within Overleaf, as a link to your Overleaf project. The repo or Overleaf project must include a final document with your paper easily available. Be sure to include in your repository or project folder all of your supporting code files. Feel free to draft your slides in any language you want (LaTeX, PowerPoint, R Markdown, Quarto)
 
