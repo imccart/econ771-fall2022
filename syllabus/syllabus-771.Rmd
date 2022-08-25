@@ -141,9 +141,9 @@ For each assignment, your final product should consist of a discussion of the da
 
 Please organize your folders in a useful way. The way I organize things (though certainly not the only way to do it) is to keep a folder for each new project and named accordingly. I typically have the following subfolders:
 
-  - *Data*: This is where I keep the raw data files and any additional data files I create as part of my analysis. I also keep a "Research Data" folder on my computer that has raw data that I access regularly, in which case the "Data" folder in any given project includes symbolic links to the original raw data.
+  - *Data*: This is where I keep the raw data files and any additional data files I create as part of my analysis. I also keep a "Research Data" folder on my computer that has raw data that I access regularly, in which case the "Data" folder in any given project includes symbolic links to the original raw data. I usually split this folder into two: "input" for raw data; and "output" for final or intermediate datasets.
 
-  - *Data Code*: This is where I keep the code for data management (merging, clean-up, wrangling, etc.). Final analytic datasets created by this code go to the "Data" subdirectory.
+  - *Data Code*: This is where I keep the code for data management (merging, clean-up, wrangling, etc.). Final analytic datasets created by this code go to the "Data/output" subdirectory.
   
   - *Analysis*: This is where I keep my analysis code files and log files (if relevant).
   
