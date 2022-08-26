@@ -6,7 +6,7 @@ There are three main types of assignments throughout the semester, along with a 
 
 1. **Participation**: I'll keep track of those who participate in our discussion each day. Any amount of participation (questions or comments) will be worth one point for that class. I'll tally everyone's participation points at the end of the semester. Your participation grade will be based on your percentage out of 25 possible points.
 
-2. **Empirical exercises**: Each course module will have an applied component where we spend some time with a real-life causal inference question. These will require some of your time outside of class to get the data in working order and implement the relevant identification strategy and econometric estimator. Details of each empirical exercise are in the following links:
+2. **Empirical exercises**: Each course module will have an applied component where we spend some time with a real-life causal inference question. These will require some of your time outside of class to get the data in working order and implement the relevant identification strategy and econometric estimator. Raw data for each exercise will be provided on our class OneDrive notebook, the link to which is on Canvas. Details of each empirical exercise are linked below:
     - [Exercise 1](assignments/exercise1.html): Difference-in-differences
     - [Exercise 2](assignments/exercise2.html): Instrumental variables
     - [Exercise 3](assignments/exercise3.html): Regression Discontinuity
