@@ -15,7 +15,7 @@ csl: "chicago-syllabus-no-bib.csl"
 
 email: "ian.mccarthy@emory.edu"
 web: "econ771f22.classes.ianmccarthyecon.com"
-classroom: "North Decatur Building, Room 109"
+classroom: "Emerson, E103"
 classhours: "MoWe 10:00-11:15 a.m"
 office: "PAIS 573"
 officehours: "MoWe 01:00-2:30 p.m."
