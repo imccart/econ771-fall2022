@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Some Hospital Background</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Ian McCarthy | Emory University" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <script src="libs/fabric/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#E68080"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Some Hospital Background
+]
+.subtitle[
+## <html>
+<div style="float:left">
+
+</div>
+<hr color='#EB811B' size=1px width=0px>
+</html>
+]
+.author[
+### Ian McCarthy | Emory University
+]
+.date[
+### Econ 771, Fall 2022
+]
+
+---
+
+
+&lt;!-- Adjust some CSS code for font size and maintain R code font size --&gt;
+&lt;style type="text/css"&gt;
+.remark-slide-content {
+    font-size: 30px;
+    padding: 1em 2em 1em 2em;    
+}
+.remark-code {
+  font-size: 15px;
+}
+.remark-inline-code { 
+    font-size: 20px;
+}
+&lt;/style&gt;
+
+
+&lt;!-- Set R options for how code chunks are displayed and load packages --&gt;
+
+
+
+
+
+# Outline
+1. [Admin Updates](#admin)
+
+2. [Ownership Structure](#ownership)
+
+3. [Payment and Coding](#payment)
+
+4. [More Recent Interest](#recent)
+
+
+---
+# Quick notes
+
+- Data for assignment 1 on our shared OneDrive folder, link is on Canvas
+- Revisit coefficient versus ATE from prior class
+
+
+&lt;!-- New Section --&gt;
+---
+class: inverse, center, middle
+name: ownership
+
+# Hospital Ownership Structure
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#EB811B' size=1px width=1055px&gt;&lt;/html&gt;
+
+
+---
+# Ownership types
+
+1. Private not-for-profit: About 60%
+
+2. For-profit: About 20%
+
+3. State and local gov't: About 20%
+
+&lt;br&gt;
+&lt;div class="smalltext"&gt;Source: &lt;a href="https://www.aha.org/statistics/fast-facts-us-hospitals"&gt;AHA Fast Facts&lt;/a&gt;&lt;/div&gt;
+
+---
+# What does NFP mean?
+From an economics perspective:
+- Hospital assumed to maximize some objective function, `\(u(q,z)\)`, subject to a production constraint
+
+- `\(q\)` denotes quantity of care and `\(z\)` denotes quality of care
+
+- Production is constrained by the break-even condition
+
+---
+# What does NFP mean?
+From a practical perspective:
+- Profits must be re-invested into the hospital
+
+- Must show "community benefit" (no consensus definition...includes uncompensated care, services to Medicaid, and certain specialized services that are generally unprofitable)
+
+- No taxes! and tax-free bonds
+
+---
+# NFP Production Constraint
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="01-1_files/figure-html/unnamed-chunk-1-1.png" alt="Demand and Cost Changes from Increase in Quality"  /&gt;
+&lt;p class="caption"&gt;Demand and Cost Changes from Increase in Quality&lt;/p&gt;
+&lt;/div&gt;
+
+---
+# NFP Proeuction Constraint
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="01-1_files/figure-html/unnamed-chunk-2-1.png" alt="PPC from Demand and Cost Intersection"  /&gt;
+&lt;p class="caption"&gt;PPC from Demand and Cost Intersection&lt;/p&gt;
+&lt;/div&gt;
+
+---
+# Non-profit hospitals and tax benefits
+- &lt;span&gt;&amp;#36;&lt;/span&gt;24.6 billion in tax exemptions in 2011
+
+- &lt;span&gt;&amp;#36;&lt;/span&gt;62.4 billion in "community benefits"&lt;br&gt;
+
+- [Washington Post Article](https://www.washingtonpost.com/national/health-science/value-of-tax-breaks-for-nonprofit-hospitals-doubled-in-a-decade/2015/06/17/4162c640-1450-11e5-9ddc-e3353542100c_story.html?utm_term=.4f877a72a09f)&lt;br&gt;
+
+
+---
+# What is a non-profit hospital?
+The real question is...what is the hospital's objective function?
+
+- For-profit in disguise
+- Output maximizers
+- Social welfare maximizers
+- Something else?
+
+
+&lt;!-- New Section --&gt;
+---
+class: inverse, center, middle
+name: payment
+
+# Payments and Coding
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#EB811B' size=1px width=1055px&gt;&lt;/html&gt;
+
+
+---
+# Organizing a Claim
+Inpatient:
+- DRG codes (e.g., DRG 470, Major Hip and Knee without MCC)
+- Procedure codes (ICD-9 / ICD-10-PCS)
+- Diagnosis codes (ICD-9 / ICD-10-CM)
+
+---
+# Organizing a Claim
+Outpatient:
+- APCs
+- HCPCS codes
+- Diagnosis codes (ICD-9 / ICD-10-CM)
+
+---
+# Organizing a Claim
+Office:
+- CPT/HCPCS codes
+- Diagnosis codes (ICD-9 / ICD-10-CM)
+
+
+&lt;!-- New Section --&gt;
+---
+class: inverse, center, middle
+name: recent
+
+# More Recent Interest
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#EB811B' size=1px width=1055px&gt;&lt;/html&gt;
+
+
+---
+# From today's NBER alerts
+
+- [Private Provision of Public Services](https://www.nber.org/papers/w30390)
+- [Governance of Non-Profits and their Social Impact](https://www.nber.org/papers/w30391)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

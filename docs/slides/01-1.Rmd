@@ -1,0 +1,251 @@
+---
+title: "Some Hospital Background"
+subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=0px></html>"
+author: Ian McCarthy | Emory University
+date: Econ 771, Fall 2022
+header-includes: 
+  - \usepackage{graphicx}
+  - \usepackage{amsmath}
+  - \usepackage{mathtools}
+  - \usepackage{xspace}
+  - \usepackage{pgfplots}
+output:
+#  html_document: default
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts, custom.css] 
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      beforeInit: "macros.js"
+#knit: pagedown::chrome_print
+---
+
+<!-- Adjust some CSS code for font size and maintain R code font size -->
+<style type="text/css">
+.remark-slide-content {
+    font-size: 30px;
+    padding: 1em 2em 1em 2em;    
+}
+.remark-code {
+  font-size: 15px;
+}
+.remark-inline-code { 
+    font-size: 20px;
+}
+</style>
+
+
+<!-- Set R options for how code chunks are displayed and load packages -->
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(knitr)
+knitr::opts_chunk$set(
+  fig.align="center",  
+  fig.height=3, #fig.width=6,
+  # out.width="748px", #out.length="520.75px",
+  dpi=300, #fig.path='Figs/',
+  cache=T,# echo=F, warning=F, message=F
+  warning = FALSE, 
+  message = FALSE, 
+  cache.lazy = FALSE,
+  error=TRUE
+  )
+
+knitr::opts_hooks$set(fig.callout = function(options) {
+  if(options$fig.callout) {
+    options$echo = FALSE
+  }
+  options
+})
+
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, ggplot2, dplyr, lubridate, readr, readxl, hrbrthemes, magick,
+               scales, plotly, gganimate, cobalt, MatchIt, ggthemes, here, latex2exp,
+               hettreatreg, pdftools)
+set.seed(12345)
+```
+
+```{r xaringan-scribble, echo=FALSE}
+xaringanExtra::use_scribble(rgb(0.9, 0.5, 0.5))
+```
+
+
+# Outline
+1. [Admin Updates](#admin)
+
+2. [Ownership Structure](#ownership)
+
+3. [Payment and Coding](#payment)
+
+4. [More Recent Interest](#recent)
+
+
+---
+# Quick notes
+
+- Data for assignment 1 on our shared OneDrive folder, link is on Canvas
+- Revisit coefficient versus ATE from prior class
+
+
+<!-- New Section -->
+---
+class: inverse, center, middle
+name: ownership
+
+# Hospital Ownership Structure
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
+
+
+---
+# Ownership types
+
+1. Private not-for-profit: About 60%
+
+2. For-profit: About 20%
+
+3. State and local gov't: About 20%
+
+<br>
+<div class="smalltext">Source: <a href="https://www.aha.org/statistics/fast-facts-us-hospitals">AHA Fast Facts</a></div>
+
+---
+# What does NFP mean?
+From an economics perspective:
+- Hospital assumed to maximize some objective function, $u(q,z)$, subject to a production constraint
+
+- $q$ denotes quantity of care and $z$ denotes quality of care
+
+- Production is constrained by the break-even condition
+
+---
+# What does NFP mean?
+From a practical perspective:
+- Profits must be re-invested into the hospital
+
+- Must show "community benefit" (no consensus definition...includes uncompensated care, services to Medicaid, and certain specialized services that are generally unprofitable)
+
+- No taxes! and tax-free bonds
+
+---
+# NFP Production Constraint
+```{tikz echo=FALSE, fig.cap="Demand and Cost Changes from Increase in Quality", fix.ext='png'}
+\usetikzlibrary{decorations,arrows,shapes,positioning}
+\usetikzlibrary{calc,patterns}
+\begin{tikzpicture}[scale=.6]
+\draw [thick] (0,0) -- (8,0);
+\draw [thick] (0,0) -- (0,5);
+\node [right] at (8,0) {\tiny $x$};
+\node [above] at (0,5) {\tiny \$};
+\draw [thick] (1.5,4.6) -- (7.4,1.3);
+\node [left] at (7.2,1.2) {\tiny $D_{H}$};
+\draw [thick] (1,3.4) -- (5.3,1);
+\node [left] at (5,1) {\tiny $D_{L}$};
+\draw (.5,3.5) to [out=300,in=200] (6,2.5);
+\node [below] at (.5,3.2) {\tiny $AC_{L}$};
+\draw (.8,5) to [out=300,in=200] (7.2,3.5);
+\node [below] at (7,3.4) {\tiny $AC_{H}$};
+\draw[dashed](3.5,2)--(3.5,0);
+\draw [fill] (3.5,2) circle [radius =0.05];
+\draw[dashed](4.4,3)--(4.4,0);
+\draw [fill] (4.4,3) circle [radius =0.05];
+\end{tikzpicture}
+```
+
+---
+# NFP Proeuction Constraint
+```{tikz echo=FALSE, fig.cap="PPC from Demand and Cost Intersection", fix.ext='png'}
+\usetikzlibrary{decorations,arrows,shapes,positioning}
+\usetikzlibrary{calc,patterns}
+\begin{tikzpicture}[scale=.5]
+\draw [thick] (0,0) -- (8,0);
+\draw [thick] (0,0) -- (0,7);
+\node [right] at (8,0) {\tiny $x$};
+\node [above] at (0,7) {\tiny \$};
+\draw [thick] (2.5,5.6) -- (7.8,2.5);
+\node [left] at (7.8,2.5) {\tiny $D_{HH}$};
+\draw [thick] (1.5,4.6) -- (7.4,1.3);
+\node [left] at (7.2,1.2) {\tiny $D_{H}$};
+\draw [thick] (1,3.4) -- (5.3,1);
+\node [left] at (5,1) {\tiny $D_{L}$};
+\draw (.5,3.5) to [out=300,in=200] (6,2.5);
+\node [below] at (.5,3.2) {\tiny $AC_{L}$};
+\draw (.8,5) to [out=300,in=200] (7.2,3.5);
+\node [above] at (7,3.6) {\tiny $AC_{H}$};
+\draw (1.1,6) to [out=300,in=200] (7,5.5);
+\node [above] at (7,5.6) {\tiny $AC_{HH}$};
+\draw [fill] (3.5,2) circle [radius =0.05];
+\draw [fill] (4.4,3) circle [radius =0.05];
+\draw [fill] (4.05,4.75) circle [radius =0.05];
+\draw [very thick] (1.8,1) .. controls (4,2) and (5.5,3.2) .. (3.5,5.5);
+\end{tikzpicture}
+```
+
+---
+# Non-profit hospitals and tax benefits
+- <span>&#36;</span>24.6 billion in tax exemptions in 2011
+
+- <span>&#36;</span>62.4 billion in "community benefits"<br>
+
+- [Washington Post Article](https://www.washingtonpost.com/national/health-science/value-of-tax-breaks-for-nonprofit-hospitals-doubled-in-a-decade/2015/06/17/4162c640-1450-11e5-9ddc-e3353542100c_story.html?utm_term=.4f877a72a09f)<br>
+
+
+---
+# What is a non-profit hospital?
+The real question is...what is the hospital's objective function?
+
+- For-profit in disguise
+- Output maximizers
+- Social welfare maximizers
+- Something else?
+
+
+<!-- New Section -->
+---
+class: inverse, center, middle
+name: payment
+
+# Payments and Coding
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
+
+
+---
+# Organizing a Claim
+Inpatient:
+- DRG codes (e.g., DRG 470, Major Hip and Knee without MCC)
+- Procedure codes (ICD-9 / ICD-10-PCS)
+- Diagnosis codes (ICD-9 / ICD-10-CM)
+
+---
+# Organizing a Claim
+Outpatient:
+- APCs
+- HCPCS codes
+- Diagnosis codes (ICD-9 / ICD-10-CM)
+
+---
+# Organizing a Claim
+Office:
+- CPT/HCPCS codes
+- Diagnosis codes (ICD-9 / ICD-10-CM)
+
+
+<!-- New Section -->
+---
+class: inverse, center, middle
+name: recent
+
+# More Recent Interest
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
+
+
+---
+# From today's NBER alerts
+
+- [Private Provision of Public Services](https://www.nber.org/papers/w30390)
+- [Governance of Non-Profits and their Social Impact](https://www.nber.org/papers/w30391)

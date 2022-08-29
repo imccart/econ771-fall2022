@@ -25,7 +25,7 @@ Below is a preliminary course outline for this semester. For a more complete rea
 
 ## [Module 1: Hospitals](modules/module1.html)
 
-  - `r advdate(2)`: Background and institutional details
+  - `r advdate(2)`: Background and institutional details. Slides [on background](slides/01-1.html), [Pablo](slides/student/pablo-20220829.pdf), [Katie](slides/student/katie-20220829.pdf)
   - `r advdate(3)`: Hospitals and financial incentives, part I
   - `r advdate(4)`: Labor Day, no class
   - `r advdate(5)`: Hospitals and financial incentives, part II
