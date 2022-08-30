@@ -29,8 +29,8 @@ Below is a preliminary course outline for this semester. For a more complete rea
 
   - `r advdate(2)`: Background and institutional details. 
       - [Background slides](slides/01-1.html)
-      - [Bayindir (2012), Hospital ownership and treatment choices](slides/student/pablo-20220829.pdf)
-      - [Chang and Jacobson (2010), What do nonprofit hospitals maximize?](slides/student/katie-20220829.pdf)
+      - [Chang and Jacobson (2010), What do nonprofit hospitals maximize?](slides/student/katie-20220829.pdf), presented by Katie      
+      - [Bayindir (2012), Hospital ownership and treatment choices](slides/student/pablo-20220829.pdf), presented by Pablo
   - `r advdate(3)`: Hospitals and financial incentives, part I
   - `r advdate(4)`: Labor Day, no class
   - `r advdate(5)`: Hospitals and financial incentives, part II
