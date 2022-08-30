@@ -16,16 +16,21 @@ advdate <- function(adv) {
 }
 ```
 
-Below is a preliminary course outline for this semester. For a more complete reading list each day as well as more detail on course policies, please see the full syllabus [here](syllabus/syllabus-771.pdf).
+Below is a preliminary course outline for this semester. For a more complete reading list each day as well as more detail on course policies, please see the full syllabus [here](syllabus/syllabus-771.pdf). I'll post links to paper presentations as they are available.
 
 
 ## [Module 0: Kicking things off!](modules/module0.html)
 
-  - `r advdate(1)`: Introduction to the economics of healthcare and causal inference. Slides [part 1](slides/01-intro-health.html) and [part 2](slides/01-intro-causal-inference.html)
+  - `r advdate(1)`: Introduction to the economics of healthcare and causal inference. 
+      - [Intro to healthcare slides](slides/01-intro-health.html)
+      - [Intro to causal inference slides](slides/01-intro-causal-inference.html)
 
 ## [Module 1: Hospitals](modules/module1.html)
 
-  - `r advdate(2)`: Background and institutional details. Slides [on background](slides/01-1.html), [Pablo](slides/student/pablo-20220829.pdf), [Katie](slides/student/katie-20220829.pdf)
+  - `r advdate(2)`: Background and institutional details. 
+      - [Background slides](slides/01-1.html)
+      - [Bayindir (2012), Hospital ownership and treatment choices](slides/student/pablo-20220829.pdf)
+      - [Chang and Jacobson (2010), What do nonprofit hospitals maximize?](slides/student/katie-20220829.pdf)
   - `r advdate(3)`: Hospitals and financial incentives, part I
   - `r advdate(4)`: Labor Day, no class
   - `r advdate(5)`: Hospitals and financial incentives, part II
