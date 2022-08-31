@@ -18,7 +18,7 @@ Please "submit" your answers as a GitHub repository link. In your repo, please i
 
 
 # Resources and data
-The data for this assignment comes from three sources. These data will be made available on our class OneDrive folder.
+The data for this assignment comes from three sources. These data will be made available on our class OneDrive folder. Note that you may want to use (or create) a crosswalk file between state names and abbreviations, as different datasets often have different ways to capture "state". Stata has a user-written program, statastates, that should do what you need. R has a similar object, stcrosswalk, as part of the crosswalkr package.
 
 1. **Hospital Cost Report Information System**: Hospitals submit cost reports to CMS with a wealth of (very messy) data on the hospital, including information on the extent of uncompensated care provided by the hospital in that fiscal year. You can get started with these data using my GitHub repository, [HCRIS](https://github.com/imccart/HCRIS).
 
