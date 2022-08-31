@@ -32,6 +32,9 @@ Below is a preliminary course outline for this semester. For a more complete rea
       - [Chang and Jacobson (2010), What do nonprofit hospitals maximize?](slides/student/katie-20220829.pdf), presented by Katie      
       - [Bayindir (2012), Hospital ownership and treatment choices](slides/student/pablo-20220829.pdf), presented by Pablo
   - `r advdate(3)`: Hospitals and financial incentives, part I
+      - [Dafny (2005), How do hospitals respond to price changes?](slides/student/wonjun-20220831.pdf)
+      - [Eliason et al. (2018), Strategic patient discharge: The case of long-term care hospitals](slides/student/kayan-20220831.pdf)
+      - [Gupta (2021), Impacts of performance pay for hospitals: The readmissions reduction program](slides/student/rachel-20220831.pdf)
   - `r advdate(4)`: Labor Day, no class
   - `r advdate(5)`: Hospitals and financial incentives, part II
   - `r advdate(6)` - `r advdate(8)`: Empirical application with DD
