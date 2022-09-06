@@ -24,7 +24,7 @@ The data for this assignment comes from three sources. These data will be made a
 
 2. **Provider of Services files**: These raw data (through 2019) are available from [NBER POS](https://data.nber.org/data/provider-of-services.html). Data for more recent years is available directly from the [CMS POS Data](https://data.cms.gov/provider-characteristics/hospitals-and-other-facilities/provider-of-services-file-hospital-non-hospital-facilities). The data provide information on characteristics of healthcare providers, including information on hospital ownership type. We'll use these files to collect some basic hospital-level covariates. You can access my GitHub repository for these data [here](https://github.com/imccart/cms-pos), as well as a similar repo using Stata from Adam Sacarny, available [here](https://github.com/asacarny/provider-of-services). 
 
-3. **Medicaid Expansion**: Data on which states expanded Medicaid under the ACA, and when they expanded, is available from the Kaiser Family Foundation website. For more info, see my GitHub repository, [Insurance Access](https://github.com/imccart/Insurance-Access).
+3. **Medicaid Expansion**: Data on which states expanded Medicaid under the ACA, and when they expanded, is available from the Kaiser Family Foundation website. For more info, see my GitHub repository, [Insurance Access](https://github.com/imccart/Insurance-Access). The relevant dataset is also available on our class OneDrive folder, "KFF_medicaid_expansion_2019.dsv".
 
 
 # Questions
