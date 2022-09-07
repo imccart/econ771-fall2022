@@ -24,7 +24,7 @@ The data for this assignment comes from three sources. These data will be made a
 
 2. **Provider of Services files**: These raw data (through 2019) are available from [NBER POS](https://data.nber.org/data/provider-of-services.html). Data for more recent years is available directly from the [CMS POS Data](https://data.cms.gov/provider-characteristics/hospitals-and-other-facilities/provider-of-services-file-hospital-non-hospital-facilities). The data provide information on characteristics of healthcare providers, including information on hospital ownership type. We'll use these files to collect some basic hospital-level covariates. You can access my GitHub repository for these data [here](https://github.com/imccart/cms-pos), as well as a similar repo using Stata from Adam Sacarny, available [here](https://github.com/asacarny/provider-of-services). 
 
-3. **Medicaid Expansion**: Data on which states expanded Medicaid under the ACA, and when they expanded, is available from the Kaiser Family Foundation website. For more info, see my GitHub repository, [Insurance Access](https://github.com/imccart/Insurance-Access). The relevant dataset is also available on our class OneDrive folder, "KFF_medicaid_expansion_2019.dsv".
+3. **Medicaid Expansion**: Data on which states expanded Medicaid under the ACA, and when they expanded, is available from the Kaiser Family Foundation website. For more info, see my GitHub repository, [Insurance Access](https://github.com/imccart/Insurance-Access). The relevant dataset is also available on our class OneDrive folder, "KFF_medicaid_expansion_2019.txt".
 
 
 # Questions
@@ -48,7 +48,7 @@ y_{it} = \alpha_{i} + \gamma_{t} +\sum_{\tau < -1} D_{it}^{\tau} \delta_{\tau} +
 \end{equation}
 where $D_{it}^{\tau} = 1(t-E_{i}=\tau)$ in Equation \@ref(eq:event) is essentially an interaction between the treatment dummy and a relative time dummy. In this notation and context, $\tau$ denotes years relative to Medicaid expansion, so that $\tau=-1$ denotes the year before a state expanded Medicaid, $\tau=0$ denotes the year of expansion, etc. Estimate with two different samples: one based on the full sample and one based only on those that expanded in 2014 (with never treated as the control group).
 
-5. Sun and Abraham(SA) show that the $\delta_{\tau}$ coefficients in Equation \@ref(eq:event) can be written as a non-conxvex average of all other group-time specific average treatment effects. They propose an interaction weighted specification:
+5. Sun and Abraham (SA) show that the $\delta_{\tau}$ coefficients in Equation \@ref(eq:event) can be written as a non-convex average of all other group-time specific average treatment effects. They propose an interaction weighted specification:
 \begin{equation}
 y_{it} = \alpha_{i} + \gamma_{t} +\sum_{e} \sum_{\tau \neq -1} \left(D_{it}^{\tau} \times 1(E_{i}=e)\right) \delta_{e, \tau} + \varepsilon_{it}.
 (\#eq:iwevent)
