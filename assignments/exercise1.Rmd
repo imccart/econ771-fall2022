@@ -28,7 +28,7 @@ The data for this assignment comes from three sources. These data will be made a
 
 
 # Questions
-In your GitHub repository, please be sure to clearly address/answer the following questions.
+Focus on the years from 2003 through 2019, which are years for which data on uncompensated care are available. In your GitHub repository, please be sure to clearly address/answer the following questions. 
 
 1. Provide and discuss a table of simple summary statistics showing the mean, standard deviation, min, and max of hospital total revenues and uncompensated care over time.
 
