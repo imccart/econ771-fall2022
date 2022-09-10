@@ -40,6 +40,9 @@ Below is a preliminary course outline for this semester. For a more complete rea
       - [Batty and Ippolito (2017), Financial incentives, hospital care, and health outcomes: Evidence from fair pricing laws](slides/student/jingquan-20220907.pptx)
       - [Lee (2020), How do hospitals respond to managed care? Evidence from at-risk newborns](slides/student/amy-20220907.pdf)
   - `r advdate(6)` - `r advdate(8)`: Empirical application with DD
+      - [Basics of Panel Data and Fixed Effects](slides/02-1.html)
+      - [Difference-in-Differences the "Old" Way](slides/02-2.html)
+      - [Difference-in-Differences the "New" Way(s)](slides/02-3.html)
 
 ## [Module 2: Physicians](modules/module2.html)
 
