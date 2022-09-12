@@ -76,6 +76,7 @@ Recall the biggest issues with "standard" TWFE estimates:
 - Best case: Variance-weighted ATT
 - Biased with heterogeneous effects over time and differential timing
 - Differential timing **alone** can introduce bias because already treated act as controls for later treated groups
+- Heterogeneity and differential timing introduces "contamination" via negative weights to some 2x2 DDs underlying estimation
 
 
 --
@@ -121,7 +122,7 @@ ssc install csdid
 ssc install event_plot
 ssc install drdid
 
-insheet using "https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/data/medicaid-expansion/mcaid-expand-data.txt", clear
+insheet using "data/acs_medicaid.txt", clear
 gen perc_unins=uninsured/adult_pop
 egen stategroup=group(state)
 drop if expand_ever=="NA"
@@ -135,13 +136,13 @@ event_plot cs, default_look graph_opt(xtitle("Periods since the event") ytitle("
 ]
 
 
-.pull-left[
+.pull-right[
 **R**<br>
-```{r, eval=FALSE}
+```{r, echo=TRUE, results='hide'}
 library(tidyverse)
 library(did)
 library(DRDID)
-mcaid.data <- read_tsv("https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/data/medicaid-expansion/mcaid-expand-data.txt")
+mcaid.data <- read_tsv("../data/acs_medicaid.txt")
 reg.dat <- mcaid.data %>% 
   filter(!is.na(expand_ever)) %>%
   mutate(perc_unins=uninsured/adult_pop,
@@ -157,9 +158,15 @@ mod.cs <- att_gt(yname="perc_unins", tname="year", idname="stategroup",
                  data=reg.dat, panel=TRUE, est_method="dr",
                  allow_unbalanced_panel=TRUE)
 mod.cs.event <- aggte(mod.cs, type="dynamic")
-ggdid(mod.cs.event)
 ```
 ]
+
+---
+# CS in Practice
+
+```{r echo=FALSE}
+ggdid(mod.cs.event)
+```
 
 
 ---
@@ -181,14 +188,14 @@ Considers event study with differential treatment timing:
 
 
 --
-$$y_{it} = \gamma_{i} + \gamma_{t} + \sum_{g} \sum_{\tau \neq -1} \delta_{g \tau} \times \text{1}(i \in C_{g}) \times D_{it}^{\tau} + x_{it} + \epsilon_{it}$$
+$$y_{it} = \gamma_{i} + \gamma_{t} + \sum_{g} \sum_{\tau \neq -1} \delta_{g \tau} \times \text{1}(i \in C_{g}) \times D_{it}^{\tau} + \beta x_{it} + \epsilon_{it}$$
 
 ---
 count: false
 
 # Sun and Abraham
 
-$$y_{it} = \gamma_{i} + \gamma_{t} + \sum_{g} \sum_{\tau \neq -1} \delta_{g \tau} \times \text{1}(i \in C_{g}) \times D_{it}^{\tau} + x_{it} + \epsilon_{it}$$
+$$y_{it} = \gamma_{i} + \gamma_{t} + \sum_{g} \sum_{\tau \neq -1} \delta_{g \tau} \times \text{1}(i \in C_{g}) \times D_{it}^{\tau} + \beta x_{it} + \epsilon_{it}$$
 
 --
 - $g$ denotes a group and $C_{g}$ the set of individuals in group $g$
@@ -201,7 +208,7 @@ count: false
 
 # Sun and Abraham
 
-$$y_{it} = \gamma_{i} + \gamma_{t} + \sum_{g} \sum_{\tau \neq -1} \delta_{g \tau} \times \text{1}(i \in C_{g}) \times D_{it}^{\tau} + x_{it} + \epsilon_{it}$$
+$$y_{it} = \gamma_{i} + \gamma_{t} + \sum_{g} \sum_{\tau \neq -1} \delta_{g \tau} \times \text{1}(i \in C_{g}) \times D_{it}^{\tau} + \beta x_{it} + \epsilon_{it}$$
 
 
 --
@@ -220,7 +227,7 @@ ssc install eventstudyinteract
 ssc install avar
 ssc install event_plot
 
-insheet using "https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/data/medicaid-expansion/mcaid-expand-data.txt", clear
+insheet using "data/acs_medicaid.txt", clear
 gen perc_unins=uninsured/adult_pop
 drop if expand_ever=="NA"
 egen stategroup=group(state)
@@ -243,13 +250,13 @@ event_plot e(b_iw)#e(V_iw), default_look graph_opt(xtitle("Periods since the eve
 ]
 
 
-.pull-left[
+.pull-right[
 **R**<br>
-```{r, eval=FALSE}
+```{r, echo=TRUE, results='hide'}
 library(tidyverse)
 library(modelsummary)
 library(fixest)
-mcaid.data <- read_tsv("https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/data/medicaid-expansion/mcaid-expand-data.txt")
+mcaid.data <- read_tsv("../data/acs_medicaid.txt")
 reg.dat <- mcaid.data %>% 
   filter(!is.na(expand_ever)) %>%
   mutate(perc_unins=uninsured/adult_pop,
@@ -262,12 +269,19 @@ reg.dat <- mcaid.data %>%
 mod.sa <- feols(perc_unins~sunab(expand_year, time_to_treat) | State + year,
                   cluster=~State,
                   data=reg.dat)
-iplot(mod.sa,
-      xlab = 'Time to treatment',
-      main = 'Event study')
-
 ```
 ]
+
+---
+# Sun and Abraham in Practice
+
+```{r echo=FALSE}
+iplot(mod.sa,
+      xlab = 'Time to treatment',
+      main = 'SA Event study')
+```
+
+
 
 
 ---
@@ -306,7 +320,7 @@ New paper from Callaway, Goodman-Bacon, and Sant'Anna also looks at DD with cont
 ssc install did_multiplegt
 ssc install event_plot
 
-insheet using "https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/data/medicaid-expansion/mcaid-expand-data.txt", clear
+insheet using "data/acs_medicaid.txt", clear
 gen perc_unins=uninsured/adult_pop
 drop if expand_ever=="NA"
 egen stategroup=group(state)
@@ -323,11 +337,11 @@ title("de Chaisemartin and D'Haultfoeuille (2020)") xlabel(-3(1)4)) stub_lag(Eff
 ]
 
 
-.pull-left[
+.pull-right[
 **R**(not the same as in **Stata**)<br>
-```{r, eval=FALSE}
+```{r, echo=TRUE, results='hide'}
 library(DIDmultiplegt)
-mcaid.data <- read_tsv("https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/data/medicaid-expansion/mcaid-expand-data.txt")
+mcaid.data <- read_tsv("../data/acs_medicaid.txt")
 reg.dat <- as.data.table(mcaid.data) %>% 
   filter(!is.na(expand_ever)) %>%
   mutate(perc_unins=uninsured/adult_pop,
@@ -340,6 +354,9 @@ mod.ch <- did_multiplegt(df=reg.dat, Y="perc_unins", G="State", T="year", D="tre
                          placebo=3, dynamic=4, brep=50, cluster="State")
 ```
 ]
+
+---
+# CH in Practice
 
 
 ---
