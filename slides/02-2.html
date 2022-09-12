@@ -321,6 +321,7 @@ graph twoway (connected perc_unins year if expand_ever=="FALSE", color(black) lp
 
 ```r
 library(tidyverse)  
+# mcaid.data &lt;- read_tsv("https://raw.githubusercontent.com/imccart/Insurance-Access/master/data/output/acs_medicaid.txt")
 mcaid.data &lt;- read_tsv("../data/acs_medicaid.txt")
 ins.plot.dat &lt;- mcaid.data %&gt;% filter(expand_year==2014 | is.na(expand_year), !is.na(expand_ever)) %&gt;%
   mutate(perc_unins=uninsured/adult_pop) %&gt;%
@@ -556,7 +557,7 @@ Event study is poorly named:
 # What is an event study?
 
 Estimate something akin to...
-`$$y_{it} = \gamma_{i} + \gamma_{t} + \sum_{\tau = -q}^{-2}\delta_{\tau} D_{i \tau} + \sum_{\tau=0}^{m} \delta_{\tau}D_{i \tau} + x_{it} + \epsilon_{it},$$`
+`$$y_{it} = \gamma_{i} + \gamma_{t} + \sum_{\tau = -q}^{-2}\delta_{\tau} D_{i \tau} + \sum_{\tau=0}^{m} \delta_{\tau}D_{i \tau} + \beta x_{it} + \epsilon_{it},$$`
 
 where `\(q\)` captures the number of periods before the treatment occurs and `\(m\)` captures periods after treatment occurs.
 
@@ -742,14 +743,7 @@ twoway (sc coef event_time, connect(line)) (rcap ci_top ci_bottom event_time) //
 library(tidyverse)
 library(modelsummary)
 library(fixest)
-mcaid.data &lt;- read_tsv("..data/acs_medicaid.txt")
-```
-
-```
-## Error: '..data/acs_medicaid.txt' does not exist in current working directory ('/immccar-data/imccart/professional/teaching/emory/econ-771/fall-2022/slides').
-```
-
-```r
+mcaid.data &lt;- read_tsv("../data/acs_medicaid.txt")
 reg.dat &lt;- mcaid.data %&gt;% 
   filter(!is.na(expand_ever)) %&gt;%
   mutate(perc_unins=uninsured/adult_pop,

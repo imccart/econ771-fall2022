@@ -192,6 +192,7 @@ xtreg lifeExp lgdp_pc, fe
 **R**<br>
 ```{r, eval=FALSE}
 library(fixest)
+library(causaldata)
 reg.dat <- causaldata::gapminder %>%
   mutate(lgdp_pc=log(gdpPercap))
 feols(lifeExp~lgdp_pc | country, data=reg.dat)
@@ -204,6 +205,7 @@ feols(lifeExp~lgdp_pc | country, data=reg.dat)
 ```{r echo=FALSE}
 library(fixest)
 library(modelsummary)
+library(causaldata)
 reg.dat <- causaldata::gapminder %>%
   mutate(lgdp_pc=log(gdpPercap))
 m1 <- feols(lifeExp ~ lgdp_pc | country, data=reg.dat)
@@ -233,6 +235,7 @@ reg demean_lifeExp demean_lgdp_pc
 .pull-right[
 **R**<br>
 ```{r, eval=FALSE}
+library(causaldata)
 reg.dat <- causaldata::gapminder %>%
   mutate(lgdp_pc=log(gdpPercap)) %>%
   group_by(country) %>%
@@ -336,8 +339,8 @@ lm(fd_lifeexp~ 0 + lgdp_pc , data=reg.dat)
 ```{r, echo=FALSE}
 reg.dat <- causaldata::gapminder %>%
   mutate(lgdp_pc=log(gdpPercap)) %>%  
-  arrange(country, year) %>%
   group_by(country) %>%
+  arrange(country, year) %>%  
   mutate(fd_lifeexp=lifeExp - dplyr::lag(lifeExp),
          lgdp_pc=lgdp_pc - dplyr::lag(lgdp_pc)) %>%
   na.omit()
@@ -349,3 +352,21 @@ modelsummary(list("Default FE"=m1, "Manual FE"=m2, "Default FD"=m3, "Manual FD"=
              coef_rename=c("lgdp_pc"="Log GDP per Capita"))
 ```
 
+
+---
+# FE and FD with same time period
+
+```{r, echo=FALSE}
+reg.dat2 <- causaldata::gapminder %>%
+  mutate(lgdp_pc=log(gdpPercap)) %>%
+  inner_join(reg.dat %>% select(country, year), by=c("country","year"))
+m5 <- feols(lifeExp ~ lgdp_pc | country, data=reg.dat2)
+modelsummary(list("Default FE"=m5, "Default FD"=m3, "Manual FD"=m4), 
+             shape=term + statistic ~ model, 
+             gof_map=NA, 
+             coef_rename=c("lgdp_pc"="Log GDP per Capita"))
+```
+
+Don't want to read too much into this, but...
+- Likely strong serial correlation in this case (almost certainly)
+- Mispecified model

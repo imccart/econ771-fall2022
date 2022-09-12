@@ -189,6 +189,7 @@ xtreg lifeExp lgdp_pc, fe
 
 ```r
 library(fixest)
+library(causaldata)
 reg.dat &lt;- causaldata::gapminder %&gt;%
   mutate(lgdp_pc=log(gdpPercap))
 feols(lifeExp~lgdp_pc | country, data=reg.dat)
@@ -239,6 +240,7 @@ reg demean_lifeExp demean_lgdp_pc
 **R**&lt;br&gt;
 
 ```r
+library(causaldata)
 reg.dat &lt;- causaldata::gapminder %&gt;%
   mutate(lgdp_pc=log(gdpPercap)) %&gt;%
   group_by(country) %&gt;%
@@ -389,6 +391,38 @@ lm(fd_lifeexp~ 0 + lgdp_pc , data=reg.dat)
 &lt;/tbody&gt;
 &lt;/table&gt;
 
+
+---
+# FE and FD with same time period
+
+&lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; Default FE &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; Default FD &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; Manual FD &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Log GDP per Capita &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 8.929 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 5.290 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 5.290 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.741) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.291) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.291) &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+Don't want to read too much into this, but...
+- Likely strong serial correlation in this case (almost certainly)
+- Mispecified model
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
