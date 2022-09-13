@@ -539,8 +539,6 @@ name: stacked
 
 1. Define event window, $t\in [\kappa_{a}, \kappa_{b}]$ (e.g., 3 pre-periods and 5 post-periods, $\kappa_{a}=3$ and $\kappa_{b}=5$)
 2. Split the data into $g=1,...,G$ different "groups", as defined by treatment cohort, each with adoption date denoted by $\omega_{g}$
-    - control observations are untreated as of $t=\omega_{g}+\kappa_{b}$
-    - treated observations all have same treatment time, $\omega_{g}$
     - observations outside of the $[\omega_{g} - \kappa_{a}, \omega_{g} + \kappa_{b}]$ interval are dropped
 3. Append (i.e., stack) each $g$th dataset
 4. Run stacked event study allowing for different set of event study coefficients and fixed effects for every group $g$
@@ -603,7 +601,7 @@ reg.dat <- mcaid.data %>%
          treat=post*expand_ever,
          expand_year = ifelse(expand_ever==FALSE, 10000, expand_year),
          time_to_treat = ifelse(expand_ever==FALSE, -1, year-expand_year),
-         time_to_treat = ifelse(time_to_treat < -4, -4, time_to_treat))
+         time_to_treat = ifelse(time_to_treat < -3, -3, time_to_treat))
 
 mod.2s <- did2s(reg.dat, yname="perc_unins", 
                 treatment="treat", 
@@ -611,6 +609,7 @@ mod.2s <- did2s(reg.dat, yname="perc_unins",
                 second_stage = ~i(time_to_treat, ref=-1),
                 cluster_var="State")
 ```
+]
 
 ---
 # Gardner (2021) in Practice
@@ -647,9 +646,7 @@ reg.dat <- mcaid.data %>%
   mutate(perc_unins=uninsured/adult_pop,
          post = (year>=2014), 
          treat=post*expand_ever,
-         expand_year = ifelse(expand_ever==FALSE, 10000, expand_year),
-         time_to_treat = ifelse(expand_ever==FALSE, -1, year-expand_year),
-         time_to_treat = ifelse(time_to_treat < -4, -4, time_to_treat))
+         expand_year = ifelse(expand_ever==FALSE, 0, expand_year))
 
 mod.bea <- did_imputation(reg.dat, yname="perc_unins", 
                 gname="expand_year",
@@ -658,7 +655,7 @@ mod.bea <- did_imputation(reg.dat, yname="perc_unins",
                 first_stage = ~ 0 | State + year,
                 cluster_var="State",
                 horizon=TRUE,
-                pretrends=TRUE)
+                pretrends=-3:-1)
 ```
 
 ]
@@ -668,7 +665,24 @@ mod.bea <- did_imputation(reg.dat, yname="perc_unins",
 # Borusyak et al. in practice
 
 ```{r echo=FALSE}
-iplot(mod.bea, main="Borusyak et al. Event Study", xlab="Event time")
+coef.bea <- mod.bea %>%
+    select(rel_year = term, estimate, std.error) %>%
+    mutate(
+        ci_lower = estimate - 1.96 * std.error,
+        ci_upper = estimate + 1.96 * std.error,
+        group = "Borusyak et al Imputation",
+        rel_year = as.numeric(rel_year)
+    )
+
+ggplot(coef.bea) +
+    geom_hline(yintercept = 0, linetype = "dashed") +
+    geom_vline(xintercept = -0.5, linetype = "dashed") +
+    geom_linerange(mapping = aes(x = rel_year, ymin = ci_lower, ymax = ci_upper), color = "grey30") +
+    geom_point(mapping = aes(x = rel_year, y = estimate, color = group), size = 2) +
+    scale_x_continuous(breaks = -3:5, minor_breaks = NULL) +
+    scale_y_continuous(minor_breaks = NULL) +
+    labs(x = "Relative Time", y = "Estimate", color = NULL, title = NULL) +
+  theme_bw() + theme(legend.position="none")
 ```
 
 
@@ -697,6 +711,93 @@ Goodman-Bacon (2021) explores the problems but doesn't really propose a solution
 ---
 # Comparison
 
+```{r include=FALSE}
+library(tidyverse)
+library(modelsummary)
+library(fixest)
+mcaid.data <- read_tsv("../data/acs_medicaid.txt")
+reg.dat <- mcaid.data %>% 
+  filter(!is.na(expand_ever)) %>%
+  mutate(perc_unins=uninsured/adult_pop,
+         post = (year>=2014), 
+         treat=post*expand_ever,
+         time_to_treat = ifelse(expand_ever==FALSE, 0, year-expand_year),
+         time_to_treat = ifelse(time_to_treat < -3, -3, time_to_treat))
+
+mod.twfe <- feols(perc_unins~i(time_to_treat, expand_ever, ref=-1) | State + year,
+                  cluster=~State,
+                  data=reg.dat)
+```
+
+
+```{r echo=FALSE}
+coef.twfe <- tidy(mod.twfe) %>%
+  mutate(term=str_replace(term,"time_to_treat::",""),
+         term=str_replace(term,":expand_ever","")) %>%
+  rename(rel_year=term) %>%
+  select(rel_year, estimate, std.error) %>%
+  bind_rows(tibble(rel_year="-1", estimate=0, std.error=0)) %>%  
+  mutate(
+    ci_lower = estimate - 1.96 * std.error,
+    ci_upper = estimate + 1.96 * std.error,
+    group = "TWFE",
+    rel_year = as.numeric(rel_year)
+  ) %>%
+  filter(rel_year>=-3, rel_year<=5)
+
+coef.2s <- tidy(mod.2s) %>%
+  mutate(term=str_replace(term,"time_to_treat::","")) %>%
+  rename(rel_year=term) %>%
+  select(rel_year, estimate, std.error) %>%
+  bind_rows(tibble(rel_year="-1", estimate=0, std.error=0)) %>%  
+  mutate(
+    ci_lower = estimate - 1.96 * std.error,
+    ci_upper = estimate + 1.96 * std.error,
+    group = "Gardner 2SDiD",
+    rel_year = as.numeric(rel_year)
+  )
+
+coef.sa <- tidy(mod.sa) %>%
+  mutate(term=str_replace(term,"time_to_treat::","")) %>%
+  rename(rel_year=term) %>%
+  select(rel_year, estimate, std.error) %>%
+  bind_rows(tibble(rel_year="-1", estimate=0, std.error=0)) %>%    
+  mutate(
+    ci_lower = estimate - 1.96 * std.error,
+    ci_upper = estimate + 1.96 * std.error,
+    group = "Sun and Abraham",
+    rel_year = as.numeric(rel_year)
+  ) %>%
+  filter(rel_year>=-3, rel_year<=5)
+
+
+coef.cs <- tidy(mod.cs.event) %>%
+  select(rel_year=event.time, estimate, ci_lower=conf.low, ci_upper=conf.high) %>%
+  mutate(rel_year=as.numeric(rel_year),
+         group = "Callaway and Sant'Anna") %>%
+  filter(rel_year>=-3, rel_year<=5)
+coef.cs <- as_tibble(coef.cs)
+
+coef.all <- bind_rows(coef.twfe, coef.cs, coef.sa, coef.2s, coef.bea) %>%
+  select(rel_year, estimate, ci_lower, ci_upper, group)
+
+ggplot(coef.all, aes(x=rel_year, y=estimate)) + 
+  geom_point(aes(color=group), size = 2, position=position_dodge(width=0.7))  +
+  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper), position=position_dodge2(width=0.7)) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_vline(xintercept = -0.5, linetype = "dashed") +
+  theme(legend.position="bottom") +
+  guides(color=guide_legend(ncol=2, title=NULL)) +
+  scale_x_continuous(breaks = -3:5, minor_breaks = NULL) +
+  scale_y_continuous(minor_breaks = NULL) +
+  labs(x = "Relative Time", y = "Estimate", color = NULL, title = NULL)
+
+```
+
+
+---
+# Comparison
+
 .pull-left[
 **Similarities**<br>
 - Focus on clean treatment/control
@@ -706,15 +807,27 @@ Goodman-Bacon (2021) explores the problems but doesn't really propose a solution
 
 .pull-right[
 **Differences**<br>
-- What are the control units?
+- Is there a "never treated" group?
+- Can treatment turn on and off?
 - How to include covariates?
 - How to do inference?
 ]
 
 
 ---
-# State of current work
+# General advice
 
-- Careful consideration of treatment timing and control group(s)
-- `panelView` package is great here!
-- Implement 2 or more approaches
+1. Do you have staggered treatment adoption? If so, will need to consider something beyond TWFE event study (even if it doesn't change results)
+2. Do you need time-varying covariates? If so, consider Sun and Abraham or stacked regression (2SDD and imputation can only use pre-treatment covariates)
+3. Is treatment "strict"? If not, CH is only option right now
+4. Does treatment turn on and off again? If so, CH or perhaps focus on "clean" treatment adoptions
+5. Inference? Stacked regression is harder here.
+
+
+---
+# Other topics
+
+- Can you test for parallel pre-trends?
+- Recent work says such tests are underpowered
+- Consider potential violations of parallel trends and assess results
+    - Intuitively "easy" to do in manual $(g,t)$ or imputation setting, harder in pure regression setting

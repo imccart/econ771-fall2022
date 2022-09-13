@@ -1,0 +1,135 @@
+---
+title: "Discussion of First Empirical Assignment"
+subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=0px></html>"
+author: Ian McCarthy | Emory University
+date: Econ 771, Fall 2022
+header-includes: 
+  - \usepackage{graphicx}
+  - \usepackage{amsmath}
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts, custom.css] 
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      beforeInit: "macros.js"
+---
+class: inverse, center, middle
+
+<!-- Adjust some CSS code for font size and maintain R code font size -->
+<style type="text/css">
+.remark-slide-content {
+    font-size: 30px;
+    padding: 1em 2em 1em 2em;    
+}
+.remark-code {
+  font-size: 15px;
+}
+.remark-inline-code { 
+    font-size: 20px;
+}
+</style>
+
+
+<!-- Set R options for how code chunks are displayed and load packages -->
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(knitr)
+knitr::opts_chunk$set(
+  fig.align="center",  
+  fig.height=3, #fig.width=6,
+  # out.width="748px", #out.length="520.75px",
+  dpi=300, #fig.path='Figs/',
+  cache=T,# echo=F, warning=F, message=F
+  warning = FALSE, 
+  message = FALSE, 
+  cache.lazy = FALSE,
+  error=TRUE
+  )
+
+knitr::opts_hooks$set(fig.callout = function(options) {
+  if(options$fig.callout) {
+    options$echo = FALSE
+  }
+  options
+})
+
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, ggplot2, dplyr, lubridate, readr, readxl, fixest, readstata13,
+               xaringanExtra, webshot)
+set.seed(1234)
+```
+
+```{r xaringan-scribble, echo=FALSE}
+xaringanExtra::use_scribble(rgb(0.9, 0.5, 0.5))
+```
+
+# Some points on our first assignment
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
+
+
+---
+# 1. The Data
+
+1. HCRIS
+2. POS
+3. KFF Medicaid Expansion
+
+
+---
+# HCRIS
+
+- Comprehensive dataset on hospital financials and other details
+- Challenging to get information out of these reports
+- Very messy with lots of misreporting
+- Hospitals identified by "Medicare Provider Number" (also known as CMS Certification Number, or CCN) and "NPI"
+- We'll work with the provider number in this assignment
+
+---
+# POS
+
+- "Cumulative" file listing all Medicare-approved facilities other than clinical labs (those are in separate files)
+- Duplicate observations in each year
+- Closed hospitals **should** stay in the data every year, with a termination date filled when closed
+- **LOTS** more facilities than hospitals
+
+---
+# KFF Medicaid Expansion
+
+- List of states and dates in which Medicaid was implemented
+
+---
+# 2. The analysis
+
+1. Summary statistics and figures
+2. DD, TWFE, Event Studies
+3. Sun and Abraham
+4. Callaway and Sant'Anna
+5. Callaway and Sant'Anna with "Honest" pre-trends
+
+
+---
+# 3. Discussion and reflection
+
+- Discussion: Looking for overall takeaways here, nothing too formal. 
+- Reflection: Explain something you found surprising. Maybe it was something that you enjoyed learning or implementing. Maybe it was something that you struggled with but that you thought, ex ante, would be easier. Or maybe you were surprised at how awesome you are! Anything goes really...just be genuine.
+
+---
+# 4. Expectations
+
+- PDF should be more like a report than a research notebook (code goes in the repo, not in the report)
+- Separate your analysis from your writing (perhaps by cleaning and then saving your workspace, and importing it into your markdown doc)
+- Tables and Figures should be near-publication quality, with clean and clear variable names, axes, labels, etc.
+- Spend time on good workflow and professional looking products...you can re-use all of this code and workflow for the rest of your career!
+
+
+---
+class: inverse, center, middle
+
+# Questions?
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>

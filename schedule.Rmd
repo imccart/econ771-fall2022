@@ -43,6 +43,7 @@ Below is a preliminary course outline for this semester. For a more complete rea
       - [Basics of Panel Data and Fixed Effects](slides/02-1.html)
       - [Difference-in-Differences the "Old" Way](slides/02-2.html)
       - [Difference-in-Differences the "New" Way(s)](slides/02-3.html)
+      - [Discussion of Assignment](slides/02-4.html)
 
 ## [Module 2: Physicians](modules/module2.html)
 
