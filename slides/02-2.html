@@ -778,7 +778,7 @@ name: what
 - Otherwise...TWFE is biased and inconsistent for ATT
 
 ---
-# Inutition
+# Intuition
 
 - OLS is a weighted average of all 2x2 DD groups
 - Weights are function of size of subsamples, size of treatment/control units, and timing of treatment
@@ -795,6 +795,14 @@ Just the length of the panel will change the estimate!
 - Definitely! But how much?
 - Large treatment effects for early treated units could reverse the sign of final estimate
 - Let's explore this nice Shiny app from Kyle Butts: [Bacon-Decomposition Shiny App](https://kyle-butts.shinyapps.io/did_bacon/).
+
+
+---
+# Note on parallel trends
+
+Parallel trends violated, in general, if:
+1. Policy endogeneity (e.g., selection into treatment due to prior outcome)
+2. Compositional differences (problematic in repeated cross-sections)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

@@ -656,7 +656,7 @@ name: what
 - Otherwise...TWFE is biased and inconsistent for ATT
 
 ---
-# Inutition
+# Intuition
 
 - OLS is a weighted average of all 2x2 DD groups
 - Weights are function of size of subsamples, size of treatment/control units, and timing of treatment
