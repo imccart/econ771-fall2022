@@ -48,6 +48,8 @@ Below is a preliminary course outline for this semester. For a more complete rea
 ## [Module 2: Physicians](modules/module2.html)
 
   - `r advdate(9)`: Background and institutional details
+      - [Finkelstein, Gentzkow and Williams (2016), Sources of Geographic Variation in Health Care: Evidence from Patient Migration](slides/student/pablo-20220921.pdf), presented by Pablo
+      - [Molitor (2018), The Evolution of Physician Practice Styles: Evidence from Cariologist Migration](slides/student/rachel-20220921.pdf), presented by Rachel
   - `r advdate(10)`: Physician agency, financial incentives, and referrals
   - `r advdate(11)`: Physician learning
   - `r advdate(12)` - `r advdate(13)`: Empirical application with IV

@@ -13,7 +13,7 @@
 
 <title>Class Schedule</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -143,11 +143,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -348,7 +352,15 @@ Way(s)</a></li>
 <div id="module-2-physicians" class="section level2">
 <h2><a href="modules/module2.html">Module 2: Physicians</a></h2>
 <ul>
-<li>Class 09, 09/21: Background and institutional details</li>
+<li>Class 09, 09/21: Background and institutional details
+<ul>
+<li><a href="slides/student/pablo-20220921.pdf">Finkelstein, Gentzkow
+and Williams (2016), Sources of Geographic Variation in Health Care:
+Evidence from Patient Migration</a>, presented by Pablo</li>
+<li><a href="slides/student/rachel-20220921.pdf">Molitor (2018), The
+Evolution of Physician Practice Styles: Evidence from Cariologist
+Migration</a>, presented by Rachel</li>
+</ul></li>
 <li>Class 10, 09/26: Physician agency, financial incentives, and
 referrals</li>
 <li>Class 11, 09/28: Physician learning</li>
