@@ -53,7 +53,7 @@ Below is a preliminary course outline for this semester. For a more complete rea
   - `r advdate(10)`: Physician agency, financial incentives, and referrals
       - [Clemens and Gottlieb (2014), Do physicians' financial incentives affect medical treatment and patient health](slides/student/wonjun-20220926.pdf), presented by Wonjun
       - [Zeltzer (2020), Gender homophily in referral networks: Consequences for the Medicare physician earning gap](slides/student/pablo-20220926.pdf), presented by Pablo
-      - [Chernew et al (2021), Physician agency, consumerism, and the consumption of lower-limb MRI scans](slides/student/martha-20220926.pdf), presented by Martha
+      - [Chernew et al (2021), Physician agency, consumerism, and the consumption of lower-limb MRI scans](slides/student/martha-20220926.pptx), presented by Martha
   - `r advdate(11)`: Physician learning
   - `r advdate(12)` - `r advdate(13)`: Empirical application with IV
   - `r advdate(14)`: Fall break
