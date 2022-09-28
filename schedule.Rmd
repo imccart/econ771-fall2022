@@ -55,6 +55,9 @@ Below is a preliminary course outline for this semester. For a more complete rea
       - [Zeltzer (2020), Gender homophily in referral networks: Consequences for the Medicare physician earning gap](slides/student/pablo-20220926.pdf), presented by Pablo
       - [Chernew et al (2021), Physician agency, consumerism, and the consumption of lower-limb MRI scans](slides/student/martha-20220926.pptx), presented by Martha
   - `r advdate(11)`: Physician learning
+      - [Crawford and Shum (2005), Uncertainty and Learning in Pharmaceutical Demand](slides/student/jungjae-20220928.pdf)
+      - [Sarsons (2018), Interpreting Signals in the Labor Market: Evidence from Medical Referrals](slides/student/paul-20220928.pdf)
+      - [Johnson (2011), Ability, Learning, and the Career Path of Cardiac Specialists](slides/student/rachel-20220928.pdf)
   - `r advdate(12)` - `r advdate(13)`: Empirical application with IV
   - `r advdate(14)`: Fall break
   - `r advdate(15)`: Empirical application with IV, cont'd

@@ -24,14 +24,14 @@ The data for this assignment comes from three sources:
 
 1. [MD-PPAS](https://resdac.org/cms-data/files/md-ppas); The Medicare Data on Provider Practice and Specialty includes data on physician specialties, practice IDs, demographics, and place of service. Be sure to follow the link and read the data documentation. We'll use these data to construct a measure of physician integration.
 
-2. [Medicare Utilization and Payment Data](https://data.cms.gov/provider-summary-by-type-of-service/medicare-physician-other-practitioners/medicare-physician-other-practitioners-by-provider-and-service): These files provide data on the quantities and Medicare spending of each physician and service. We'll use these data to capture total physician-level billing activity, and we'll use the service-level data to measure the revenue effects from our plausibly exogenous policy shock. These data are only available beginning in 2012. These files are large but otherwise relatively clean and easy to use, so there's no separate repo for these data. Because they are large, I recommend merging these data into the MD-PPAS and Physician Fee Schedule data yearly and then appending after constructing each yearly dataset.
+2. [Medicare Utilization and Payment Data](https://data.cms.gov/provider-summary-by-type-of-service/medicare-physician-other-practitioners/medicare-physician-other-practitioners-by-provider-and-service): These files provide data on the quantities and Medicare spending of each physician and service. We'll use these data to capture total physician-level billing activity, and we'll use the service-level data to measure the revenue effects from our plausibly exogenous policy shock. These data are only available beginning in 2012. These files are large but otherwise relatively clean and easy to use, so there's no separate repo for these data. Note that we will only work with data for MDs, so you can drop a lot of observations with that restriction.
 
 3. [Physician Fee Schedule 2010 Update](https://github.com/imccart/PFS_Update_2010): Our instrument mainly consists of a shock to physician payments introduced in 2010. The shock further increased payments for services in an outpatient facility compared to services billed in a physician's office. The GitHub repo (linked above) provides code to recreate a dataset with service-specific price shocks introduced by the 2010 fee schedule update. To save us some time, I've posed the final dataset from that repo into our class data folder.
 
 Note that our utilization and payment data only start in 2012 (just a limitation of using publicly available data), while the price shock first takes place in 2010. Thankfully, the price shock was introduced gradually from 2010 through 2013, so our instrument still has some variation over our time period. 
 
 # Questions
-In your GitHub repository, please be sure to clearly address/answer the following questions. Please focus on physician's that weren't yet integrated as of 2012, that way we have some pre-integration data for everyone.
+In your GitHub repository, please be sure to clearly address/answer the following questions. Please limit your data only to MDs (based on the "NPPES Credentials" field in the PUF data) and to NPIs observed in the same year across all three datasets.
 
 1. Provide and discuss a table of simple summary statistics showing the mean, standard deviation, min, and max of total physician-level Medicare spending, claims, and patients.
 
@@ -47,7 +47,7 @@ where $HOPD_{it}$ reflects the total number of claims in which physician $i$ bil
 y_{it} = \delta INT_{it} + \beta x_{it} + \gamma_{i} + \gamma_{t} + \varepsilon_{it}, 
 (\#eq:ols)
 \end{equation}
-where $INT_{it}$ is defined in Equation \@ref(eq:int), $x_{it}$ captures time-varying physician characteristics, and $\gamma_{i}$ and $\gamma_{t}$ denote physician and time fixed effects.
+where $INT_{it}$ is defined in Equation \@ref(eq:int), $x_{it}$ captures time-varying physician characteristics, and $\gamma_{i}$ and $\gamma_{t}$ denote physician and time fixed effects. Please focus on physician's that weren't yet integrated as of 2012, that way we have some pre-integration data for everyone. Impose this restriction for the remaining questions.
 
 4. How much should we be "worried" about endogeneity here? Extending the work of @altonji2005, @oster2019 derives the expression
 \begin{equation}
