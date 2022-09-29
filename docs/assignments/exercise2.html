@@ -402,7 +402,7 @@ pre code {
 INT_{it} = \frac{HOPD_{it}}{HOPD_{it} + OFFICE_{it} + ASC_{it}},
 \tag{1}
 \end{equation}\]</span>
-where <span class="math inline">\(HOPD_{it}\)</span> reflects the total number of claims in which physician <span class="math inline">\(i\)</span> bills in a hospital outpatient setting, <span class="math inline">\(OFFICE_{it}\)</span> is the total number of claims billed to an office setting, and <span class="math inline">\(ASC_{it}\)</span> is the total number of claims billed to an ambulatory surgery center. Plot the mean of total physician-level claims for integrated versus non-integrated physicians over time (just pick a few thresholds for defining “integration”).</p></li>
+where <span class="math inline">\(HOPD_{it}\)</span> reflects the total number of claims in which physician <span class="math inline">\(i\)</span> bills in a hospital outpatient setting, <span class="math inline">\(OFFICE_{it}\)</span> is the total number of claims billed to an office setting, and <span class="math inline">\(ASC_{it}\)</span> is the total number of claims billed to an ambulatory surgery center. You can assume that any physician with at least 75% of claims billed in an outpatient setting is integrated with a hospital. Using this 75% threshold, plot the mean of total physician-level claims for integrated versus non-integrated physicians over time.</p></li>
 <li><p>Estimate the relationship between integration on total physician claims using OLS, with the following specification:
 <span class="math display" id="eq:ols">\[\begin{equation}
 y_{it} = \delta INT_{it} + \beta x_{it} + \gamma_{i} + \gamma_{t} + \varepsilon_{it},
