@@ -2,6 +2,9 @@
 title: "Module 2 Empirical Exercise"
 author: "Econ 771: Health Economics II"
 date: "Due: Friday, October 14"
+header-includes:
+  - \usepackage{amsmath}
+  - \usepackage{amssymb}
 output: 
   bookdown::html_document2:
     number_sections: FALSE
@@ -35,10 +38,10 @@ In your GitHub repository, please be sure to clearly address/answer the followin
 
 2. Form a proxy for integration using the ratio:
 \begin{equation}
-INT_{it} = \frac{HOPD_{it}}{HOPD_{it} + OFFICE_{it} + ASC_{it}},
+INT_{it} = \mathbf{1} \left(\frac{HOPD_{it}}{HOPD_{it} + OFFICE_{it} + ASC_{it}} \geq 0.75\right),
 (\#eq:int)
 \end{equation}
-where $HOPD_{it}$ reflects the total number of claims in which physician $i$ bills in a hospital outpatient setting, $OFFICE_{it}$ is the total number of claims billed to an office setting, and $ASC_{it}$ is the total number of claims billed to an ambulatory surgery center. You can assume that any physician with at least 75% of claims billed in an outpatient setting is integrated with a hospital. Using this 75% threshold, plot the mean of total physician-level claims for integrated versus non-integrated physicians over time.
+where $HOPD_{it}$ reflects the total number of claims in which physician $i$ bills in a hospital outpatient setting, $OFFICE_{it}$ is the total number of claims billed to an office setting, and $ASC_{it}$ is the total number of claims billed to an ambulatory surgery center. As reflected in Equation \@ref(eq:int), you can assume that any physician with at least 75% of claims billed in an outpatient setting is integrated with a hospital. Using this 75% threshold, plot the mean of total physician-level claims for integrated versus non-integrated physicians over time.
 
 3. Estimate the relationship between integration on total physician claims using OLS, with the following specification:
 \begin{equation}
@@ -61,7 +64,9 @@ Here is a little code snippet to help you work with the fee schedule update and 
 
 ```{r, eval=FALSE, echo=TRUE}
   price.shock <- medicare.puf %>% inner_join(taxid.base, by="npi") %>%
-    inner_join(pfs.yearly %>% select(hcpcs, dprice_rel_2010, price_nonfac_orig_2010, price_nonfac_orig_2007), by=c("hcpcs_code"="hcpcs")) %>%
+    inner_join(pfs.yearly %>% 
+                 select(hcpcs, dprice_rel_2010, price_nonfac_orig_2010, price_nonfac_orig_2007), 
+               by=c("hcpcs_code"="hcpcs")) %>%
     mutate_at(vars(dprice_rel_2010, price_nonfac_orig_2010, price_nonfac_orig_2007), replace_na, 0) %>%
     mutate(price_shock = case_when(
             i<=2013 ~ ((i-2009)/4)*dprice_rel_2010,
@@ -75,7 +80,6 @@ Here is a little code snippet to help you work with the fee schedule update and 
     group_by(tax_id) %>%
     summarize(practice_rev_change=sum(phy_rev_change, na.rm=TRUE)) %>%
     ungroup()
-
 ```
 
 
