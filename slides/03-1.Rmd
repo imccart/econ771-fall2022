@@ -16,9 +16,11 @@ output:
       countIncrementalSlides: false
       ratio: "16:9"
       beforeInit: "macros.js"
+bibliography: '../syllabus/BibTeX_Library.bib'      
 ---
 class: inverse, center, middle
-name: panel
+
+
 
 <!-- Adjust some CSS code for font size and maintain R code font size -->
 <style type="text/css">
@@ -68,6 +70,32 @@ set.seed(1234)
 xaringanExtra::use_scribble(rgb(0.9, 0.5, 0.5))
 ```
 
+
+# Assessing Selection on Unobservables
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
+
+---
+class: clear
+
+- Say we estimate a regression like $$y_{i} = \delta D_{i} + \beta_{1} x_{1i} + \varepsilon_{i}$$
+
+- But we are concerned that the "true" specification is $$y_{i} = \delta D_{i} + \beta_{1} x_{1i} + \beta_{2} x_{2i} + \varepsilon_{i}$$
+
+- **Idea:** Extending the work of @altonji2005, @oster2019 aims to decompose outome into a treatment effect ($\delta$), observed controls ($x_{1}$), unobserved controls ($x_{2i}$), and iid error
+
+---
+# Oster (2019), JBES
+
+- **Key assumption:** Selection on observables is informative about selection on unobservables
+
+1. What is the maximum $R^2$ value we could obtain if we observed $x_{2}$? Call this $R_{\text{max}}^{2}$ (naturally bounded above by 1, but likely smaller)
+
+2. What is the degree of selection on observed variables relative to unobserved variables? Denote the proportional relationship as $\rho$ such that: $$\rho \times \frac{Cov(x_{1},D)}{Var(x_{1})} = \frac{Cov(x_{2},D)}{Var(x_{2})}.$$
+
+
+
+---
 # What is instrumental variables
 Instrumental Variables (IV) is a way to identify causal effects using variation in treatment particpation that is due to an *exogenous* variable that is only related to the outcome through treatment.
 
