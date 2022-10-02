@@ -93,26 +93,56 @@ class: clear
 
 2. What is the degree of selection on observed variables relative to unobserved variables? Denote the proportional relationship as $\rho$ such that: $$\rho \times \frac{Cov(x_{1},D)}{Var(x_{1})} = \frac{Cov(x_{2},D)}{Var(x_{2})}.$$
 
+---
+# Oster (2019), JBES
+
+- Under an "equal relative contributions" assumption, we can write:
+
+$$\delta^{*} \approx \hat{\delta}_{D,x_{1}} - \rho \times \left[\hat{\delta}_{D} - \hat{\delta}_{D,x_{1}}\right] \times \frac{R_{\text{max}}^{2} - R_{D,x_{1}}^{2}}{R_{D,x_{1}}^{2} - R_{x_{1}}^{2}} \xrightarrow{p} \delta.$$
+
+- Consider a range of $R^{2}_{\text{max}}$ and $\rho$ to bound the estimated treatment effect,
+
+$$\left[ \hat{\delta}_{D,x_{1}}, \delta^{*}(\bar{R}^{2}_{max}, \rho) \right]$$
+
+---
+# Augmented regression (somewhat out of place here)
+
+- Oster (2019) and similar papers can say something about how bad selection on unobservables would need to be
+
+- But what kind of "improvement" do we really get in practice?
+
+- Start back here!!!
+
 
 
 ---
+class: clear
+
+- Do we have an endogeneity problem?
+    - Effects easily overcome by small selection on unobservables?
+    - Clear reverse causality problem?
+
+- What can we do about it?
+    - Matching, weighting, regression? Only for selection on observables
+    - DD, RD, differences in discontinuities? Specific designs and settings
+    - Instrumental variables? 
+
+---
+class: inverse, center, middle
+
+# Instrumental Variables
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
+
+---
 # What is instrumental variables
+
 Instrumental Variables (IV) is a way to identify causal effects using variation in treatment particpation that is due to an *exogenous* variable that is only related to the outcome through treatment.
 
 
 ---
-# Why bother with IV?
-Two reasons to consider IV:
-1. Selection on unobservables (omitted variables bias)
-2. Reverse causation
-
---
-<br>
-
-Either problem is sometimes loosely referred to as *endogeneity*
-
----
 # Simple example
+
 - $y = \beta x + \varepsilon (x)$,<br>
 where $\varepsilon(x)$ reflects the dependence between our observed variable and the error term.<br>
 
@@ -122,6 +152,7 @@ $\frac{dy}{dx} = \beta + \frac{d\varepsilon}{dx} \neq \beta$
 
 ---
 # What does IV do?
+
 - The regression we want to do: <br>
 $y_{i} = \alpha + \delta D_{i} + \gamma A_{i} + \epsilon_{i}$,<br>
 where $D_{i}$ is treatment (think of schooling for now) and $A_{i}$ is something like ability.
@@ -230,22 +261,6 @@ $$\begin{align}
         & = \frac{C(\hat{\theta}Z,Y)}{V(\hat{\theta}Z)} = \frac{C(\hat{S},Y)}{V(\hat{S})}
 \end{align}$$
 
-
-
----
-# Key IV assumptions
-1. *Exclusion:* Instrument is uncorrelated with the error term<br>
-
-2. *Validity:* Instrument is correlated with the endogenous variable<br>
-
-3. *Monotonicity:* Treatment more (less) likely for those with higher (lower) values of the instrument<br>
-
---
-<br>
-
-Assumptions 1 and 2 sometimes grouped into an *only through* condition.
-
-
 ---
 # Animation for IV
 ```{r iv-animate, message=FALSE, warning=FALSE, include=FALSE}
@@ -338,6 +353,42 @@ summary(ivreg(y ~ d | z, data=iv.dat))
 ]
 
 ---
+# Two-stage equivalence
+```{r}
+step1 <- lm(d ~ z, data=iv.dat)
+d.hat <- predict(step1)
+step2 <- lm(y ~ d.hat, data=iv.dat)
+summary(step2)
+```
+
+
+
+
+
+---
+class: inverse, center, middle
+
+# Assumptions of Instrumental Variables
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
+
+
+---
+# Key IV assumptions
+1. *Exclusion:* Instrument is uncorrelated with the error term<br>
+
+2. *Validity:* Instrument is correlated with the endogenous variable<br>
+
+3. *Monotonicity:* Treatment more (less) likely for those with higher (lower) values of the instrument<br>
+
+--
+<br>
+
+Assumptions 1 and 2 sometimes grouped into an *only through* condition.
+
+
+
+---
 # Checking instrument
 .pull-left[
 - Check the 'first stage'
@@ -352,16 +403,6 @@ summary(lm(d~z, data=iv.dat))
 summary(lm(y~z, data=iv.dat))
 ```
 ]
-
-
----
-# Two-stage equivalence
-```{r}
-step1 <- lm(d ~ z, data=iv.dat)
-d.hat <- predict(step1)
-step2 <- lm(y ~ d.hat, data=iv.dat)
-summary(step2)
-```
 
 
 ---
@@ -394,6 +435,28 @@ summary(haus.test)
 - Sargan or Hansen's J test (null hypothesis is that instruments are correlated with residuals)
 
 
+
+---
+class: inverse, center, middle
+
+# Problem of Weak Instruments
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
+
+
+---
+# Why we care about instrument strength
+
+Recall our schooling and wages equation, $$y = \beta S + \epsilon$$. Bias in IV can be represented as:
+
+$$Bias_{IV} \approx \frac{Cov(S, \epsilon)}{V(S)} \frac{1}{F+1} = Bias_{OLS} \frac{1}{F+1}$$
+
+- Bias in IV may be close to OLS, depending on instrument strength
+- **Bigger problem:** Bias could be bigger than OLS if exclusion restriction not *fully* satisfied
+- Over-reliance on "rules of thumb", as seen in [Anders and Kasy (2019)](https://www.aeaweb.org/articles?id=10.1257/aer.20180310)
+
+
+
 ---
 # Testing strength of instruments
 
@@ -408,16 +471,13 @@ summary(haus.test)
 - More complicated
 ]
 
+
 ---
-# Why we care about instrument strength
+class: inverse, center, middle
 
-Recall our schooling and wages equation, $$y = \beta S + \epsilon$$. Bias in IV can be represented as:
+# Interpreting Instrumental Variables Results
 
-$$Bias_{IV} \approx \frac{Cov(S, \epsilon)}{V(S)} \frac{1}{F+1} = Bias_{OLS} \frac{1}{F+1}$$
-
-- Bias in IV may be close to OLS, depending on instrument strength
-- **Bigger problem:** Bias could be bigger than OLS if exclusion restriction not *fully* satisfied
-- Over-reliance on "rules of thumb", as seen in [Anders and Kasy (2019)](https://www.aeaweb.org/articles?id=10.1257/aer.20180310)
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
 
 
 ---
