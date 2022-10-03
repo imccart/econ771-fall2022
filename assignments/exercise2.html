@@ -441,7 +441,7 @@ where <span class="math inline">\(x_{1}\)</span> captures our observable covaria
 <li><p>Now let’s pay attention to potential issues of weak instruments. As we discussed in class, one issue with weak instruments is that our typical critical values (say, 1.96 for a 95% confidence interval) from the equation of interest (sometimes called the structural equation) are too low in the presence of a weak first-stage. These issues are presented very clearly and more formally in the Andrews, Stock, and Sun (2019) survey article. For this question, you will consider two forms of inference in the presence of weak instruments:</p>
 <ul>
 <li>Present the results of a test of the null, <span class="math inline">\(H_{0}: \delta=0\)</span>, using the Anderson-Rubin Wald statistic. Do your conclusions from this test differ from a traditional t-test following 2SLS estimation of Equation <a href="#eq:ols">(2)</a>?</li>
-<li>Going back to your 2SLS results…inflate your 2SLS standard errors to form the <span class="math inline">\(tF\)</span> adjusted standard error, following Table 3 in Lee et al. (2021). Repeat the test of the null, <span class="math inline">\(H_{0}: \delta=0\)</span>, using standard critical values and the <span class="math inline">\(tF\)</span> adjusted standard error.</li>
+<li>Going back to your 2SLS results…inflate your 2SLS standard errors to form the <span class="math inline">\(tF\)</span> adjusted standard error, following Table 3 in <span class="citation">Lee et al. (2021)</span>. Repeat the test of the null, <span class="math inline">\(H_{0}: \delta=0\)</span>, using standard critical values and the <span class="math inline">\(tF\)</span> adjusted standard error.</li>
 </ul></li>
 <li><p>Following the Borusyak and Hull (2021) working paper (BH), we can consider our instrument as a function of some exogenous policy shocks and some possibly endogenous physician characteristics, <span class="math inline">\(\Delta P_{it}=f\left(g_{pt}; z_{ipt}\right)\)</span>, where <span class="math inline">\(g_{pt}\)</span> captures overall payment shocks for procedure <span class="math inline">\(p\)</span> at time <span class="math inline">\(t\)</span>, and <span class="math inline">\(z_{ip}\)</span> denotes a physician’s quantity of different procedures at baseline. We can implement the BH re-centering approach as follows:</p>
 <ul>
@@ -458,6 +458,9 @@ where <span class="math inline">\(x_{1}\)</span> captures our observable covaria
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-altonji2005" class="csl-entry">
 Altonji, Joseph G, Todd E Elder, and Christopher R Taber. 2005. <span>“An Evaluation of Instrumental Variable Strategies for Estimating the Effects of Catholic Schooling.”</span> <em>Journal of Human Resources</em> 40 (4): 791–821.
+</div>
+<div id="ref-lee2021" class="csl-entry">
+Lee, David S., Justin McCrary, Marcelo J. Moreira, and Jack R. Porter. 2021. <span>“Valid t-Ratio <span>Inference</span> for <span>IV</span>.”</span> Working {Paper}. Working <span>Paper</span> <span>Series</span>. National Bureau of Economic Research. <a href="https://doi.org/10.3386/w29124">https://doi.org/10.3386/w29124</a>.
 </div>
 <div id="ref-oster2019" class="csl-entry">
 Oster, Emily. 2019. <span>“Unobservable <span>Selection</span> and <span>Coefficient</span> <span>Stability</span>: <span>Theory</span> and <span>Evidence</span>.”</span> <em>Journal of Business &amp; Economic Statistics</em> 37 (2): 187–204. <a href="https://doi.org/10.1080/07350015.2016.1227711">https://doi.org/10.1080/07350015.2016.1227711</a>.
