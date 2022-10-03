@@ -59,6 +59,7 @@ Below is a preliminary course outline for this semester. For a more complete rea
       - [Sarsons (2018), Interpreting Signals in the Labor Market: Evidence from Medical Referrals](slides/student/paul-20220928.pdf)
       - [Johnson (2011), Ability, Learning, and the Career Path of Cardiac Specialists](slides/student/rachel-20220928.pdf)
   - `r advdate(12)` - `r advdate(13)`: Empirical application with IV
+      - [Introduction to Instrumental Variables](slides/03-1.html)
   - `r advdate(14)`: Fall break
   - `r advdate(15)`: Empirical application with IV, cont'd
 
