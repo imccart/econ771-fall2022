@@ -43,7 +43,7 @@ INT_{it} = \mathbf{1} \left(\frac{HOPD_{it}}{HOPD_{it} + OFFICE_{it} + ASC_{it}}
 \end{equation}
 where $HOPD_{it}$ reflects the total number of claims in which physician $i$ bills in a hospital outpatient setting, $OFFICE_{it}$ is the total number of claims billed to an office setting, and $ASC_{it}$ is the total number of claims billed to an ambulatory surgery center. As reflected in Equation \@ref(eq:int), you can assume that any physician with at least 75% of claims billed in an outpatient setting is integrated with a hospital. Using this 75% threshold, plot the mean of total physician-level claims for integrated versus non-integrated physicians over time.
 
-3. Estimate the relationship between integration on total physician claims using OLS, with the following specification:
+3. Estimate the relationship between integration on (log) total physician claims using OLS, with the following specification:
 \begin{equation}
 y_{it} = \delta INT_{it} + \beta x_{it} + \gamma_{i} + \gamma_{t} + \varepsilon_{it}, 
 (\#eq:ols)
