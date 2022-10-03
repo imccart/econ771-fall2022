@@ -1,5 +1,5 @@
 ---
-title: "More on Instrumental Variables"
+title: "Instrumental Variables Assumptions, Tests, and Interpretations"
 subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=0px></html>"
 author: Ian McCarthy | Emory University
 date: Econ 771, Fall 2022
@@ -79,23 +79,126 @@ set.seed(1234)
 xaringanExtra::use_scribble(rgb(0.9, 0.5, 0.5))
 ```
 
-
-# Problem of Weak Instruments
+# Instrumental Variables Assumptions
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
 
 
 ---
+# Key IV assumptions
+1. *Exclusion:* Instrument is uncorrelated with the error term<br>
+
+2. *Validity:* Instrument is correlated with the endogenous variable<br>
+
+3. *Monotonicity:* Treatment more (less) likely for those with higher (lower) values of the instrument<br>
+
+--
+<br>
+
+Assumptions 1 and 2 sometimes grouped into an *only through* condition.
+
+---
+# Exclusion
+
+Kippersluis and Rietveld (2018), "Beyond Plausibly Exogenous"
+- "zero-first-stage" test
+- Focus on subsample for which your instrument is not correlated with the endogenous variable of interest
+    1. Regress the outcome on all covariates and the instruments among this subsample
+    2. Coefficient on the instruments captures any potential direct effect of the instruments on the outcome (since the correlation with the endogenous variable is 0 by assumption). 
+
+---
+# Exclusion
+
+
+Beckert (2019), "A Note on Specification Testing in Some Structural Regression Models"
+- With at least $n$ valid instruments, test if all instruments are valid against the alternative that up to $m - n$ instruments are valid
+    1. Estimate the first-stage regressions and save residuals, denoted $\hat{u}$. 
+    2. Estimate the "artificial" regression $$y=\beta x + \delta \tilde{z} + \gamma \hat{u} + \varepsilon$$ where $\tilde{z}$ denotes a subset of $m-n$ instruments from the full instrument matrix $z$. 
+    3. Test the null that $\delta=0$ using a standard F-test
+
+
+---
+# Solving an Exclusion Problem
+
+
+
+
+---
+class: inverse, center, middle
+
+# Validity and Weak Instruments
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
+
+---
+# Validity
+
+Just says that your instrument is correlated with the endogenous variable, but what about the **strength** of the correlation?
+
+.center[
+ ![](https://media.giphy.com/media/3oFzlXvco5Wt2gnMcg/giphy.gif)
+]
+
+---
 # Why we care about instrument strength
 
-Recall our schooling and wages equation, $$y = \beta S + \epsilon$$. Bias in IV can be represented as:
+Recall our schooling and wages equation, $$y = \beta S + \epsilon.$$ Bias in IV can be represented as:
 
 $$Bias_{IV} \approx \frac{Cov(S, \epsilon)}{V(S)} \frac{1}{F+1} = Bias_{OLS} \frac{1}{F+1}$$
 
 - Bias in IV may be close to OLS, depending on instrument strength
 - **Bigger problem:** Bias could be bigger than OLS if exclusion restriction not *fully* satisfied
-- Over-reliance on "rules of thumb", as seen in [Anders and Kasy (2019)](https://www.aeaweb.org/articles?id=10.1257/aer.20180310)
 
+---
+# Testing strength of instruments
+
+Two things going on simultaneously:
+1. Strength of the first-stage
+2. Inference on coefficient of interest in the structural equation
+
+
+--
+<br>
+
+Applied researchers tend to (wrongly) think of these as separate issues.
+
+
+---
+# Testing strength of instruments
+
+**Many endogenous variables**
+- Stock & Yogo (2005) test based on Cragg & Donald statistic (homoskedasticity only)
+- Kleibergen & Paap (2007) Wald statistic
+- Sanderson & Windmeijer (2016) extension
+- Effective F-statistic from Olea & Pflueger (2013) (as approximation)
+
+
+---
+# Testing strength of instruments
+
+**Single endogenous variable**
+- Partial $R^{2}$ (never see this)
+- Stock & Yogo (2005) test based on first-stage F-stat (homoskedasticity only)
+    - Critical values in tables, based on number of instruments
+    - Rule-of-thumb of 10 with single instrument (higher with more instruments)
+    - Lee (2021): With first-stage F-stat of 10, standard "95% confidence interval" for second stage is really an 85% confidence interval
+
+
+---
+# Testing strength of instruments
+
+**Single endogenous variable**
+- Partial $R^{2}$ (never see this)
+- Stock & Yogo (2005) test based on first-stage F-stat (homoskedasticity only)
+- Kleibergen & Paap (2007) Wald statistic
+- Effective F-statistic from Olea & Pflueger (2013)
+
+---
+# Testing strength of instruments
+
+**Single endogenous variable**
+- Inference with Anderson-Rubin CIs (homoskedastic)
+- Inference with Lee (2021) tables (allows for more general error structure)
 
 
 ---
@@ -103,14 +206,33 @@ $$Bias_{IV} \approx \frac{Cov(S, \epsilon)}{V(S)} \frac{1}{F+1} = Bias_{OLS} \fr
 
 .pull-left[
 **Single endogenous variable**
-- F-test of instruments (rule of thumb critical value of 10)
-- Partial $R^2$
+1. Homoskedasticity
+    - First-stage test: Stock & Yogo, effective F-stat
+    - Inference: Anderson-Rubin CIs, Lee tF, likelihood ratio test of Moreira (2003)
+2. Heteroskedasticity
+    - First-stage test: Effective F-stat
+    - Inference: Lee tF
 ]
 
-.pull-right[
+.pull-left[
 **Many endogenous variables**
-- More complicated
+1. Homoskedasticity
+    - First-stage test: Stock & Yogo with Cragg & Donald statistic, Sanderson & Windmeijer (2016), effective F-stat
+    - Inference: Projection-based confidence sets using the Anderson-Rubin CI (Dufour & Taamouti, 2005) but low power
+2. Heteroskedasticity
+    - First-stage test: Kleibergen & Papp Wald is robust analog of Cragg & Donald statistic, effective F-stat
 ]
+
+---
+# Making sense of all of this...
+
+1. Test first-stage using effective F-stat
+2. Present weak-instrument-robust inference using Anderson-Rubin CIs or Lee tF tests
+
+--
+<br>
+
+Many endogenous variables problematic because strength of instruments for one variable need not imply strength of instruments for others
 
 
 ---
@@ -120,23 +242,49 @@ class: inverse, center, middle
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
 
+---
+# Heterogenous TEs
+
+- In constant treatment effects, $Y_{i}(1) - Y_{i}(0) = \delta_{i} = \delta, \text{ } \forall i$
+- Heterogeneous effects, $\delta_{i} \neq \delta$
+- With IV, what parameter did we just estimate? Need **monotonicity** assumption to answer this
+
+
+---
+# Monotonicity
+
+Assumption: Denote the effect of our instrument on treatment by $\pi_{1i}$. Monotonicity states that $\pi_{1i} \geq 0$ or $\pi_{1i} \leq 0,  \text{ } \forall i$.
+
+- Allows for $\pi_{1i}=0$ (no effect on treatment for some people)
+- All those affected by the instrument are affected in the same "direction"
+- With heterogeneous ATE and monotonicity assumption, IV provides a "Local Average Treatment Effect" (LATE)
 
 ---
 # LATE and IV Interpretation
 
-- With monotonicity assumption (all those affected by the instrument are affected in the same "direction")
-- In the face of **heterogeneous treatment effects**, IV provides a "Local Average Treatment Effect"
-- LATE: Effect of treatment among those affected by the instrument (compliers only)
-- Why does this matter? Let's discuss Medicaid expansion in Oregon
+- LATE is the effect of treatment among those affected by the instrument (compliers only).
+- Recall original Wald estimator:
 
+$$\delta_{IV} = \frac{E[Y_{i} | Z_{i}=1] - E[Y_{i} | Z_{i}=0]}{E[D_{i} | Z_{i}=1] - E[D_{i} | Z_{i}=0]}=E[Y_{i}(1) - Y_{i}(0) | \text{complier}]$$
 
-
----
-class: inverse, center, middle
-
-# "Modern" IV
-
-<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
+- Practically, monotonicity assumes there are no defiers and restricts us to learning only about compliers
 
 ---
-# Machine learning and IV
+# Is LATE meaningful?
+
+- Learn about average treatment effect for compliers
+- Different estimates for different compliers
+    - IV based on merit scholarships
+    - IV based on financial aid
+    - Same compliers? Probably not
+
+---
+# LATE with defiers
+
+- In presence of defiers, IV estimates a weighted difference between effect on compliers and defiers (in general)
+- LATE can be restored if subgroup of compliers accounts for the same percentage as defiers and has same LATE
+- Offsetting behavior of compliers and defiers, so that remaining compliers dictate LATE
+    
+---
+# Marginal Treatment Effects
+
