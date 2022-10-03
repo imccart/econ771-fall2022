@@ -6,6 +6,15 @@ date: Econ 771, Fall 2022
 header-includes: 
   - \usepackage{graphicx}
   - \usepackage{amsmath}
+  - \usepackage{amssymb}
+  - \usepackage{tikz}
+  - \usepackage{pgf}
+  - \usepackage{pgfarrows}
+  - \usepackage{pgfnodes}
+  - \usepackage{pgfautomata}
+  - \usepackage{pgfheaps}
+  - \usepackage[absolute,overlay]{textpos}  
+  - \usepackage{mathtools}
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, custom.css] 
@@ -62,7 +71,7 @@ knitr::opts_hooks$set(fig.callout = function(options) {
 
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load(tidyverse, ggplot2, dplyr, lubridate, readr, readxl, fixest, readstata13,
-               xaringanExtra, webshot)
+               xaringanExtra, webshotm, ggthemes, gganimate, plotly, ivpack, ivreg)
 set.seed(1234)
 ```
 
@@ -82,7 +91,7 @@ class: clear
 
 - But we are concerned that the "true" specification is $$y_{i} = \delta D_{i} + \beta_{1} x_{1i} + \beta_{2} x_{2i} + \varepsilon_{i}$$
 
-- **Idea:** Extending the work of @altonji2005, @oster2019 aims to decompose outome into a treatment effect ($\delta$), observed controls ($x_{1}$), unobserved controls ($x_{2i}$), and iid error
+- **Idea:** Extending the work of Altonji and others, Oster (2019) aims to decompose outome into a treatment effect ($\delta$), observed controls ($x_{1}$), unobserved controls ($x_{2i}$), and iid error
 
 ---
 # Oster (2019), JBES
@@ -111,8 +120,27 @@ $$\left[ \hat{\delta}_{D,x_{1}}, \delta^{*}(\bar{R}^{2}_{max}, \rho) \right]$$
 
 - But what kind of "improvement" do we really get in practice?
 
-- Start back here!!!
+---
+class: clear
 
+- Original test from Hausman (1978) not specific to endogeneity, just a general misspecification test
+- Compare estimates from one estimator (efficient under the null) to another estimator that is consistent but inefficient under the null 
+- In IV context, also known as Durbin-Wu-Hausman test, due to the series of papers pre-dating Hausman (1978), including Durbin and Wu in the 1950s
+
+---
+class: clear
+
+- Easily implemented as an "artificial" or "augmented" regression
+- We want to estimate $y=\beta_{1}x_{1} + \beta_{2}x_{2} + \varepsilon$, with exogenous variables $x_{1}$, endogenous variables $x_{2}$, and instruments $z$
+    1. Regress each of the variables in $x_{2}$ on $x_{1}$ and $z$ and form residuals, $\hat{v}$, $x_{2} = \lambda_{x} x_{1} + \lambda_{z} z + v$
+    2. Include $\hat{v}$ in the standard OLS regression of $y$ on $x_{1}$, $x_{2}$, and $\hat{v}$.
+    3. Test $H_{0}: \beta_{\hat{v}} = 0$. Rejection implies OLS is inconsistent.
+
+
+--
+<br>
+
+Intuition: Only way for $x_{2}$ to be correlated with $\varepsilon$ is through $v$, **assuming $z$ is a "good" instrument**
 
 
 ---
@@ -139,6 +167,34 @@ class: inverse, center, middle
 
 Instrumental Variables (IV) is a way to identify causal effects using variation in treatment particpation that is due to an *exogenous* variable that is only related to the outcome through treatment.
 
+```{tikz tikz-timeline, echo=FALSE, fig.ext='png', cache=TRUE}
+\usetikzlibrary{shapes, decorations, arrows, calc, arrows.meta, fit, positioning, automata}
+\tikzset{
+    -Latex,auto,node distance =1 cm and 1 cm,semithick,
+    state/.style ={ellipse, draw, minimum width = 0.7 cm},
+    point/.style = {circle, draw, inner sep=0.04cm,fill,node contents={}},
+    bidirected/.style={Latex-Latex,dashed},
+    el/.style = {inner sep=2pt, align=left, sloped}
+}
+\begin{tikzpicture}[scale=1]
+    % x node set with absolute coordinates
+    \node[state] (t) at (0,0) {$T$};
+
+    \node[state] (y) [right =of t] {$Y$};
+    \node[state] (u) [above =of t] {$u$};
+    \node[state] (z) [left =of t] {$Z$};
+
+    % Directed edge
+    \path (t) edge (y);
+    \path (u) edge (y);
+    \path (u) edge (t);
+    \path (z) edge (t);
+    
+    % Bidirected edge
+    \path[bidirected] (z) edge[bend right=60] node[below] {excluded} (y);
+
+\end{tikzpicture}
+```
 
 ---
 # Simple example
@@ -225,7 +281,6 @@ Easy to think of in terms of randomized controlled trial...
 Angrist *et al.*, 2012. "Who Benefits from KIPP?" *Journal of Policy Analysis and Management*.
 ] 
 
-
 ---
 # What is IV *really* doing
 Think of IV as two-steps:
@@ -253,7 +308,7 @@ $y_{i} = \alpha + \beta x_{i} + \delta \hat{D}_{i} + \xi_{i}$
 
 ---
 # Derivation
-Recall $\hat{\theta}=\frac{C(Z,S)}{V(Z)}$, or $\hat{\theta}V(Z) = C(Y,Z)$. Then:
+Recall $\hat{\theta}=\frac{C(Z,S)}{V(Z)}$, or $\hat{\theta}V(Z) = C(S,Z)$. Then:
 
 $$\begin{align}
 \hat{\delta}  & = \frac{COV(Y,Z)}{COV(S,Z)} \\
@@ -313,7 +368,7 @@ anim_save("pics/iv_animate.gif", anim.iv)
 ```
 
 .center[
-  ![:scale 900px](pics/iv_animate.gif)
+  ![](pics/iv_animate.gif)
 ]
 
 ---
@@ -348,7 +403,7 @@ summary(lm(y~d, data=iv.dat))
 
 .pull-right[
 ```{r, echo=FALSE}
-summary(ivreg(y ~ d | z, data=iv.dat))
+feols(y ~ 1 | d~z, data=iv.dat)
 ```
 ]
 
@@ -435,56 +490,4 @@ summary(haus.test)
 - Sargan or Hansen's J test (null hypothesis is that instruments are correlated with residuals)
 
 
-
----
-class: inverse, center, middle
-
-# Problem of Weak Instruments
-
-<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
-
-
----
-# Why we care about instrument strength
-
-Recall our schooling and wages equation, $$y = \beta S + \epsilon$$. Bias in IV can be represented as:
-
-$$Bias_{IV} \approx \frac{Cov(S, \epsilon)}{V(S)} \frac{1}{F+1} = Bias_{OLS} \frac{1}{F+1}$$
-
-- Bias in IV may be close to OLS, depending on instrument strength
-- **Bigger problem:** Bias could be bigger than OLS if exclusion restriction not *fully* satisfied
-- Over-reliance on "rules of thumb", as seen in [Anders and Kasy (2019)](https://www.aeaweb.org/articles?id=10.1257/aer.20180310)
-
-
-
----
-# Testing strength of instruments
-
-.pull-left[
-**Single endogenous variable**
-- F-test of instruments (rule of thumb critical value of 10)
-- Partial $R^2$
-]
-
-.pull-right[
-**Many endogenous variables**
-- More complicated
-]
-
-
----
-class: inverse, center, middle
-
-# Interpreting Instrumental Variables Results
-
-<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
-
-
----
-# LATE and IV Interpretation
-
-- With monotonicity assumption (all those affected by the instrument are affected in the same "direction")
-- In the face of **heterogeneous treatment effects**, IV provides a "Local Average Treatment Effect"
-- LATE: Effect of treatment among those affected by the instrument (compliers only)
-- Why does this matter? Let's discuss Medicaid expansion in Oregon
 

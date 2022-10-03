@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introduction to Instrumental Variables</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Ian McCarthy | Emory University" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <script src="libs/fabric/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#E68080"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Introduction to Instrumental Variables
+]
+.subtitle[
+## <html>
+<div style="float:left">
+
+</div>
+<hr color='#EB811B' size=1px width=0px>
+</html>
+]
+.author[
+### Ian McCarthy | Emory University
+]
+.date[
+### Econ 771, Fall 2022
+]
+
+---
+
+class: inverse, center, middle
+
+
+
+&lt;!-- Adjust some CSS code for font size and maintain R code font size --&gt;
+&lt;style type="text/css"&gt;
+.remark-slide-content {
+    font-size: 30px;
+    padding: 1em 2em 1em 2em;    
+}
+.remark-code {
+  font-size: 15px;
+}
+.remark-inline-code { 
+    font-size: 20px;
+}
+&lt;/style&gt;
+
+
+&lt;!-- Set R options for how code chunks are displayed and load packages --&gt;
+
+
+
+
+
+# Assessing Selection on Unobservables
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#EB811B' size=1px width=1055px&gt;&lt;/html&gt;
+
+---
+class: clear
+
+- Say we estimate a regression like `$$y_{i} = \delta D_{i} + \beta_{1} x_{1i} + \varepsilon_{i}$$`
+
+- But we are concerned that the "true" specification is `$$y_{i} = \delta D_{i} + \beta_{1} x_{1i} + \beta_{2} x_{2i} + \varepsilon_{i}$$`
+
+- **Idea:** Extending the work of Altonji and others, Oster (2019) aims to decompose outome into a treatment effect ($\delta$), observed controls ($x_{1}$), unobserved controls ($x_{2i}$), and iid error
+
+---
+# Oster (2019), JBES
+
+- **Key assumption:** Selection on observables is informative about selection on unobservables
+
+1. What is the maximum `\(R^2\)` value we could obtain if we observed `\(x_{2}\)`? Call this `\(R_{\text{max}}^{2}\)` (naturally bounded above by 1, but likely smaller)
+
+2. What is the degree of selection on observed variables relative to unobserved variables? Denote the proportional relationship as `\(\rho\)` such that: `$$\rho \times \frac{Cov(x_{1},D)}{Var(x_{1})} = \frac{Cov(x_{2},D)}{Var(x_{2})}.$$`
+
+---
+# Oster (2019), JBES
+
+- Under an "equal relative contributions" assumption, we can write:
+
+`$$\delta^{*} \approx \hat{\delta}_{D,x_{1}} - \rho \times \left[\hat{\delta}_{D} - \hat{\delta}_{D,x_{1}}\right] \times \frac{R_{\text{max}}^{2} - R_{D,x_{1}}^{2}}{R_{D,x_{1}}^{2} - R_{x_{1}}^{2}} \xrightarrow{p} \delta.$$`
+
+- Consider a range of `\(R^{2}_{\text{max}}\)` and `\(\rho\)` to bound the estimated treatment effect,
+
+`$$\left[ \hat{\delta}_{D,x_{1}}, \delta^{*}(\bar{R}^{2}_{max}, \rho) \right]$$`
+
+---
+# Augmented regression (somewhat out of place here)
+
+- Oster (2019) and similar papers can say something about how bad selection on unobservables would need to be
+
+- But what kind of "improvement" do we really get in practice?
+
+---
+class: clear
+
+- Original test from Hausman (1978) not specific to endogeneity, just a general misspecification test
+- Compare estimates from one estimator (efficient under the null) to another estimator that is consistent but inefficient under the null 
+- In IV context, also known as Durbin-Wu-Hausman test, due to the series of papers pre-dating Hausman (1978), including Durbin and Wu in the 1950s
+
+---
+class: clear
+
+- Easily implemented as an "artificial" or "augmented" regression
+- We want to estimate `\(y=\beta_{1}x_{1} + \beta_{2}x_{2} + \varepsilon\)`, with exogenous variables `\(x_{1}\)`, endogenous variables `\(x_{2}\)`, and instruments `\(z\)`
+    1. Regress each of the variables in `\(x_{2}\)` on `\(x_{1}\)` and `\(z\)` and form residuals, `\(\hat{v}\)`, `\(x_{2} = \lambda_{x} x_{1} + \lambda_{z} z + v\)`
+    2. Include `\(\hat{v}\)` in the standard OLS regression of `\(y\)` on `\(x_{1}\)`, `\(x_{2}\)`, and `\(\hat{v}\)`.
+    3. Test `\(H_{0}: \beta_{\hat{v}} = 0\)`. Rejection implies OLS is inconsistent.
+
+
+--
+&lt;br&gt;
+
+Intuition: Only way for `\(x_{2}\)` to be correlated with `\(\varepsilon\)` is through `\(v\)`, **assuming `\(z\)` is a "good" instrument**
+
+
+---
+class: clear
+
+- Do we have an endogeneity problem?
+    - Effects easily overcome by small selection on unobservables?
+    - Clear reverse causality problem?
+
+- What can we do about it?
+    - Matching, weighting, regression? Only for selection on observables
+    - DD, RD, differences in discontinuities? Specific designs and settings
+    - Instrumental variables? 
+
+---
+class: inverse, center, middle
+
+# Instrumental Variables
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#EB811B' size=1px width=1055px&gt;&lt;/html&gt;
+
+---
+# What is instrumental variables
+
+Instrumental Variables (IV) is a way to identify causal effects using variation in treatment particpation that is due to an *exogenous* variable that is only related to the outcome through treatment.
+
+&lt;img src="03-1_files/figure-html/tikz-timeline-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Simple example
+
+- `\(y = \beta x + \varepsilon (x)\)`,&lt;br&gt;
+where `\(\varepsilon(x)\)` reflects the dependence between our observed variable and the error term.&lt;br&gt;
+
+- Simple OLS will yield&lt;br&gt;
+`\(\frac{dy}{dx} = \beta + \frac{d\varepsilon}{dx} \neq \beta\)`
+
+
+---
+# What does IV do?
+
+- The regression we want to do: &lt;br&gt;
+`\(y_{i} = \alpha + \delta D_{i} + \gamma A_{i} + \epsilon_{i}\)`,&lt;br&gt;
+where `\(D_{i}\)` is treatment (think of schooling for now) and `\(A_{i}\)` is something like ability.
+
+- `\(A_{i}\)` is unobserved, so instead we run: &lt;br&gt;
+`\(y_{i} = \alpha + \beta D_{i} + \epsilon_{i}\)`
+
+- From this "short" regression, we don't actually estimate `\(\delta\)`. Instead, we get an estimate of&lt;br&gt;
+`\(\beta = \delta + \lambda_{ds}\gamma \neq \delta\)`,&lt;br&gt;
+where `\(\lambda_{ds}\)` is the coefficient of a regression of `\(A_{i}\)` on `\(D_{i}\)`. 
+
+---
+# Intuition
+IV will recover the "long" regression without observing underlying ability&lt;br&gt;
+
+--
+&lt;br&gt;
+
+*IF* our IV satisfies all of the necessary assumptions.
+
+---
+# More formally
+- We want to estimate&lt;br&gt;
+`\(E[Y_{i} | D_{i}=1] - E[Y_{i} | D_{i}=0]\)`
+
+- With instrument `\(Z_{i}\)` that satisfies relevant assumptions, we can estimate this as&lt;br&gt;
+`\(E[Y_{i} | D_{i}=1] - E[Y_{i} | D_{i}=0] = \frac{E[Y_{i} | Z_{i}=1] - E[Y_{i} | Z_{i}=0]}{E[D_{i} | Z_{i}=1] - E[D_{i} | Z_{i}=0]}\)`
+
+- In words, this is effect of the instrument on the outcome ("reduced form") divided by the effect of the instrument on treatment ("first stage")
+
+---
+# Derivation
+Recall "long" regression: `\(Y=\alpha + \delta S + \gamma A + \epsilon\)`.
+
+`$$\begin{align}
+COV(Y,Z) &amp; = E[YZ] - E[Y] E[Z] \\
+         &amp; = E[(\alpha + \delta S + \gamma A + \epsilon)\times Z] - E[\alpha + \delta S + \gamma A + \epsilon)]E[Z] \\
+         &amp; = \alpha E[Z] + \delta E[SZ] + \gamma E[AZ] + E[\epsilon Z] \\
+         &amp; \hspace{.2in} - \alpha E[Z] - \delta E[S]E[Z] - \gamma E[A] E[Z] - E[\epsilon]E[Z] \\
+         &amp; = \delta (E[SZ] - E[S] E[Z]) + \gamma (E[AZ] - E[A] E[Z]) \\
+         &amp; \hspace{.2in} + E[\epsilon Z] - E[\epsilon] E[Z] \\
+         &amp; = \delta C(S,Z) + \gamma C(A,Z) + C(\epsilon, Z)
+\end{align}$$`
+
+---
+# Derivation
+
+Working from `\(COV(Y,Z) = \delta COV(S,Z) + \gamma COV(A,Z) + COV(\epsilon,Z)\)`, we find
+
+`$$\delta = \frac{COV(Y,Z)}{COV(S,Z)}$$`
+
+if `\(COV(A,Z)=COV(\epsilon, Z)=0\)`
+
+---
+# IVs in practice
+Easy to think of in terms of randomized controlled trial...
+
+--
+&lt;br&gt;
+
+ Measure    | Offered Seat | Not Offered Seat | Difference 
+ ---------- | ------------ | ---------------- | ---------- 
+ Score      | -0.003       | -0.358           | 0.355      
+ % Enrolled | 0.787        | 0.046            | 0.741   
+ Effect     |              |                  | 0.48
+
+&lt;br&gt;
+
+.footnote[
+Angrist *et al.*, 2012. "Who Benefits from KIPP?" *Journal of Policy Analysis and Management*.
+] 
+
+---
+# What is IV *really* doing
+Think of IV as two-steps:
+
+1. Isolate variation due to the instrument only (not due to endogenous stuff)
+2. Estimate effect on outcome using only this source of variation
+
+---
+# In regression terms
+Interested in estimating `\(\delta\)` from `\(y_{i} = \alpha + \beta x_{i} + \delta D_{i} + \varepsilon_{i}\)`, but `\(D_{i}\)` is endogenous (no pure "selection on observables").
+
+--
+&lt;br&gt;
+
+&lt;b&gt;Step 1:&lt;/b&gt; With instrument `\(Z_{i}\)`, we can regress `\(D_{i}\)` on `\(Z_{i}\)` and `\(x_{i}\)`,&lt;br&gt;
+`\(D_{i} = \lambda + \theta Z_{i} + \kappa x_{i} + \nu\)`,&lt;br&gt;
+and form prediction `\(\hat{D}_{i}\)`.
+
+--
+&lt;br&gt;
+
+&lt;b&gt;Step 2:&lt;/b&gt; Regress `\(y_{i}\)` on `\(x_{i}\)` and `\(\hat{D}_{i}\)`,&lt;br&gt;
+`\(y_{i} = \alpha + \beta x_{i} + \delta \hat{D}_{i} + \xi_{i}\)`
+
+
+---
+# Derivation
+Recall `\(\hat{\theta}=\frac{C(Z,S)}{V(Z)}\)`, or `\(\hat{\theta}V(Z) = C(S,Z)\)`. Then:
+
+`$$\begin{align}
+\hat{\delta}  &amp; = \frac{COV(Y,Z)}{COV(S,Z)} \\
+        &amp; = \frac{\hat{\theta}C(Y,Z)}{\hat{\theta}C(S,Z)} = \frac{\hat{\theta}C(Y,Z)}{\hat{\theta}^{2}V(Z)} \\
+        &amp; = \frac{C(\hat{\theta}Z,Y)}{V(\hat{\theta}Z)} = \frac{C(\hat{S},Y)}{V(\hat{S})}
+\end{align}$$`
+
+---
+# Animation for IV
+
+
+.center[
+  ![](pics/iv_animate.gif)
+]
+
+---
+# Simulated data
+.pull-left[
+
+```r
+n &lt;- 5000
+b.true &lt;- 5.25
+iv.dat &lt;- tibble(
+  z = rnorm(n,0,2),
+  eps = rnorm(n,0,1),
+  d = (z + 1.5*eps + rnorm(n,0,1) &gt;0.25),
+  y = 2.5 + b.true*d + eps + rnorm(n,0,0.5)
+)
+```
+]
+
+.pull-right[
+- endogenous `eps`: affects treatment and outcome
+- `z` is an instrument: affects treatment but no direct effect on outcome
+]
+
+---
+# Results with simulated data
+Recall that the *true* treatment effect is 5.25
+.pull-left[
+
+```
+## 
+## Call:
+## lm(formula = y ~ d, data = iv.dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.5361 -0.6813  0.0009  0.6888  3.5645 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  2.07914    0.01980   105.0   &lt;2e-16 ***
+## dTRUE        6.16356    0.02891   213.2   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.02 on 4998 degrees of freedom
+## Multiple R-squared:  0.9009,	Adjusted R-squared:  0.9009 
+## F-statistic: 4.546e+04 on 1 and 4998 DF,  p-value: &lt; 2.2e-16
+```
+]
+
+
+.pull-right[
+
+```
+## TSLS estimation, Dep. Var.: y, Endo.: d, Instr.: z
+## Second stage: Dep. Var.: y
+## Observations: 5,000 
+## Standard-errors: IID 
+##             Estimate Std. Error  t value  Pr(&gt;|t|)    
+## (Intercept)  2.46865   0.028767  85.8167 &lt; 2.2e-16 ***
+## fit_dTRUE    5.33305   0.051572 103.4095 &lt; 2.2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## RMSE: 1.10089   Adj. R2: 0.884565
+## F-test (1st stage), dTRUE: stat = 2,886.4, p &lt; 2.2e-16, on 1 and 4,998 DoF.
+##                Wu-Hausman: stat =   526.8, p &lt; 2.2e-16, on 1 and 4,997 DoF.
+```
+]
+
+---
+# Two-stage equivalence
+
+```r
+step1 &lt;- lm(d ~ z, data=iv.dat)
+d.hat &lt;- predict(step1)
+step2 &lt;- lm(y ~ d.hat, data=iv.dat)
+summary(step2)
+```
+
+```
+## 
+## Call:
+## lm(formula = y ~ d.hat, data = iv.dat)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -9.937 -2.174 -0.022  2.134  9.212 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  2.46865    0.07348   33.59   &lt;2e-16 ***
+## d.hat        5.33305    0.13174   40.48   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 2.813 on 4998 degrees of freedom
+## Multiple R-squared:  0.2469,	Adjusted R-squared:  0.2468 
+## F-statistic:  1639 on 1 and 4998 DF,  p-value: &lt; 2.2e-16
+```
+
+
+
+
+
+---
+class: inverse, center, middle
+
+# Assumptions of Instrumental Variables
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#EB811B' size=1px width=1055px&gt;&lt;/html&gt;
+
+
+---
+# Key IV assumptions
+1. *Exclusion:* Instrument is uncorrelated with the error term&lt;br&gt;
+
+2. *Validity:* Instrument is correlated with the endogenous variable&lt;br&gt;
+
+3. *Monotonicity:* Treatment more (less) likely for those with higher (lower) values of the instrument&lt;br&gt;
+
+--
+&lt;br&gt;
+
+Assumptions 1 and 2 sometimes grouped into an *only through* condition.
+
+
+
+---
+# Checking instrument
+.pull-left[
+- Check the 'first stage'
+
+```
+## 
+## Call:
+## lm(formula = d ~ z, data = iv.dat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.19047 -0.32694 -0.00995  0.32877  1.10957 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 0.468338   0.005620   83.33   &lt;2e-16 ***
+## z           0.152773   0.002844   53.73   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.3974 on 4998 degrees of freedom
+## Multiple R-squared:  0.3661,	Adjusted R-squared:  0.366 
+## F-statistic:  2886 on 1 and 4998 DF,  p-value: &lt; 2.2e-16
+```
+]
+
+.pull-right[
+- Check the 'reduced form'
+
+```
+## 
+## Call:
+## lm(formula = y ~ z, data = iv.dat)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -9.937 -2.174 -0.022  2.134  9.212 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  4.96632    0.03978  124.85   &lt;2e-16 ***
+## z            0.81474    0.02013   40.48   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 2.813 on 4998 degrees of freedom
+## Multiple R-squared:  0.2469,	Adjusted R-squared:  0.2468 
+## F-statistic:  1639 on 1 and 4998 DF,  p-value: &lt; 2.2e-16
+```
+]
+
+
+---
+# Do we need IV?
+
+- Let's run an "augmented regression" to see if our OLS results are sufficiently different than IV
+
+
+```r
+d.iv &lt;- lm(d ~ z, data=iv.dat)
+d.resid &lt;- residuals(d.iv)
+haus.test &lt;- lm(y ~ d + d.resid, data=iv.dat)
+summary(haus.test)
+```
+
+```
+## 
+## Call:
+## lm(formula = y ~ d + d.resid, data = iv.dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.5610 -0.6366  0.0037  0.6401  3.6203 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  2.46865    0.02535   97.38   &lt;2e-16 ***
+## dTRUE        5.33305    0.04545  117.35   &lt;2e-16 ***
+## d.resid      1.31015    0.05708   22.95   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.9703 on 4997 degrees of freedom
+## Multiple R-squared:  0.9104,	Adjusted R-squared:  0.9104 
+## F-statistic: 2.538e+04 on 2 and 4997 DF,  p-value: &lt; 2.2e-16
+```
+
+- Test for significance of `d.resid` suggests OLS is inconsistent in this case
+
+
+---
+# Testing exclusion
+
+- Exclusion restriction says that your instrument does not directly affect your outcome
+- Potential testing ideas:
+  - "zero-first-stage" (subsample on which you know the instrument does not affect the endogenous variable)
+  - augmented regression of reduced-form effect with subset of instruments (overidentified models only)
+
+---
+# Testing exogeneity
+
+- Only available in over-identified models
+- Sargan or Hansen's J test (null hypothesis is that instruments are correlated with residuals)
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
