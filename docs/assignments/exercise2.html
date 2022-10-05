@@ -396,14 +396,14 @@ pre code {
 <h1>Questions</h1>
 <p>In your GitHub repository, please be sure to clearly address/answer the following questions. Note that our utilization and payment data only start in 2012 (just a limitation of using publicly available data), while the price shock first takes place in 2010. Thankfully, the price shock was introduced gradually from 2010 through 2013, so our instrument (see question 4 below) still has some variation over our time period. For all of this analysis, please focus only on the years from 2012 through 2017 and focus only on MDs (based on the “NPPES Credentials” field in the PUF data). Please use the raw values for your summary statistics, but you might consider using logs in the rest of the analysis due to the heavily skewed nature of the data.</p>
 <ol style="list-style-type: decimal">
-<li><p>Provide and discuss a table of simple summary statistics showing the mean, standard deviation, min, and max of total physician-level Medicare spending, claims, and patients. Use the Medicare utilization and payment data to calculate total spending, claims, and patients at the physician level. The patient counts will include some overlap since the data are by service, but that’s OK for our purposes.</p></li>
+<li><p>Provide and discuss a table of simple summary statistics showing the mean, standard deviation, min, and max of total physician-level Medicare spending, claims, and patients. Use the Medicare utilization and payment data to calculate total spending, claims, and patients at the physician level. You can do this using the average Medicare allowed amt * bene_day_srvc_cnt (or Medicare allowed amt * line_srvc_cnt) for spending, bene_day_srvc_cnt or the line_srvc_cnt for claims, and bene_unique_cnt for patients. The patient counts will include some overlap since the data are by service, but that’s OK for our purposes.</p></li>
 <li><p>Form a proxy for integration using the ratio:
 <span class="math display" id="eq:int">\[\begin{equation}
 INT_{it} = \mathbf{1} \left(\frac{HOPD_{it}}{HOPD_{it} + OFFICE_{it} + ASC_{it}} \geq 0.75\right),
 \tag{1}
 \end{equation}\]</span>
 where <span class="math inline">\(HOPD_{it}\)</span> reflects the total number of claims in which physician <span class="math inline">\(i\)</span> bills in a hospital outpatient setting, <span class="math inline">\(OFFICE_{it}\)</span> is the total number of claims billed to an office setting, and <span class="math inline">\(ASC_{it}\)</span> is the total number of claims billed to an ambulatory surgery center. As reflected in Equation <a href="#eq:int">(1)</a>, you can assume that any physician with at least 75% of claims billed in an outpatient setting is integrated with a hospital. Using this 75% threshold, plot the mean of total physician-level claims for integrated versus non-integrated physicians over time.</p></li>
-<li><p>Estimate the relationship between integration on total physician claims using OLS, with the following specification:
+<li><p>Estimate the relationship between integration on (log) total physician claims using OLS, with the following specification:
 <span class="math display" id="eq:ols">\[\begin{equation}
 y_{it} = \delta INT_{it} + \beta x_{it} + \gamma_{i} + \gamma_{t} + \varepsilon_{it},
 \tag{2}
