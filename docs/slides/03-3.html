@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Instrumental Variables in the Modern Age</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Ian McCarthy | Emory University" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <script src="libs/fabric/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#E68080"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Instrumental Variables in the Modern Age
+]
+.subtitle[
+## <html>
+<div style="float:left">
+
+</div>
+<hr color='#EB811B' size=1px width=0px>
+</html>
+]
+.author[
+### Ian McCarthy | Emory University
+]
+.date[
+### Econ 771, Fall 2022
+]
+
+---
+
+class: inverse, center, middle
+
+
+
+&lt;!-- Adjust some CSS code for font size and maintain R code font size --&gt;
+&lt;style type="text/css"&gt;
+.remark-slide-content {
+    font-size: 30px;
+    padding: 1em 2em 1em 2em;    
+}
+.remark-code {
+  font-size: 15px;
+}
+.remark-inline-code { 
+    font-size: 20px;
+}
+&lt;/style&gt;
+
+
+&lt;!-- Set R options for how code chunks are displayed and load packages --&gt;
+
+
+
+
+# Common IV Designs
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#EB811B' size=1px width=1055px&gt;&lt;/html&gt;
+
+
+---
+# Judge Fixed Effects
+
+- Many different possible decision makers
+- Individuals randomly assigned to one decision maker
+- Decision makers differ in leniency of assigning treatment
+- Common in crime studies due to random assignment of judges to defendants
+
+---
+# Judge Fixed Effects
+
+Aizer and Doyle (2015), QJE, "Juvenile Incarceration, Human Capital, and Future Crime: Evidence from Randomly Assigned Judges"
+- Proposed instrument: propensity to convict by the judge
+- Idea: judge has some fixed leniency, and random assignment into judges introduces exogenous variation in probability of conviction
+- In practice: judge assignment isn't truly random, but it **is** plausibly exogenous
+
+---
+# Judge Fixed Effects
+
+Constructing the instrument:
+- Leave-one-out mean `$$z_{j} = \frac{1}{n_{j} - 1} \sum_{k \neq i}^{n_{j}-1} JI_{k}$$`
+- This is the mean of incarceration rates for judge `\(j\)` when excluding the current defendant, `\(i\)`
+- Could also residualize `\(JI_{k}\)` (remove effects due to day of week, month, etc.)
+
+---
+# Judge Fixed Effects
+
+- Common design: possible in settings where some influential decision-makers exercise discretion and where individuals can't control the match
+- Practical issue: Use jackknife IV (JIVE) to "fix" small-sample bias
+    - JIVE more general than judge fixed effects design
+    - Idea: estimate first-stage without observation `\(i\)`, use coefficients for predicted endogeneous variable for observation `\(i\)`, repeat
+    - May improve finite-sample bias but also loses efficiency
+- Biggest threat: monotonicity...judges may be more/less lenient in different situations or for different defendants
+
+---
+# Bartik (shift-share) Instruments
+
+- Named after Timothy Bartik, traced back to Perlof (1957)
+- Original idea: Estimate effect of employment growth rates on labor-market outcomes
+    - Clear simultaneity problem
+    - Seek IV to shift labor demand
+
+---
+# Bartik Instruments
+
+Decompose observed growth rate into:
+1. "Share" (what extra growth would have occurred if each industry in an area grew at their industry national average)
+2. "Shift" (extra growth due to differential growth locally versus nationally)
+
+
+---
+# Bartik Instruments
+
+- Want to estimate `$$y_{l} = \alpha + \delta I_{l} + \beta w_{l} + \varepsilon_{l}$$` for location `\(l\)` (possibly time `\(t\)` as well)
+- `\(I_{l}\)` reflect immigration flows
+- `\(w_{l}\)` captures other observables and region/time fixed effects
+
+
+---
+# Bartik Instruments
+
+Instrument:
+
+`$$B_{l} = \sum_{k=1}^{K} z_{l,k} \Delta_{k},$$`
+
+- `\(l\)` denotes market location (e.g., Atlanta), country, etc. (wherever flows are coming *into*)
+- `\(k\)` reflects the source country (where flows are coming out)
+- `\(z_{lk}\)` denotes the **share** of immigrants from source `\(k\)` in location `\(l\)` (in a base period)
+- `\(\Delta_{k}\)` denotes the **shift** (i.e., change) from source country into the destination country as a whole (e.g., immigration into the U.S.)
+
+---
+# Other Examples
+
+`$$\begin{align}
+B_{l} &amp;= \sum_{k=1}^{K} z_{lk} \Delta_{k},\\
+\Delta_{lk} &amp;= \Delta_{k} + \tilde{\Delta_{lk}}
+\end{align}$$`
+
+China shock (Autor, Dorn and Hanson, 2013):
+- `\(z_{lk}\)`: location, `\(l\)`, and industry, `\(k\)`, composition
+- `\(\Delta_{lk}\)`: location, `\(l\)`, and industry, `\(k\)`, growth in imports from China
+- `\(\Delta_{k}\)`: industry `\(k\)` growth of imports from China
+
+---
+# Other Examples
+
+`$$\begin{align}
+B_{l} &amp;= \sum_{k=1}^{K} z_{lk} \Delta_{k},\\
+\Delta_{lk} &amp;= \Delta_{k} + \tilde{\Delta_{lk}}
+\end{align}$$`
+
+Immigrant enclave (Altonji and Card, 1991):
+- `\(z_{lk}\)`: share of people from foreign country `\(k\)` living in current location `\(l\)` (in base period)
+- `\(\Delta_{lk}\)`: growth in the number of people from `\(k\)` to `\(l\)`
+- `\(\Delta_{k}\)`: growth in people from `\(k\)` nationally
+
+---
+# Other Examples
+
+`$$\begin{align}
+B_{l} &amp;= \sum_{k=1}^{K} z_{lk} \Delta_{k},\\
+\Delta_{lk} &amp;= \Delta_{k} + \tilde{\Delta_{lk}}
+\end{align}$$`
+
+Market size and demography (Acemoglu and Linn, 2004):
+- `\(z_{lk}\)`: spending share on drug `\(l\)` from age group `\(k\)`
+- `\(\Delta_{lk}\)`: growth in spending of group `\(k\)` on drug `\(l\)`
+- `\(\Delta_{k}\)`: national growth in spending of group `\(k\)` (e.g., due to population aging)
+
+
+---
+# Bartik Instruments
+
+- Goldsmith-Pinkham, Sorkin, and Swift (2020) show that using `\(B_{l}\)` as an instrument is equivalent to using local industry shares, `\(z_{lk}\)`, as IVs
+- Can decompose Bartik-style IV estimates into weighted combination of estimates where each share is an instrument (Rotemberg weights)
+- Borusyak, Hull, and Jaravel (2022), ReStud, instead focus on situation in which the shifts are exogenous and the shares are potentially endogenous
+- Borusyak and Hull (2021), Econometrica (maybe), provide general approach when using exogenous shifts (recentering as in homework)
+
+
+**key:** literature was vague as to the underlying source of variation in the instrument...recent papers help in understanding this (and thus defending your strategy)
+
+---
+# Shift-Share (focusing on the shift)
+
+- Did ACA medicaid expansion affect insurance status?
+- Construct "simulated" IV (dummy for whether person `\(i\)` is newly eligible given state expansion)
+- Instrument can be thought of as, `\(z_{is} = f(x_{i}, e_{s})\)`
+- Want to separate variation due to `\(e_{s}\)` (the state policy changes) from variation in demographics, `\(x_{i}\)`
+    - Identify `\(p(x)\)`, probability of eligibility on average across other states' laws
+    - Recenter, `\(\tilde{z}_{is} = z_{is} - p(x)\)`. Can also just control for `\(p(x)\)` in regression.
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

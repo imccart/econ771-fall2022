@@ -83,8 +83,135 @@ xaringanExtra::use_scribble(rgb(0.9, 0.5, 0.5))
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
 
----
-# Machine Learning and IV
 
-<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
+---
+# Judge Fixed Effects
+
+- Many different possible decision makers
+- Individuals randomly assigned to one decision maker
+- Decision makers differ in leniency of assigning treatment
+- Common in crime studies due to random assignment of judges to defendants
+
+---
+# Judge Fixed Effects
+
+Aizer and Doyle (2015), QJE, "Juvenile Incarceration, Human Capital, and Future Crime: Evidence from Randomly Assigned Judges"
+- Proposed instrument: propensity to convict by the judge
+- Idea: judge has some fixed leniency, and random assignment into judges introduces exogenous variation in probability of conviction
+- In practice: judge assignment isn't truly random, but it **is** plausibly exogenous
+
+---
+# Judge Fixed Effects
+
+Constructing the instrument:
+- Leave-one-out mean $$z_{j} = \frac{1}{n_{j} - 1} \sum_{k \neq i}^{n_{j}-1} JI_{k}$$
+- This is the mean of incarceration rates for judge $j$ when excluding the current defendant, $i$
+- Could also residualize $JI_{k}$ (remove effects due to day of week, month, etc.)
+
+---
+# Judge Fixed Effects
+
+- Common design: possible in settings where some influential decision-makers exercise discretion and where individuals can't control the match
+- Practical issue: Use jackknife IV (JIVE) to "fix" small-sample bias
+    - JIVE more general than judge fixed effects design
+    - Idea: estimate first-stage without observation $i$, use coefficients for predicted endogeneous variable for observation $i$, repeat
+    - May improve finite-sample bias but also loses efficiency
+- Biggest threat: monotonicity...judges may be more/less lenient in different situations or for different defendants
+
+---
+# Bartik (shift-share) Instruments
+
+- Named after Timothy Bartik, traced back to Perlof (1957)
+- Original idea: Estimate effect of employment growth rates on labor-market outcomes
+    - Clear simultaneity problem
+    - Seek IV to shift labor demand
+
+---
+# Bartik Instruments
+
+Decompose observed growth rate into:
+1. "Share" (what extra growth would have occurred if each industry in an area grew at their industry national average)
+2. "Shift" (extra growth due to differential growth locally versus nationally)
+
+
+---
+# Bartik Instruments
+
+- Want to estimate $$y_{l} = \alpha + \delta I_{l} + \beta w_{l} + \varepsilon_{l}$$ for location $l$ (possibly time $t$ as well)
+- $I_{l}$ reflect immigration flows
+- $w_{l}$ captures other observables and region/time fixed effects
+
+
+---
+# Bartik Instruments
+
+Instrument:
+
+$$B_{l} = \sum_{k=1}^{K} z_{l,k} \Delta_{k},$$
+
+- $l$ denotes market location (e.g., Atlanta), country, etc. (wherever flows are coming *into*)
+- $k$ reflects the source country (where flows are coming out)
+- $z_{lk}$ denotes the **share** of immigrants from source $k$ in location $l$ (in a base period)
+- $\Delta_{k}$ denotes the **shift** (i.e., change) from source country into the destination country as a whole (e.g., immigration into the U.S.)
+
+---
+# Other Examples
+
+$$\begin{align}
+B_{l} &= \sum_{k=1}^{K} z_{lk} \Delta_{k},\\
+\Delta_{lk} &= \Delta_{k} + \tilde{\Delta_{lk}}
+\end{align}$$
+
+China shock (Autor, Dorn and Hanson, 2013):
+- $z_{lk}$: location, $l$, and industry, $k$, composition
+- $\Delta_{lk}$: location, $l$, and industry, $k$, growth in imports from China
+- $\Delta_{k}$: industry $k$ growth of imports from China
+
+---
+# Other Examples
+
+$$\begin{align}
+B_{l} &= \sum_{k=1}^{K} z_{lk} \Delta_{k},\\
+\Delta_{lk} &= \Delta_{k} + \tilde{\Delta_{lk}}
+\end{align}$$
+
+Immigrant enclave (Altonji and Card, 1991):
+- $z_{lk}$: share of people from foreign country $k$ living in current location $l$ (in base period)
+- $\Delta_{lk}$: growth in the number of people from $k$ to $l$
+- $\Delta_{k}$: growth in people from $k$ nationally
+
+---
+# Other Examples
+
+$$\begin{align}
+B_{l} &= \sum_{k=1}^{K} z_{lk} \Delta_{k},\\
+\Delta_{lk} &= \Delta_{k} + \tilde{\Delta_{lk}}
+\end{align}$$
+
+Market size and demography (Acemoglu and Linn, 2004):
+- $z_{lk}$: spending share on drug $l$ from age group $k$
+- $\Delta_{lk}$: growth in spending of group $k$ on drug $l$
+- $\Delta_{k}$: national growth in spending of group $k$ (e.g., due to population aging)
+
+
+---
+# Bartik Instruments
+
+- Goldsmith-Pinkham, Sorkin, and Swift (2020) show that using $B_{l}$ as an instrument is equivalent to using local industry shares, $z_{lk}$, as IVs
+- Can decompose Bartik-style IV estimates into weighted combination of estimates where each share is an instrument (Rotemberg weights)
+- Borusyak, Hull, and Jaravel (2022), ReStud, instead focus on situation in which the shifts are exogenous and the shares are potentially endogenous
+- Borusyak and Hull (2021), Econometrica (maybe), provide general approach when using exogenous shifts (recentering as in homework)
+
+
+**key:** literature was vague as to the underlying source of variation in the instrument...recent papers help in understanding this (and thus defending your strategy)
+
+---
+# Shift-Share (focusing on the shift)
+
+- Did ACA medicaid expansion affect insurance status?
+- Construct "simulated" IV (dummy for whether person $i$ is newly eligible given state expansion)
+- Instrument can be thought of as, $z_{is} = f(x_{i}, e_{s})$
+- Want to separate variation due to $e_{s}$ (the state policy changes) from variation in demographics, $x_{i}$
+    - Identify $p(x)$, probability of eligibility on average across other states' laws
+    - Recenter, $\tilde{z}_{is} = z_{is} - p(x)$. Can also just control for $p(x)$ in regression.
 

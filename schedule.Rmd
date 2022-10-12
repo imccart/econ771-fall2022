@@ -63,6 +63,7 @@ Below is a preliminary course outline for this semester. For a more complete rea
       - [Instrumental Variables Assumptions and Interpretation](slides/03-2.html)
   - `r advdate(14)`: Fall break
   - `r advdate(15)`: Empirical application with IV, cont'd
+      - [Common IV Designs](slides/03-3.html)
 
 ## [Module 3: Information disclosure](modules/module3.html)
 
