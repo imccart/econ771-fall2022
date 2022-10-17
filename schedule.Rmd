@@ -55,9 +55,9 @@ Below is a preliminary course outline for this semester. For a more complete rea
       - [Zeltzer (2020), Gender homophily in referral networks: Consequences for the Medicare physician earning gap](slides/student/pablo-20220926.pdf), presented by Pablo
       - [Chernew et al (2021), Physician agency, consumerism, and the consumption of lower-limb MRI scans](slides/student/martha-20220926.pptx), presented by Martha
   - `r advdate(11)`: Physician learning
-      - [Crawford and Shum (2005), Uncertainty and Learning in Pharmaceutical Demand](slides/student/jungjae-20220928.pdf)
-      - [Sarsons (2018), Interpreting Signals in the Labor Market: Evidence from Medical Referrals](slides/student/paul-20220928.pdf)
-      - [Johnson (2011), Ability, Learning, and the Career Path of Cardiac Specialists](slides/student/rachel-20220928.pdf)
+      - [Crawford and Shum (2005), Uncertainty and Learning in Pharmaceutical Demand](slides/student/jungjae-20220928.pdf), presented by Jung Jae
+      - [Sarsons (2018), Interpreting Signals in the Labor Market: Evidence from Medical Referrals](slides/student/paul-20220928.pdf), presented by Paul
+      - [Johnson (2011), Ability, Learning, and the Career Path of Cardiac Specialists](slides/student/rachel-20220928.pdf), presented by Rachel
   - `r advdate(12)` - `r advdate(13)`: Empirical application with IV
       - [Introduction to Instrumental Variables](slides/03-1.html)
       - [Instrumental Variables Assumptions and Interpretation](slides/03-2.html)
@@ -68,6 +68,8 @@ Below is a preliminary course outline for this semester. For a more complete rea
 ## [Module 3: Information disclosure](modules/module3.html)
 
   - `r advdate(16)`: Patient decision-making
+      - [Ketcham et al (2012), Sinking, Swimming, or Learning to Swim in Medicare Part D](slides/student/jingxuan-20221017.pdf), presented by Jingxuan
+      - [Gaynor et al (2016), Free to Choose? Reform, Choice, and Consideration Sets in the English National Health Service](slides/student/katie-20221017.pdf), presented by Katie
   - `r advdate(17)`: Inertia in health insurance choice
   - `r advdate(18)`: Effects of quality disclosure
   - `r advdate(19)`: Effects of price disclosure
