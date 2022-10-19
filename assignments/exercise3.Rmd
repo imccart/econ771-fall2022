@@ -20,7 +20,7 @@ Please "submit" your answers as a GitHub repository link on Canvas. In this repo
 
 
 # Resources and data
-The data for this assignment comes from the AEJ: Policy website, where Keith Ericson's complete dataset is available. The data are available [here](https://www.aeaweb.org/articles?id=10.1257/pol.6.1.38). I will also upload the replication files to our class OneDrive folder.
+The data for this assignment comes from the AEJ: Policy website, where Keith Ericson's complete dataset is available. The data are available [here](https://www.aeaweb.org/articles?id=10.1257/pol.6.1.38). I've also uploaded the data to our class OneDrive folder under the directory "Ericson 2014."
 
 # Questions
 In your GitHub repository, please be sure to clearly address/answer the following questions.
