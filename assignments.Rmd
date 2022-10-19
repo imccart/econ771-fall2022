@@ -10,7 +10,7 @@ There are three main types of assignments throughout the semester, along with a 
     - [Exercise 1](assignments/exercise1.html): Difference-in-differences
     - [Exercise 2](assignments/exercise2.html): Instrumental variables
     - [Exercise 3](assignments/exercise3.html): Regression Discontinuity
-    - Exercise 4: Hospital markets and demand estimation
+    - [Exercise 4](assignments/exercise4.html): Hospital markets (plus a tiny bit of demand estimation)
 
 3. **Presentations**: You will present three papers throughout the course of the semester. A list of potential papers is available on the detailed class schedule in the [syllabus](syllabus/syllabus-771.pdf), with additional details regarding presentation expectations and grading available [here](assignments/presentation.html). Any paper listed as **Primary Reading** in the class schedule can be selected for presentation, with the exception of papers or class days indicated by ** . Please inform me of your selected papers no later than **September 2** by indicating your paper and date of presentation on the Google Sheet, available [here](https://docs.google.com/spreadsheets/d/1d6IVg-khbreLKobiczNwEOT9gjPNNykrFEtc2rXdJ4I/edit?usp=sharing).
 
