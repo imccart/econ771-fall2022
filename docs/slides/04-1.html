@@ -67,7 +67,7 @@ class: inverse, center, middle
 &lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#EB811B' size=1px width=1055px&gt;&lt;/html&gt;
 
 ---
-class: clear
+# The Idea
 
 Key intuition from RD:&lt;br&gt;
 
@@ -77,7 +77,7 @@ Key intuition from RD:&lt;br&gt;
 Observations are &lt;b&gt;identical&lt;/b&gt; just above/below threshold
 
 ---
-class: clear
+# The Idea
 
 Highly relevant in "rule-based" world...
 - School eligibility based on age cutoffs
@@ -243,7 +243,7 @@ plot.bin &lt;- bin.avg %&gt;% ggplot(aes(x=rdplot_mean_x,y=rdplot_mean_y)) +
 
 
 ---
-# Kernels?
+# Kernels
 Some RD estimates talk about "kernel weighting" to assign more weight to observations closer to the threshold and less weight to observations further from the threshold.
 
 ---
@@ -342,8 +342,8 @@ rd &lt;- lm(Y~x_dev + W, data=rd.dat3)
 - If RD is an appropriate design, units should be very similar above and below threshold
 - How do we test for this?
 
-
 --
+&lt;br&gt;
 - Covariate balance (love plots from Module 1)
 
 
@@ -356,16 +356,15 @@ rd &lt;- lm(Y~x_dev + W, data=rd.dat3)
 
 For more discussion, see this [World Bank Blog post](https://blogs.worldbank.org/impactevaluations/curves-all-wrong-places-gelman-and-imbens-why-not-use-higher-order-polynomials-rd)
 
-&lt;!-- New Section --&gt;
 ---
 class: inverse, center, middle
 
-# Fuzzy Regression Discontinuity
+# Fuzzy RD
 
 &lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#EB811B' size=1px width=1055px&gt;&lt;/html&gt;
 
 ---
-# Fuzzy RD
+# The Idea
 "Fuzzy" just means that assignment isn't guaranteed based on the running variable. For example, maybe students are much more likely to get a scholarship past some threshold SAT score, but it remains possible for students below the threshold to still get the scholarship. 
 
 - Discontinuity reflects a jump in the probability of treatment
@@ -377,6 +376,7 @@ In practice, fuzzy RD is employed as an instrumental variables estimator
 - Difference in outcomes among those above and below the discontinuity divided by the difference in treatment probabilities for those above and below the discontinuity,&lt;br&gt;
 `\(E[Y_{i} | D_{i}=1] - E[Y_{i} | D_{i}=0] = \frac{E[Y_{i} | x_{i}\geq c] - E[Y_{i} | x_{i}&lt; c]}{E[D_{i} | x_{i}\geq c] - E[D_{i} | x_{i}&lt;c]}\)`
 - Indicator for `\(x_{i}\geq c\)` is an instrument for treatment status, `\(D_{i}\)`.
+
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

@@ -80,23 +80,12 @@ xaringanExtra::use_scribble(rgb(0.9, 0.5, 0.5))
 ```
 
 
-# Fuzzy RD
+# RD with Mass Points
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
 
 ---
-# The Idea
-"Fuzzy" just means that assignment isn't guaranteed based on the running variable. For example, maybe students are much more likely to get a scholarship past some threshold SAT score, but it remains possible for students below the threshold to still get the scholarship. 
-
-- Discontinuity reflects a jump in the probability of treatment
-- Other RD assumptions still required (namely, can't manipulate running variable around the threshold)
-
----
-# Fuzzy RD is IV
-In practice, fuzzy RD is employed as an instrumental variables estimator
-- Difference in outcomes among those above and below the discontinuity divided by the difference in treatment probabilities for those above and below the discontinuity,<br>
-$E[Y_{i} | D_{i}=1] - E[Y_{i} | D_{i}=0] = \frac{E[Y_{i} | x_{i}\geq c] - E[Y_{i} | x_{i}< c]}{E[D_{i} | x_{i}\geq c] - E[D_{i} | x_{i}<c]}$
-- Indicator for $x_{i}\geq c$ is an instrument for treatment status, $D_{i}$.
+# Mass points
 
 
 
