@@ -224,7 +224,14 @@ Most RD estimates follow a similar set of steps:
 
 
 ---
-# Initial graphical evidence
+class: center, middle
+
+# 1. Graphical evidence
+
+
+---
+class: clear
+
 Before presenting RD estimates, **any** good RD approach first highlights the discontinuity with a simple graph. We can do so by plotting the average outcomes within bins of the forcing variable (i.e., binned averages), `$$\bar{Y}_{k} = \frac{1}{N_{k}}\sum_{i=1}^{N} Y_{i} \times 1(b_{k} &lt; X_{i} \leq b_{k+1}).$$`&lt;br&gt;
 
 --
@@ -271,21 +278,64 @@ plot.bin &lt;- bin.avg %&gt;% ggplot(aes(x=rdplot_mean_x,y=rdplot_mean_y)) +
 
 
 ---
-# Some practical concerns
-- Bin size for plots
-- Selecting bandwidth, `\(h\)`
-- Check for sorting around threshold (e.g., gaming)
-- Covariate balance (love plots around threshold)
-- Should we control for other covariates?
-- Sensitivity to polynomial specification
-
----
 # Selecting "bin" width
 1. Dummy variables: Create dummies for each bin, regress the outcome on the set of all dummies and form r-square `\(R^{2}_{r}\)`, repeat with double the number of bins and find r-square value `\(R^{2}_{u}\)`, form F-stat, `\(\frac{R^{2}_{u}-R^{2}_{r}}{1-R^{2}_{u}}\times \frac{n-K-1}{K}\)`.
 
 2. Interaction terms: Include interactions between dummies and the running variable, joint F-test for the interaction terms
 
 If F-test suggests significance, then we have too few bins and need to narrow the bin width.
+
+
+---
+class: center, middle
+
+# 2. Balance
+
+---
+# Assessing balance
+
+- If RD is an appropriate design, passing the cutoff should **only** affect treatment and outcome of interest
+- How do we test for this?
+    - Covariate balance
+    - Placebo tests of other outcomes (e.g., t-1 outcomes against treatment at time t)
+
+
+
+---
+class: center, middle
+
+# 3. Manipulation tests
+
+
+---
+# Manipulation of running variable
+
+- Individuals should not be able to **precisely** manipulate running variable to enter into treatment
+- Sometimes discussed as "bunching"
+- Test for differences in density to left and right of cutoffs (`rddensity` in Stata and R)
+- Permutation tests proposed in Ganong and Jager (2017)
+
+---
+# What if bunching exists?
+
+- Gerard, Rokkanen, and Rothe (2020) suggest partial identification allowing for bunching
+- Can also be used as a robustness check
+- `rdbounds` in Stata and R
+- Assumption: bunching only moves people in one direction
+
+
+---
+class: center, middle
+
+# 4. RD Estimation
+
+---
+# Baseline RD estimates
+
+Start with the "default" options
+- Local linear regression
+- Optimal bandwidth
+- Uniform kernel
 
 
 ---
@@ -341,34 +391,6 @@ rd &lt;- lm(Y~x_dev + W, data=rd.dat3)
 - Standard linear regression with same slopes: 1.68
 - RD (linear with same slopes): 1.58
 
----
-# Manipulation of running variable
-
-- What if firms or individuals can control whether they fall just above or below the threshold?
-- Test for this by inspecting the PDF of the running variable
-- Jump in density at threshold suggests manipulation
-
-
----
-# Covariate balance
-
-- If RD is an appropriate design, units should be very similar above and below threshold
-- How do we test for this?
-
---
-&lt;br&gt;
-- Covariate balance (love plots from Module 1)
-
-
----
-# Pitfalls of polynomials
-
-- Assign too much weight to points away from the cutoff
-- Results **highly** sensitive to degree of polynomial
-- Narrow confidence intervals (over-rejection of the null)
-
-For more discussion, see this [World Bank Blog post](https://blogs.worldbank.org/impactevaluations/curves-all-wrong-places-gelman-and-imbens-why-not-use-higher-order-polynomials-rd)
-
 
 ---
 # RD with built-in commands
@@ -406,6 +428,32 @@ Cattaneo et al. (2020) argue:
 - Report robust confidence interval
 ]
 
+
+---
+class: center, middle
+
+# 5. Robustness and sensitivity
+
+
+---
+# Other options
+
+- Different bandwidths
+- Different kernels or polynomials
+- Role of covariates in RD estimates
+
+
+---
+# Pitfalls of polynomials
+
+- Assign too much weight to points away from the cutoff
+- Results **highly** sensitive to degree of polynomial
+- Narrow confidence intervals (over-rejection of the null)
+
+For more discussion, see this [World Bank Blog post](https://blogs.worldbank.org/impactevaluations/curves-all-wrong-places-gelman-and-imbens-why-not-use-higher-order-polynomials-rd)
+
+
+
 ---
 class: inverse, center, middle
 
@@ -426,7 +474,7 @@ In practice, fuzzy RD is employed as an instrumental variables estimator
 - Difference in outcomes among those above and below the discontinuity divided by the difference in treatment probabilities for those above and below the discontinuity,&lt;br&gt;
 `\(E[Y_{i} | D_{i}=1] - E[Y_{i} | D_{i}=0] = \frac{E[Y_{i} | x_{i}\geq c] - E[Y_{i} | x_{i}&lt; c]}{E[D_{i} | x_{i}\geq c] - E[D_{i} | x_{i}&lt;c]}\)`
 - Indicator for `\(x_{i}\geq c\)` is an instrument for treatment status, `\(D_{i}\)`.
-
+- Implemented with `rdrobust` and `fuzzy=t` option
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
