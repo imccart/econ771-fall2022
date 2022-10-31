@@ -35,7 +35,7 @@ In your GitHub repository, please be sure to clearly address/answer the followin
 
 5. One key underlying assumption for RD design is that agents cannot precisely manipulate the running variable. While "precisely" is not very scientific, we can at least test for whether there appears to be a discrete jump in the running variable around the threshold. Evidence of such a jump may suggest that manipulation is present. Provide the results from the manipulation tests described in @cattaneo2018. This test can be implemented with the `rddensity` package in `R`, `Stata`, or `Python`.
 
-6. Recreate Table 3 of @ericson2014 using the same bandwidth of $4.00.
+6. Recreate Panels A and B of Table 3 in @ericson2014 using the same bandwidth of $4.00 but without any covariates.
 
 7. @calonico2020 show that pre-existing optimal bandwidth calculations (such as those used in @ericson2014) are invalid for appropriate inference. They propose an alternative method to derive minimal coverage error (CE)-optimal bandwidths. Re-estimate your RD results using the CE-optimal bandwidth (`rdrobust` will do this for you) and compare the bandwidth and RD estimates to that in Table 3 of @ericson2014.
 

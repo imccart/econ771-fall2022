@@ -70,7 +70,7 @@ knitr::opts_hooks$set(fig.callout = function(options) {
 
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load(tidyverse, ggplot2, dplyr, lubridate, readr, readxl, fixest, readstata13,
-               xaringanExtra, webshotm, ggthemes, gganimate, plotly, here, hrbrthemes,
+               xaringanExtra, rdrobust, ggthemes, gganimate, plotly, here, hrbrthemes,
                scales, gapminder, gifski, png, tufte, OECD, ggrepel, dtplyr, data.table, kableExtra, 
                cobalt, haven, magick)
 set.seed(1234)
@@ -134,7 +134,7 @@ class: inverse, center, middle
 class: clear
 
 
-$$W_{i} = 1(x_{i}>c) = \begin{cases}
+$$D_{i} = 1(x_{i}>c) = \begin{cases}
     1 & \text{if} & x_{i}>c \\
     0 & \text{if} & x_{i}<c 
 \end{cases}$$
@@ -263,14 +263,40 @@ anim_save("pics/rd_animate.gif", anim.p)
 
 
 ---
+# Identification
+
+- Need $E[Y_{i}|x_{i}]$ to be sufficiently smooth in order to estimate effect of $D_{i}$ on $Y_{i}$ exactly at $x_{i}=c$.
+- Assumption: $E[Y_{i}(0)|x_{i}]$ and $E[Y_{i}(1)|x_{i}]$ are continuous in $x$
+
+$$\delta^{CATE} = E[Y_{i}(1) - Y_{i}(0) | x_{i}=c] = \lim_{x \leftarrow c} E[Y_{i} | x_{i}] - \lim_{x \rightarrow c} E[Y_{i} | x_{i}]$$
+
+
+
+---
 # Estimation
 Goal is to estimate $E[Y_{1}|X=c] - E[Y_{0}|X=c]$
 1. Trim to reasonable window around threshold ("bandwidth"), $X \in [c-h, c+h]$
 2. Transform running variable, $\tilde{X}=X-c$
 3. Estimate regressions...
   - Linear, same slope: $y = \alpha + \delta D + \beta \tilde{X} + \varepsilon$
-  - Linear, different slope: $y = \alpha + \delta D + \beta \tilde{X} + \gamma W\tilde{X} + \varepsilon$
-  - Nonlinear: add polynomials in $\tilde{X}$ and interactions $W \tilde{X}$
+  - Linear, different slope: $y = \alpha + \delta D + \beta \tilde{X} + \gamma D\tilde{X} + \varepsilon$
+  - Nonlinear: add polynomials in $\tilde{X}$ and interactions $D \tilde{X}$
+  - Nonparametric kernel estimation
+
+
+---
+# Kernels
+Some RD estimates talk about "kernel weighting" to assign more weight to observations closer to the threshold and less weight to observations further from the threshold.
+
+---
+# Kernels
+$$\hat{\mu}_{+}(x) = \frac{\sum_{i: X_{i}<c} Y_{i} \times K \left(\frac{X_{i} -x}{h} \right)}{\sum_{i: X_{i}<c} K \left(\frac{X_{i} -x}{h} \right)},$$ and $$\hat{\mu}_{-}(x) = \frac{\sum_{i: X_{i}\geq c} Y_{i} \times K \left(\frac{X_{i} -x}{h} \right)}{\sum_{i: X_{i}\geq c} K \left(\frac{X_{i} -x}{h} \right)},$$
+where $K(u)$ is a kernel that assigns weight to observations based on the distance from $u$. A rectagular kernel is such that $K(u)=1/2$ for $u \in (-1,1)$ and 0 elsewhere. And $h$ is our bandwidth.
+
+---
+# Kernels and regression
+- Local linear regression (regression within the pre-specified bandwidth) is a kernel weighted regression with a uniform (or rectangular) kernel. 
+- Could use more complicated kernels for a fully nonparametric approach, but these don't work well around the RD cutoff values.
 
 
 
@@ -285,12 +311,14 @@ class: inverse, center, middle
 ---
 # RDs "in the wild"
 Most RD estimates follow a similar set of steps:
-1. Investigate the running variable and show a jump at the discontinuity
-2. Show clear graphical evidence of a change around the discontinuity
-3. Overlay regression specification
-4. Explore sensitivity to bandwidths and orders of the polynomial
-5. Conduct similar analyses with baseline covariates as outcomes
-6. Explore sensitivity of results to inclusion of baseline covariates
+1. Show clear graphical evidence of a change around the discontinuity (bin scatter)
+2. Balance above/below threshold (use baseline covariates as outcomes)
+3. Manipulation tests
+4. RD estimates
+5. Sensitivity and robustness:
+    - Bandwidths
+    - Order of polynomial
+    - Inclusion of covariates
 
 
 ---
@@ -341,21 +369,6 @@ plot.bin
 ```
 ]
 
-
----
-# Kernels
-Some RD estimates talk about "kernel weighting" to assign more weight to observations closer to the threshold and less weight to observations further from the threshold.
-
----
-# Kernels
-$$\hat{\mu}_{+}(x) = \frac{\sum_{i: X_{i}<c} Y_{i} \times K \left(\frac{X_{i} -x}{h} \right)}{\sum_{i: X_{i}<c} K \left(\frac{X_{i} -x}{h} \right)},$$ and $$\hat{\mu}_{-}(x) = \frac{\sum_{i: X_{i}\geq c} Y_{i} \times K \left(\frac{X_{i} -x}{h} \right)}{\sum_{i: X_{i}\geq c} K \left(\frac{X_{i} -x}{h} \right)},$$
-where $K(u)$ is a kernel that assigns weight to observations based on the distance from $u$. A rectagular kernel is such that $K(u)=1/2$ for $u \in (-1,1)$ and 0 elsewhere. 
-
----
-# Kernels and regression
-- Local linear regression (regression within the pre-specified bandwidth) is a kernel weighted regression with a uniform (or rectangular) kernel. 
-- Could use more complicated kernels for a fully nonparametric approach, but these don't work well around the RD cutoff values.
-- Polynomial 
 
 ---
 # Some practical concerns
@@ -463,6 +476,24 @@ rd <- lm(Y~x_dev + W, data=rd.dat3)
 - Narrow confidence intervals (over-rejection of the null)
 
 For more discussion, see this [World Bank Blog post](https://blogs.worldbank.org/impactevaluations/curves-all-wrong-places-gelman-and-imbens-why-not-use-higher-order-polynomials-rd)
+
+
+---
+# RD with built-in commands
+.pull-left[
+```{r echo=FALSE}
+rd.y <- rd.dat$Y
+rd.x <- rd.dat$X
+rd.est <- rdrobust(y=rd.y, x=rd.x, c=1)
+summary(rd.est)
+```
+]
+
+.pull-right[
+Cattaneo et al. (2020) argue:
+- Report conventional point estimate
+- Report robust confidence interval
+]
 
 ---
 class: inverse, center, middle

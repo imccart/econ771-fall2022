@@ -80,12 +80,15 @@ xaringanExtra::use_scribble(rgb(0.9, 0.5, 0.5))
 ```
 
 
-# RD with Mass Points
+# RD with Discrete Running Variable
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
 
 ---
-# Mass points
+# Discrete Running Variables
+
+- Standard smoothness argument no longer applies
+- Need to assume that observations are as good as randomly assigned above/below threshold
 
 
 
@@ -95,3 +98,50 @@ class: inverse, center, middle
 # RD with Multiple Cutoffs
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
+
+
+---
+class: inverse, center, middle
+
+# Regression Kink
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
+
+
+---
+class: inverse, center, middle
+
+# Bias and Undersmoothing
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=1055px></html>
+
+
+---
+# Asymptotic distribution
+
+From Cattaneo et al. (2020):
+$$\text{MSE}(\hat{\tau}_{SRD}) = \text{Bias}^{2}(\hat{\tau}_{SRD}) + \text{Var}(\hat{\tau}_{SRD}) = (h^{2(p+1)}\mathcal{B})^{2} + \frac{1}{nh}\mathcal{V}$$
+- $p$ is the polynomial degree of the local linear estimator ($p=1$ for linear)
+- $\mathcal{B}$ is the leading bias term of an expansion 
+- $\mathcal{V}$ is the leading variance term
+
+
+---
+# Asymptotic distribution
+
+Choice of $h$ that minimizes this MSE (conditional on $p$ and the kernel) is:
+$$h_{MSE} = \left(\frac{\mathcal{V}}{2(p+1)\mathcal{B}^{2}}\right)^{1/(2p+3)}n^{-1/(2p+3)}$$
+
+- for $p = 1$, $o(h_{MSE}) = n^{-1/5}$
+- but choosing $h_{MSE} \propto  n^{-1/5}$ does not lead to zero bias because bias reduces to zero at slower rate
+
+
+---
+# Asymptotic distribution
+
+- Calonico, Cattaneo, and Titunik (2015) argues for plug-in estimator for bias
+- Idea: 
+    - Estimate local RD estimate with quadratic terms
+    - Use second derivative to approximate bias for the local linear RD
+    - Adjust resulting local linear RD
+- Calonico, Cattaneo, and Farrell (2020) argues for CE-optimal bandwidths
