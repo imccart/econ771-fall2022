@@ -564,4 +564,3 @@ In practice, fuzzy RD is employed as an instrumental variables estimator
 $E[Y_{i} | D_{i}=1] - E[Y_{i} | D_{i}=0] = \frac{E[Y_{i} | x_{i}\geq c] - E[Y_{i} | x_{i}< c]}{E[D_{i} | x_{i}\geq c] - E[D_{i} | x_{i}<c]}$
 - Indicator for $x_{i}\geq c$ is an instrument for treatment status, $D_{i}$.
 - Implemented with `rdrobust` and `fuzzy=t` option
-

@@ -81,12 +81,15 @@ Below is a preliminary course outline for this semester. For a more complete rea
       - [Brown (2019), Equilibrium effects of health care price information](slides/student/noah-20221026.pdf), presented by Noah
   - `r advdate(20)` - `r advdate(21)`: Empirical application with RD
       - [Introduction to RD](slides/04-1.html)
-      - [Extensions to Basic Rd](slides/04-2.html)
+      - [Extensions to Basic RD](slides/04-2.html)
 
 ## [Module 4: Healthcare competition and industrial organization](modules/module4.html)
 
   - `r advdate(22)`: Competition in price and quality
+      - [Dranove et al (1992), Is hospital competition wasteful?](slides/student/nixon-20221107.pdf), presented by Nixon
   - `r advdate(23)`: Measuring hospital markets and market power
+      - [Everson et al (2019), Comparing methods of grouping hospitals](slides/student/jingxuan-20221109.pdf), presented by Jingxuan
+      - [Dranove and Ody (2016), Evolving measures of provider market power](slides/student/amy-20221109.pdf), presented by Amy
   - `r advdate(24)`: "Structure-Conduct-Performance"
   - `r advdate(25)`: Bargaining framework
   - `r advdate(26)`: No meeting today. Class rescheduled for December 2  
