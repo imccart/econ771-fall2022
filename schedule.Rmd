@@ -91,6 +91,8 @@ Below is a preliminary course outline for this semester. For a more complete rea
       - [Everson et al (2019), Comparing methods of grouping hospitals](slides/student/jingxuan-20221109.pdf), presented by Jingxuan
       - [Dranove and Ody (2016), Evolving measures of provider market power](slides/student/amy-20221109.pdf), presented by Amy
   - `r advdate(24)`: "Structure-Conduct-Performance"
+      - [Miller et al (2022), On the misuse of regressions of price on the HHI in merger review](slides/student/kayan-20221114.pdf), presented by Ka Yan
+      - [Kessler and McClellan, Is hospital competition socially wasteful?](slides/student/paul-20221114.pdf), presented by Paul
   - `r advdate(25)`: Bargaining framework
   - `r advdate(26)`: No meeting today. Class rescheduled for December 2  
   - `r advdate(27)`: Effects of mergers or closures (**virtual class**)
