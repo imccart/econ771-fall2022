@@ -94,8 +94,16 @@ Below is a preliminary course outline for this semester. For a more complete rea
       - [Miller et al (2022), On the misuse of regressions of price on the HHI in merger review](slides/student/kayan-20221114.pdf), presented by Ka Yan
       - [Kessler and McClellan, Is hospital competition socially wasteful?](slides/student/paul-20221114.pdf), presented by Paul
   - `r advdate(25)`: Bargaining framework
+      - [Ho and Lee (2017), Insurer competition in health care markets](slides/student/katie-20221116.pdf), presented by Katie
+      - [Clemens and Gottlieb (2017), In the shadow of a giant: Medicare's influence on private physician payments](slides/student/kayan-20221116.pdf), presented by Ka Yan
   - `r advdate(26)`: No meeting today. Class rescheduled for December 2  
   - `r advdate(27)`: Effects of mergers or closures (**virtual class**)
+      - [Craig, Grennan, and Swanson (2021), Mergers and marginal costs: New evidence on hospital buyer power](slides/student/wonjun-20221123.pdf), presented by Wonjun  
+      - [Eliason et al (2020), How acquisitions affect firm behavior and performance: Evidence from the dialysis industry](slides/student/jungjae-20221123.pdf), presented by Jung Jae
   - `r advdate(28)`: Out-of-market mergers
+      - [Dafny, Ho, and Lee (2019), The price effects of cross-market mergers: Theory and evidence from the hospital industry](slides/student/martha-20221128.pptx), presented by Martha
+      - [Schmitt (2018), Multimarket contact in the hospital industry](slides/student/noah-20221128.pdf), presented by Noah
   - `r advdate(29)`: Vertical integration
+      - [Luco and Marshall (2020), The competitive impact of vertical integration by multiproduct firms](slides/student/noah-20221130.pdf), presented by Noah  
+      - [Koch, Wendling, and Wilson (2021), The effects of physician and hospital integration on Medicare beneficiaries' health outcomes](slides/student/nixon-20221130.pdf), presented by Nixon
   - 12/02 (rescheduled from 11/21) and `r advdate(30)`: Empirical application with demand estimation
