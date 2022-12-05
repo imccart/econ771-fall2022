@@ -136,15 +136,79 @@ These are really all the same and it's just a matter of specification (e.g., int
 
 
 ---
+# Basic Multinomial Logit
+
+With utility specification:
+$$u_{ij}=x_{ij}\beta + \epsilon_{ij} = V_{ij} + \epsilon_{ij}$$ 
+
+The probability of selecting choice $j$ is:
+$$\begin{align}
+p_{ij} & = Pr(u_{ij} > u_{ik} \forall k \neq j) \\
+       & = Pr(V_{ij} + \epsilon_{ij} > V_{ij} + \epsilon_{ik} \forall k \neq j) \\
+       & = Pr(\epsilon_{ij} - \epsilon_{ik} > V_{ik} - V_{ij} \forall k \neq j)
+\end{align}$$
+
+---
+# Basic Multivariate Logit
+
+Impose some distributional assumptions on $\epsilon_{i}$, with
+$$p_{ij} = \int I(\epsilon_{ij} - \epsilon_{ik} > V_{ik} - V_{ij} ) f(\epsilon_{i}) d \epsilon_{i}$$
+
+- Multivariate normal: $\epsilon_{i} \sim N(0, \Omega)$ yields multinomial probit
+- Gumbel or Type I Extreme Value: $f(\epsilon_{i}) = e^{-\epsilon_{ij}} e^{-e^{-\epsilon_{ij}}}$ and $F(\epsilon_{i}) = 1 - e^{-e^{-\epsilon_{ij}}}$ yields multinomial logit
+
+---
+# Identification
+
+- Only differences in utility matter (not scale)
+- Adding constant is irrelevant
+- Can only include $J-1$ alternatives and need to normalize one to 0
+- Can't identify individual specific factors that don't vary across choices
+
+---
+# Identification
+
+- Since only relative utility differences are identified (not scale), $u_{ij}^{0} = V_{ij} + \epsilon_{ij}$ and $u_{ij}^{1} = \lambda V_{ij} + \lambda \epsilon_{ij}$ are equivalent
+- In logit, normalize variance to $\pi^{2}/6$ (comes from constant of integration)
+
+---
+# Basics of Multinomial Logit
+
+With this setup, we can write
+
+$$p_{ij} = \frac{e^{V_{ij}}}{\sum_{k} e^{V_{ik}}},$$
+
+where we tend to approximate $V_{ij}$ with some linear (in parameters) specification
+
+---
+# Inclusive Value
+
+- Nice property of this framework...
+- Expected maximum has a close form $$E[\max_{j} u_{ij}] = \log \left(\sum_{j} e^{V_{ij}} \right) + C$$
+  - Expected utility of best option does not depend on $\epsilon_{ij}$
+  - Allows simple computation of the change in consumer surplus, $\Delta CS$
+
+---
 # The Indepenence of Irrelevant Alternatives
 
-Fundamental issue with logit models...the ratio of choice probabilities for $j$ and $k$ does not depend on any other alternatives: $$\frac{P_{ij}}{P_{ik}} = \frac{e^{V_{ij}}}{e^{V_{ik}}}.$$
+Fundamental issue with logit models...the ratio of choice probabilities for $j$ and $k$ does not depend on any other alternatives: $$\frac{p_{ij}}{p_{ik}} = \frac{e^{V_{ij}}}{e^{V_{ik}}}.$$
+
+---
+# IIA
+
+Well known critique of multinomial logit is the imposition of IIA
+
+- Famous red bus blue bus example...introduction of red bus should only affect probability of selecting the blue bus (not car), but logit would predict all probabilities of $1/3$
+- Imposes that more popular products have higher markups (mechanical relationship between elasticity and share)
+- Imposes proportional substitution...as option $k$ improves, it proportionally reduces the shares of all other choices
 
 ---
 # Relaxing IIA
 
-- This is really an omitted variables problem...with enough interactions, we can allow for a sufficiently rich substitution pattern
-- Alternatively, relax assumptions on the error term with nested logit or random-coefficient logit (or multinomial probit)
+Relax assumptions on the error term with:
+- nested logit (choose first between groups and then, within group, choose product)
+- random-coefficient logit (random coefficients, $\beta_{i}$, on product characteristics)
+- multinomial probit (completely different error structure, but more difficult to estimate)
 
 <!-- New Section -->
 ---
@@ -163,15 +227,47 @@ where $\delta_{j}=x_{j}\beta + \xi_{j}$, and $\xi_{j}$ represents the mean level
 ---
 # Estimating with market shares
 
-Goal is to find $\hat{\delta}$ to statisfy moment condition, $$\frac{1}{J}\sum_{j} (\hat{\delta}_{j}-x_{j}\beta)z_{j}=0.$$
+With normalization of the outside option to $\delta_{0}=0$, we can write:
 
-In standard logit, $s_{j}=e^{\delta_{j}}/\sum e^{\delta_{j}}$, and $\delta_{j}$ then follows directly from taking logs and subtracting the outside share (with the normalization of $\delta_{0}=0$, which yields the estimating equation $$\ln(s_{j}) - \ln(s_{0}) = x_{j}\beta + \xi_{j}$$
+$$\begin{align}
+s_{j} & =e^{\delta_{j}}/(1+\sum e^{\delta_{k}}) \\
+s_{0} & =e^{0}/(1+\sum e^{\delta_{k}})
+\end{align}$$
+
+Taking logs:
+
+$$\begin{align}
+\ln (s_{0}) & = -\log ( 1 + \sum e^{\delta_{k}}) \\
+\ln (s_{j}) & = \delta_{j} -\log ( 1 + \sum e^{\delta_{k}}) \\
+\ln (s_{j}) - \ln (s_{0}) = \delta_{j}
+\end{align}$$
 
 ---
+# Estimation in practice
 
-# Estimating with market shares
+1. "Transform" the data, $\tilde{s} = \ln s_{j} - \ln s_{0}$
+2. IV regression of $\tilde{s}$ on $x$, $p$, with instruments for $p$
 
-- Standard logit imposes cross-price elasticities that are proportional to market shares (limited substitution patterns)
-- Relax with nested logit or random-coefficients logit
-- For details, see Berry (1994) or come talk to me
+
+---
+# Nested logit with market shares (Berry, 1994)
+
+A bit more work, but Berry (1994) shows that the analogous nested logit form is:
+
+$$\begin{align}
+\ln (s_{j}) - \ln (s_{0}) - \rho \ln (s_{j|g}) & = \delta_{j}\\
+\ln (s_{j}) - \ln (s_{0})  & = \delta_{j} + \rho \ln (s_{j|g})
+\end{align}$$
+
+where $g$ is the nesting structure or group, and $\rho$ is the nesting parameter
+
+- Note: **must** instrument for $s_{j|g}$
+- common instrument is number of products in the nest
+
+---
+# Random coefficients with market shares (BLP)
+
+- More complicated but still doable
+- Much harder to estimate and more sensitive to specification (convergence can be an issue)
+- See Chris Conlon and Jeff Gortmaker's "Best Practices for BLP" for a good guide, linked [here](https://chrisconlon.github.io/site/pyblp.pdf)
 
