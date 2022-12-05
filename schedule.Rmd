@@ -107,3 +107,6 @@ Below is a preliminary course outline for this semester. For a more complete rea
       - [Luco and Marshall (2020), The competitive impact of vertical integration by multiproduct firms](slides/student/noah-20221130.pdf), presented by Noah  
       - [Koch, Wendling, and Wilson (2021), The effects of physician and hospital integration on Medicare beneficiaries' health outcomes](slides/student/nixon-20221130.pdf), presented by Nixon
   - 12/02 (rescheduled from 11/21) and `r advdate(30)`: Empirical application with demand estimation
+      - [Hospital Market Definitions and HHI](slides/05-1.html)
+      - [Basics of Demand Estimation](slides/05-2.html)
+  
